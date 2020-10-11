@@ -4406,7 +4406,7 @@ var $elm$core$Set$Set_elm_builtin = function (a) {
 var $elm$core$Dict$RBEmpty_elm_builtin = {$: 'RBEmpty_elm_builtin'};
 var $elm$core$Dict$empty = $elm$core$Dict$RBEmpty_elm_builtin;
 var $elm$core$Set$empty = $elm$core$Set$Set_elm_builtin($elm$core$Dict$empty);
-var $author$project$Hangman$initialModel = {guessedChars: $elm$core$Set$empty, inputPhrase: '', inputSoFar: ''};
+var $author$project$Hangman$init = {guessedChars: $elm$core$Set$empty, inputPhrase: '', inputSoFar: ''};
 var $elm$core$Basics$EQ = {$: 'EQ'};
 var $elm$core$Basics$GT = {$: 'GT'};
 var $elm$core$Basics$LT = {$: 'LT'};
@@ -7565,12 +7565,9 @@ var $author$project$Hangman$update = F2(
 				return model;
 		}
 	});
+var $author$project$Hangman$SaveInputPhrase = {$: 'SaveInputPhrase'};
 var $author$project$Hangman$GuessButton = function (a) {
 	return {$: 'GuessButton', a: a};
-};
-var $author$project$Hangman$SaveInputPhrase = {$: 'SaveInputPhrase'};
-var $author$project$Hangman$SaveInputSoFar = function (a) {
-	return {$: 'SaveInputSoFar', a: a};
 };
 var $rtfeldman$elm_css$Css$Preprocess$ApplyStyles = function (a) {
 	return {$: 'ApplyStyles', a: a};
@@ -7729,70 +7726,6 @@ var $rtfeldman$elm_css$VirtualDom$Styled$Node = F3(
 var $rtfeldman$elm_css$VirtualDom$Styled$node = $rtfeldman$elm_css$VirtualDom$Styled$Node;
 var $rtfeldman$elm_css$Html$Styled$node = $rtfeldman$elm_css$VirtualDom$Styled$node;
 var $rtfeldman$elm_css$Html$Styled$div = $rtfeldman$elm_css$Html$Styled$node('div');
-var $rtfeldman$elm_css$Css$fontSize = $rtfeldman$elm_css$Css$prop1('font-size');
-var $rtfeldman$elm_css$Html$Styled$h1 = $rtfeldman$elm_css$Html$Styled$node('h1');
-var $rtfeldman$elm_css$Html$Styled$h2 = $rtfeldman$elm_css$Html$Styled$node('h2');
-var $rtfeldman$elm_css$VirtualDom$Styled$property = F2(
-	function (key, value) {
-		return A3(
-			$rtfeldman$elm_css$VirtualDom$Styled$Attribute,
-			A2($elm$virtual_dom$VirtualDom$property, key, value),
-			_List_Nil,
-			'');
-	});
-var $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty = F2(
-	function (key, string) {
-		return A2(
-			$rtfeldman$elm_css$VirtualDom$Styled$property,
-			key,
-			$elm$json$Json$Encode$string(string));
-	});
-var $rtfeldman$elm_css$Html$Styled$Attributes$id = $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty('id');
-var $elm$core$Dict$get = F2(
-	function (targetKey, dict) {
-		get:
-		while (true) {
-			if (dict.$ === 'RBEmpty_elm_builtin') {
-				return $elm$core$Maybe$Nothing;
-			} else {
-				var key = dict.b;
-				var value = dict.c;
-				var left = dict.d;
-				var right = dict.e;
-				var _v1 = A2($elm$core$Basics$compare, targetKey, key);
-				switch (_v1.$) {
-					case 'LT':
-						var $temp$targetKey = targetKey,
-							$temp$dict = left;
-						targetKey = $temp$targetKey;
-						dict = $temp$dict;
-						continue get;
-					case 'EQ':
-						return $elm$core$Maybe$Just(value);
-					default:
-						var $temp$targetKey = targetKey,
-							$temp$dict = right;
-						targetKey = $temp$targetKey;
-						dict = $temp$dict;
-						continue get;
-				}
-			}
-		}
-	});
-var $elm$core$Dict$member = F2(
-	function (key, dict) {
-		var _v0 = A2($elm$core$Dict$get, key, dict);
-		if (_v0.$ === 'Just') {
-			return true;
-		} else {
-			return false;
-		}
-	});
-var $elm$core$Set$member = F2(
-	function (key, _v0) {
-		var dict = _v0.a;
-		return A2($elm$core$Dict$member, key, dict);
-	});
 var $elm$virtual_dom$VirtualDom$Normal = function (a) {
 	return {$: 'Normal', a: a};
 };
@@ -7818,65 +7751,6 @@ var $rtfeldman$elm_css$Html$Styled$Events$onClick = function (msg) {
 		'click',
 		$elm$json$Json$Decode$succeed(msg));
 };
-var $rtfeldman$elm_css$Html$Styled$Events$alwaysStop = function (x) {
-	return _Utils_Tuple2(x, true);
-};
-var $elm$virtual_dom$VirtualDom$MayStopPropagation = function (a) {
-	return {$: 'MayStopPropagation', a: a};
-};
-var $rtfeldman$elm_css$Html$Styled$Events$stopPropagationOn = F2(
-	function (event, decoder) {
-		return A2(
-			$rtfeldman$elm_css$VirtualDom$Styled$on,
-			event,
-			$elm$virtual_dom$VirtualDom$MayStopPropagation(decoder));
-	});
-var $elm$json$Json$Decode$field = _Json_decodeField;
-var $elm$json$Json$Decode$at = F2(
-	function (fields, decoder) {
-		return A3($elm$core$List$foldr, $elm$json$Json$Decode$field, decoder, fields);
-	});
-var $elm$json$Json$Decode$string = _Json_decodeString;
-var $rtfeldman$elm_css$Html$Styled$Events$targetValue = A2(
-	$elm$json$Json$Decode$at,
-	_List_fromArray(
-		['target', 'value']),
-	$elm$json$Json$Decode$string);
-var $rtfeldman$elm_css$Html$Styled$Events$onInput = function (tagger) {
-	return A2(
-		$rtfeldman$elm_css$Html$Styled$Events$stopPropagationOn,
-		'input',
-		A2(
-			$elm$json$Json$Decode$map,
-			$rtfeldman$elm_css$Html$Styled$Events$alwaysStop,
-			A2($elm$json$Json$Decode$map, tagger, $rtfeldman$elm_css$Html$Styled$Events$targetValue)));
-};
-var $rtfeldman$elm_css$Html$Styled$Events$alwaysPreventDefault = function (msg) {
-	return _Utils_Tuple2(msg, true);
-};
-var $elm$virtual_dom$VirtualDom$MayPreventDefault = function (a) {
-	return {$: 'MayPreventDefault', a: a};
-};
-var $rtfeldman$elm_css$Html$Styled$Events$preventDefaultOn = F2(
-	function (event, decoder) {
-		return A2(
-			$rtfeldman$elm_css$VirtualDom$Styled$on,
-			event,
-			$elm$virtual_dom$VirtualDom$MayPreventDefault(decoder));
-	});
-var $rtfeldman$elm_css$Html$Styled$Events$onSubmit = function (msg) {
-	return A2(
-		$rtfeldman$elm_css$Html$Styled$Events$preventDefaultOn,
-		'submit',
-		A2(
-			$elm$json$Json$Decode$map,
-			$rtfeldman$elm_css$Html$Styled$Events$alwaysPreventDefault,
-			$elm$json$Json$Decode$succeed(msg)));
-};
-var $rtfeldman$elm_css$Css$padding = $rtfeldman$elm_css$Css$prop1('padding');
-var $rtfeldman$elm_css$Css$PxUnits = {$: 'PxUnits'};
-var $rtfeldman$elm_css$Css$px = A2($rtfeldman$elm_css$Css$Internal$lengthConverter, $rtfeldman$elm_css$Css$PxUnits, 'px');
-var $rtfeldman$elm_css$Html$Styled$span = $rtfeldman$elm_css$Html$Styled$node('span');
 var $rtfeldman$elm_css$Css$backgroundColor = function (c) {
 	return A2($rtfeldman$elm_css$Css$property, 'background-color', c.value);
 };
@@ -7886,6 +7760,7 @@ var $rtfeldman$elm_css$Html$Styled$button = $rtfeldman$elm_css$Html$Styled$node(
 var $rtfeldman$elm_css$Css$color = function (c) {
 	return A2($rtfeldman$elm_css$Css$property, 'color', c.value);
 };
+var $rtfeldman$elm_css$Css$fontSize = $rtfeldman$elm_css$Css$prop1('font-size');
 var $rtfeldman$elm_css$Css$withPrecedingHash = function (str) {
 	return A2($elm$core$String$startsWith, '#', str) ? str : A2(
 		$elm$core$String$cons,
@@ -8267,6 +8142,9 @@ var $rtfeldman$elm_css$Css$marginBottom = $rtfeldman$elm_css$Css$prop1('margin-b
 var $rtfeldman$elm_css$Css$marginLeft = $rtfeldman$elm_css$Css$prop1('margin-left');
 var $rtfeldman$elm_css$Css$marginRight = $rtfeldman$elm_css$Css$prop1('margin-right');
 var $rtfeldman$elm_css$Css$marginTop = $rtfeldman$elm_css$Css$prop1('margin-top');
+var $rtfeldman$elm_css$Css$padding = $rtfeldman$elm_css$Css$prop1('padding');
+var $rtfeldman$elm_css$Css$PxUnits = {$: 'PxUnits'};
+var $rtfeldman$elm_css$Css$px = A2($rtfeldman$elm_css$Css$Internal$lengthConverter, $rtfeldman$elm_css$Css$PxUnits, 'px');
 var $rtfeldman$elm_css$Html$Styled$styled = F4(
 	function (fn, styles, attrs, children) {
 		return A2(
@@ -8306,38 +8184,103 @@ var $author$project$Hangman$styledCharacterButton = A2(
 			$rtfeldman$elm_css$Css$fontSize(
 			$rtfeldman$elm_css$Css$px(16))
 		]));
-var $rtfeldman$elm_css$Css$absolute = {position: $rtfeldman$elm_css$Css$Structure$Compatible, value: 'absolute'};
-var $rtfeldman$elm_css$Html$Styled$form = $rtfeldman$elm_css$Html$Styled$node('form');
-var $rtfeldman$elm_css$Css$height = $rtfeldman$elm_css$Css$prop1('height');
-var $rtfeldman$elm_css$Css$left = $rtfeldman$elm_css$Css$prop1('left');
-var $rtfeldman$elm_css$Css$margin = $rtfeldman$elm_css$Css$prop1('margin');
-var $rtfeldman$elm_css$Css$PercentageUnits = {$: 'PercentageUnits'};
-var $rtfeldman$elm_css$Css$pct = A2($rtfeldman$elm_css$Css$Internal$lengthConverter, $rtfeldman$elm_css$Css$PercentageUnits, '%');
-var $rtfeldman$elm_css$Css$position = $rtfeldman$elm_css$Css$prop1('position');
-var $rtfeldman$elm_css$Css$top = $rtfeldman$elm_css$Css$prop1('top');
-var $author$project$Hangman$styledForm = A2(
-	$rtfeldman$elm_css$Html$Styled$styled,
-	$rtfeldman$elm_css$Html$Styled$form,
+var $rtfeldman$elm_css$VirtualDom$Styled$Unstyled = function (a) {
+	return {$: 'Unstyled', a: a};
+};
+var $rtfeldman$elm_css$VirtualDom$Styled$text = function (str) {
+	return $rtfeldman$elm_css$VirtualDom$Styled$Unstyled(
+		$elm$virtual_dom$VirtualDom$text(str));
+};
+var $rtfeldman$elm_css$Html$Styled$text = $rtfeldman$elm_css$VirtualDom$Styled$text;
+var $rtfeldman$elm_css$Css$textAlign = function (fn) {
+	return A3(
+		$rtfeldman$elm_css$Css$Internal$getOverloadedProperty,
+		'textAlign',
+		'text-align',
+		fn($rtfeldman$elm_css$Css$Internal$lengthForOverloadedProperty));
+};
+var $rtfeldman$elm_css$VirtualDom$Styled$property = F2(
+	function (key, value) {
+		return A3(
+			$rtfeldman$elm_css$VirtualDom$Styled$Attribute,
+			A2($elm$virtual_dom$VirtualDom$property, key, value),
+			_List_Nil,
+			'');
+	});
+var $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty = F2(
+	function (key, string) {
+		return A2(
+			$rtfeldman$elm_css$VirtualDom$Styled$property,
+			key,
+			$elm$json$Json$Encode$string(string));
+	});
+var $rtfeldman$elm_css$Html$Styled$Attributes$type_ = $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty('type');
+var $author$project$Hangman$buttonsHtml = A2(
+	$rtfeldman$elm_css$Html$Styled$div,
 	_List_fromArray(
 		[
-			$rtfeldman$elm_css$Css$borderRadius(
-			$rtfeldman$elm_css$Css$px(50)),
-			$rtfeldman$elm_css$Css$backgroundColor(
-			$rtfeldman$elm_css$Css$hex('#f2f2f2')),
-			$rtfeldman$elm_css$Css$width(
-			$rtfeldman$elm_css$Css$pct(50)),
-			$rtfeldman$elm_css$Css$height(
-			$rtfeldman$elm_css$Css$pct(50)),
-			$rtfeldman$elm_css$Css$margin(
-			$rtfeldman$elm_css$Css$px(0)),
-			$rtfeldman$elm_css$Css$position($rtfeldman$elm_css$Css$absolute),
-			$rtfeldman$elm_css$Css$left(
-			$rtfeldman$elm_css$Css$pct(25)),
-			$rtfeldman$elm_css$Css$top(
-			$rtfeldman$elm_css$Css$pct(25))
-		]));
-var $rtfeldman$elm_css$Css$block = {display: $rtfeldman$elm_css$Css$Structure$Compatible, value: 'block'};
-var $rtfeldman$elm_css$Css$display = $rtfeldman$elm_css$Css$prop1('display');
+			$rtfeldman$elm_css$Html$Styled$Attributes$css(
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
+					$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center)
+				]))
+		]),
+	A2(
+		$elm$core$List$map,
+		function (_char) {
+			return A2(
+				$author$project$Hangman$styledCharacterButton,
+				_List_fromArray(
+					[
+						$rtfeldman$elm_css$Html$Styled$Attributes$type_('button'),
+						$rtfeldman$elm_css$Html$Styled$Events$onClick(
+						$author$project$Hangman$GuessButton(
+							$elm$core$String$toLower(_char)))
+					]),
+				_List_fromArray(
+					[
+						$rtfeldman$elm_css$Html$Styled$text(_char)
+					]));
+		},
+		$author$project$Hangman$alphabet));
+var $author$project$Hangman$SaveInputSoFar = function (a) {
+	return {$: 'SaveInputSoFar', a: a};
+};
+var $rtfeldman$elm_css$Html$Styled$Attributes$id = $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty('id');
+var $rtfeldman$elm_css$Html$Styled$Events$alwaysStop = function (x) {
+	return _Utils_Tuple2(x, true);
+};
+var $elm$virtual_dom$VirtualDom$MayStopPropagation = function (a) {
+	return {$: 'MayStopPropagation', a: a};
+};
+var $rtfeldman$elm_css$Html$Styled$Events$stopPropagationOn = F2(
+	function (event, decoder) {
+		return A2(
+			$rtfeldman$elm_css$VirtualDom$Styled$on,
+			event,
+			$elm$virtual_dom$VirtualDom$MayStopPropagation(decoder));
+	});
+var $elm$json$Json$Decode$field = _Json_decodeField;
+var $elm$json$Json$Decode$at = F2(
+	function (fields, decoder) {
+		return A3($elm$core$List$foldr, $elm$json$Json$Decode$field, decoder, fields);
+	});
+var $elm$json$Json$Decode$string = _Json_decodeString;
+var $rtfeldman$elm_css$Html$Styled$Events$targetValue = A2(
+	$elm$json$Json$Decode$at,
+	_List_fromArray(
+		['target', 'value']),
+	$elm$json$Json$Decode$string);
+var $rtfeldman$elm_css$Html$Styled$Events$onInput = function (tagger) {
+	return A2(
+		$rtfeldman$elm_css$Html$Styled$Events$stopPropagationOn,
+		'input',
+		A2(
+			$elm$json$Json$Decode$map,
+			$rtfeldman$elm_css$Html$Styled$Events$alwaysStop,
+			A2($elm$json$Json$Decode$map, tagger, $rtfeldman$elm_css$Html$Styled$Events$targetValue)));
+};
 var $rtfeldman$elm_css$Html$Styled$input = $rtfeldman$elm_css$Html$Styled$node('input');
 var $rtfeldman$elm_css$Css$prop2 = F3(
 	function (key, argA, argB) {
@@ -8357,7 +8300,6 @@ var $author$project$Hangman$styledInput = A2(
 	$rtfeldman$elm_css$Html$Styled$input,
 	_List_fromArray(
 		[
-			$rtfeldman$elm_css$Css$display($rtfeldman$elm_css$Css$block),
 			$rtfeldman$elm_css$Css$width(
 			$rtfeldman$elm_css$Css$px(260)),
 			A2(
@@ -8373,90 +8315,128 @@ var $author$project$Hangman$styledInput = A2(
 			$rtfeldman$elm_css$Css$borderRadius(
 			$rtfeldman$elm_css$Css$px(4))
 		]));
-var $author$project$Hangman$styledPhraseButton = A2(
-	$rtfeldman$elm_css$Html$Styled$styled,
-	$rtfeldman$elm_css$Html$Styled$button,
-	_List_fromArray(
-		[
-			$rtfeldman$elm_css$Css$width(
-			$rtfeldman$elm_css$Css$px(300)),
-			$rtfeldman$elm_css$Css$backgroundColor(
-			$rtfeldman$elm_css$Css$hex('#397cd5')),
-			$rtfeldman$elm_css$Css$color(
-			$rtfeldman$elm_css$Css$hex('#fff')),
-			A2(
-			$rtfeldman$elm_css$Css$padding2,
-			$rtfeldman$elm_css$Css$px(14),
-			$rtfeldman$elm_css$Css$px(20)),
-			$rtfeldman$elm_css$Css$marginTop(
-			$rtfeldman$elm_css$Css$px(10)),
-			$rtfeldman$elm_css$Css$marginBottom(
-			$rtfeldman$elm_css$Css$px(10)),
-			$rtfeldman$elm_css$Css$border(
-			$rtfeldman$elm_css$Css$px(0)),
-			$rtfeldman$elm_css$Css$borderRadius(
-			$rtfeldman$elm_css$Css$px(4)),
-			$rtfeldman$elm_css$Css$fontSize(
-			$rtfeldman$elm_css$Css$px(16))
-		]));
-var $rtfeldman$elm_css$VirtualDom$Styled$Unstyled = function (a) {
-	return {$: 'Unstyled', a: a};
-};
-var $rtfeldman$elm_css$VirtualDom$Styled$text = function (str) {
-	return $rtfeldman$elm_css$VirtualDom$Styled$Unstyled(
-		$elm$virtual_dom$VirtualDom$text(str));
-};
-var $rtfeldman$elm_css$Html$Styled$text = $rtfeldman$elm_css$VirtualDom$Styled$text;
-var $rtfeldman$elm_css$Css$textAlign = function (fn) {
-	return A3(
-		$rtfeldman$elm_css$Css$Internal$getOverloadedProperty,
-		'textAlign',
-		'text-align',
-		fn($rtfeldman$elm_css$Css$Internal$lengthForOverloadedProperty));
-};
-var $rtfeldman$elm_css$Html$Styled$Attributes$type_ = $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty('type');
 var $rtfeldman$elm_css$Html$Styled$Attributes$value = $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty('value');
-var $author$project$Hangman$view = function (model) {
-	var titleHtml = A2(
+var $author$project$Hangman$inputHtml = function (model) {
+	return A2(
 		$rtfeldman$elm_css$Html$Styled$div,
 		_List_fromArray(
 			[
 				$rtfeldman$elm_css$Html$Styled$Attributes$css(
 				_List_fromArray(
 					[
-						$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center)
+						$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
+						$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center)
 					]))
 			]),
 		_List_fromArray(
 			[
 				A2(
-				$rtfeldman$elm_css$Html$Styled$h1,
-				_List_Nil,
+				$rtfeldman$elm_css$Html$Styled$div,
 				_List_fromArray(
 					[
-						$rtfeldman$elm_css$Html$Styled$text('Hangman Game')
-					]))
-			]));
-	var submitButtonHtml = A2(
-		$rtfeldman$elm_css$Html$Styled$div,
-		_List_Nil,
-		_List_fromArray(
-			[
-				A2(
-				$author$project$Hangman$styledPhraseButton,
-				_List_fromArray(
-					[
-						$rtfeldman$elm_css$Html$Styled$Attributes$type_('button'),
-						$rtfeldman$elm_css$Html$Styled$Events$onClick($author$project$Hangman$SaveInputPhrase)
+						$rtfeldman$elm_css$Html$Styled$Attributes$css(
+						_List_fromArray(
+							[
+								$rtfeldman$elm_css$Css$fontSize(
+								$rtfeldman$elm_css$Css$px(32))
+							]))
 					]),
 				_List_fromArray(
 					[
-						$rtfeldman$elm_css$Html$Styled$text('Submit Phrase')
-					]))
+						$rtfeldman$elm_css$Html$Styled$text('Input Phrase')
+					])),
+				A2(
+				$author$project$Hangman$styledInput,
+				_List_fromArray(
+					[
+						$rtfeldman$elm_css$Html$Styled$Attributes$id('input'),
+						$rtfeldman$elm_css$Html$Styled$Attributes$type_('text'),
+						$rtfeldman$elm_css$Html$Styled$Events$onInput($author$project$Hangman$SaveInputSoFar),
+						$rtfeldman$elm_css$Html$Styled$Attributes$value(model.inputSoFar)
+					]),
+				_List_Nil)
 			]));
-	var phraseHtml = A2(
+};
+var $rtfeldman$elm_css$Html$Styled$Events$alwaysPreventDefault = function (msg) {
+	return _Utils_Tuple2(msg, true);
+};
+var $elm$virtual_dom$VirtualDom$MayPreventDefault = function (a) {
+	return {$: 'MayPreventDefault', a: a};
+};
+var $rtfeldman$elm_css$Html$Styled$Events$preventDefaultOn = F2(
+	function (event, decoder) {
+		return A2(
+			$rtfeldman$elm_css$VirtualDom$Styled$on,
+			event,
+			$elm$virtual_dom$VirtualDom$MayPreventDefault(decoder));
+	});
+var $rtfeldman$elm_css$Html$Styled$Events$onSubmit = function (msg) {
+	return A2(
+		$rtfeldman$elm_css$Html$Styled$Events$preventDefaultOn,
+		'submit',
+		A2(
+			$elm$json$Json$Decode$map,
+			$rtfeldman$elm_css$Html$Styled$Events$alwaysPreventDefault,
+			$elm$json$Json$Decode$succeed(msg)));
+};
+var $elm$core$Dict$get = F2(
+	function (targetKey, dict) {
+		get:
+		while (true) {
+			if (dict.$ === 'RBEmpty_elm_builtin') {
+				return $elm$core$Maybe$Nothing;
+			} else {
+				var key = dict.b;
+				var value = dict.c;
+				var left = dict.d;
+				var right = dict.e;
+				var _v1 = A2($elm$core$Basics$compare, targetKey, key);
+				switch (_v1.$) {
+					case 'LT':
+						var $temp$targetKey = targetKey,
+							$temp$dict = left;
+						targetKey = $temp$targetKey;
+						dict = $temp$dict;
+						continue get;
+					case 'EQ':
+						return $elm$core$Maybe$Just(value);
+					default:
+						var $temp$targetKey = targetKey,
+							$temp$dict = right;
+						targetKey = $temp$targetKey;
+						dict = $temp$dict;
+						continue get;
+				}
+			}
+		}
+	});
+var $elm$core$Dict$member = F2(
+	function (key, dict) {
+		var _v0 = A2($elm$core$Dict$get, key, dict);
+		if (_v0.$ === 'Just') {
+			return true;
+		} else {
+			return false;
+		}
+	});
+var $elm$core$Set$member = F2(
+	function (key, _v0) {
+		var dict = _v0.a;
+		return A2($elm$core$Dict$member, key, dict);
+	});
+var $rtfeldman$elm_css$Html$Styled$span = $rtfeldman$elm_css$Html$Styled$node('span');
+var $author$project$Hangman$phraseHtml = function (model) {
+	return A2(
 		$rtfeldman$elm_css$Html$Styled$div,
-		_List_Nil,
+		_List_fromArray(
+			[
+				$rtfeldman$elm_css$Html$Styled$Attributes$css(
+				_List_fromArray(
+					[
+						$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
+						$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center)
+					]))
+			]),
 		A2(
 			$elm$core$List$map,
 			function (_char) {
@@ -8487,58 +8467,101 @@ var $author$project$Hangman$view = function (model) {
 						model.guessedChars) ? _char : '_');
 				},
 				A2($elm$core$String$split, '', model.inputPhrase))));
-	var inputHtml = A2(
-		$rtfeldman$elm_css$Html$Styled$div,
-		_List_fromArray(
-			[
-				$rtfeldman$elm_css$Html$Styled$Attributes$css(
-				_List_fromArray(
-					[
-						$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
-						$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center)
-					]))
-			]),
-		_List_fromArray(
-			[
-				A2(
-				$rtfeldman$elm_css$Html$Styled$h2,
-				_List_Nil,
-				_List_fromArray(
-					[
-						$rtfeldman$elm_css$Html$Styled$text('Input Phrase')
-					])),
-				A2(
-				$author$project$Hangman$styledInput,
-				_List_fromArray(
-					[
-						$rtfeldman$elm_css$Html$Styled$Attributes$id('input'),
-						$rtfeldman$elm_css$Html$Styled$Attributes$type_('text'),
-						$rtfeldman$elm_css$Html$Styled$Events$onInput($author$project$Hangman$SaveInputSoFar),
-						$rtfeldman$elm_css$Html$Styled$Attributes$value(model.inputSoFar)
-					]),
-				_List_Nil)
-			]));
-	var buttonsHtml = A2(
-		$rtfeldman$elm_css$Html$Styled$div,
-		_List_Nil,
-		A2(
-			$elm$core$List$map,
-			function (_char) {
-				return A2(
-					$author$project$Hangman$styledCharacterButton,
-					_List_fromArray(
-						[
-							$rtfeldman$elm_css$Html$Styled$Attributes$type_('button'),
-							$rtfeldman$elm_css$Html$Styled$Events$onClick(
-							$author$project$Hangman$GuessButton(
-								$elm$core$String$toLower(_char)))
-						]),
-					_List_fromArray(
-						[
-							$rtfeldman$elm_css$Html$Styled$text(_char)
-						]));
-			},
-			$author$project$Hangman$alphabet));
+};
+var $rtfeldman$elm_css$Css$absolute = {position: $rtfeldman$elm_css$Css$Structure$Compatible, value: 'absolute'};
+var $rtfeldman$elm_css$Html$Styled$form = $rtfeldman$elm_css$Html$Styled$node('form');
+var $rtfeldman$elm_css$Css$height = $rtfeldman$elm_css$Css$prop1('height');
+var $rtfeldman$elm_css$Css$left = $rtfeldman$elm_css$Css$prop1('left');
+var $rtfeldman$elm_css$Css$margin = $rtfeldman$elm_css$Css$prop1('margin');
+var $rtfeldman$elm_css$Css$PercentageUnits = {$: 'PercentageUnits'};
+var $rtfeldman$elm_css$Css$pct = A2($rtfeldman$elm_css$Css$Internal$lengthConverter, $rtfeldman$elm_css$Css$PercentageUnits, '%');
+var $rtfeldman$elm_css$Css$position = $rtfeldman$elm_css$Css$prop1('position');
+var $rtfeldman$elm_css$Css$top = $rtfeldman$elm_css$Css$prop1('top');
+var $author$project$Hangman$styledForm = A2(
+	$rtfeldman$elm_css$Html$Styled$styled,
+	$rtfeldman$elm_css$Html$Styled$form,
+	_List_fromArray(
+		[
+			$rtfeldman$elm_css$Css$borderRadius(
+			$rtfeldman$elm_css$Css$px(50)),
+			$rtfeldman$elm_css$Css$backgroundColor(
+			$rtfeldman$elm_css$Css$hex('#f2f2f2')),
+			$rtfeldman$elm_css$Css$width(
+			$rtfeldman$elm_css$Css$pct(50)),
+			$rtfeldman$elm_css$Css$height(
+			$rtfeldman$elm_css$Css$pct(50)),
+			$rtfeldman$elm_css$Css$margin(
+			$rtfeldman$elm_css$Css$px(0)),
+			$rtfeldman$elm_css$Css$position($rtfeldman$elm_css$Css$absolute),
+			$rtfeldman$elm_css$Css$left(
+			$rtfeldman$elm_css$Css$pct(25)),
+			$rtfeldman$elm_css$Css$top(
+			$rtfeldman$elm_css$Css$pct(25))
+		]));
+var $author$project$Hangman$styledSubmitButton = A2(
+	$rtfeldman$elm_css$Html$Styled$styled,
+	$rtfeldman$elm_css$Html$Styled$button,
+	_List_fromArray(
+		[
+			$rtfeldman$elm_css$Css$width(
+			$rtfeldman$elm_css$Css$pct(15)),
+			$rtfeldman$elm_css$Css$backgroundColor(
+			$rtfeldman$elm_css$Css$hex('#397cd5')),
+			$rtfeldman$elm_css$Css$color(
+			$rtfeldman$elm_css$Css$hex('#fff')),
+			A2(
+			$rtfeldman$elm_css$Css$padding2,
+			$rtfeldman$elm_css$Css$px(12),
+			$rtfeldman$elm_css$Css$px(20)),
+			$rtfeldman$elm_css$Css$border(
+			$rtfeldman$elm_css$Css$px(0)),
+			$rtfeldman$elm_css$Css$borderRadius(
+			$rtfeldman$elm_css$Css$px(4)),
+			$rtfeldman$elm_css$Css$fontSize(
+			$rtfeldman$elm_css$Css$px(32))
+		]));
+var $author$project$Hangman$submitButtonHtml = A2(
+	$rtfeldman$elm_css$Html$Styled$div,
+	_List_fromArray(
+		[
+			$rtfeldman$elm_css$Html$Styled$Attributes$css(
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
+					$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center)
+				]))
+		]),
+	_List_fromArray(
+		[
+			A2(
+			$author$project$Hangman$styledSubmitButton,
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$Attributes$type_('button'),
+					$rtfeldman$elm_css$Html$Styled$Events$onClick($author$project$Hangman$SaveInputPhrase)
+				]),
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$text('Submit Phrase')
+				]))
+		]));
+var $author$project$Hangman$titleHtml = A2(
+	$rtfeldman$elm_css$Html$Styled$div,
+	_List_fromArray(
+		[
+			$rtfeldman$elm_css$Html$Styled$Attributes$css(
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
+					$rtfeldman$elm_css$Css$fontSize(
+					$rtfeldman$elm_css$Css$px(48))
+				]))
+		]),
+	_List_fromArray(
+		[
+			$rtfeldman$elm_css$Html$Styled$text('Hangman Game')
+		]));
+var $author$project$Hangman$view = function (model) {
 	return A2(
 		$rtfeldman$elm_css$Html$Styled$div,
 		_List_Nil,
@@ -8551,12 +8574,18 @@ var $author$project$Hangman$view = function (model) {
 						$rtfeldman$elm_css$Html$Styled$Events$onSubmit($author$project$Hangman$SaveInputPhrase)
 					]),
 				_List_fromArray(
-					[titleHtml, inputHtml, submitButtonHtml, buttonsHtml, phraseHtml]))
+					[
+						$author$project$Hangman$titleHtml,
+						$author$project$Hangman$inputHtml(model),
+						$author$project$Hangman$submitButtonHtml,
+						$author$project$Hangman$buttonsHtml,
+						$author$project$Hangman$phraseHtml(model)
+					]))
 			]));
 };
 var $author$project$Hangman$main = $elm$browser$Browser$sandbox(
 	{
-		init: $author$project$Hangman$initialModel,
+		init: $author$project$Hangman$init,
 		update: $author$project$Hangman$update,
 		view: A2($elm$core$Basics$composeR, $author$project$Hangman$view, $rtfeldman$elm_css$Html$Styled$toUnstyled)
 	});
