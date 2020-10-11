@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- <link rel="stylesheet" 
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <style>
+      .jumbotron {
+        background-color: #e6ffe6;
+        text-align: center;
+      }
+    </style> -->
+  </head>
+
+  <body>
+    <div id="elm-app-is-loaded-here"></div>
+    
+    <!-- Change js file path -->
+    <script src="javascript/hangman.js"></script>
+    <script>
+      // Change elm Module entry point
+      var app = Elm.Hangman.init({
+        node: document.getElementById("elm-app-is-loaded-here")
+      });      
+    </script>
+  </body>
+</html>
