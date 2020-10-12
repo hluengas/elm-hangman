@@ -262,6 +262,7 @@ hangmanArt =
 -- don quixote text
 
 
+donQuixote : String
 donQuixote =
     """
 In a village of La Mancha, the name of which I have no desire to call
