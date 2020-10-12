@@ -59,10 +59,10 @@ view model =
             [ titleHtml
             , inputHtml model
             , submitButtonHtml
+            , resetButtonHtml
             , buttonsHtml
             , phraseHtml model
             , hangmanHtml model
-            , resetButtonHtml
             ]
         ]
 
@@ -243,10 +243,10 @@ titleHtml =
     div
         [ css
             [ textAlign center
-            , fontSize (px 48)
+            , fontSize (px 32)
             ]
         ]
-        [h1 [] [ text "Hangman Game" ]]
+        [ h1 [] [ text "Hangman Game" ] ]
 
 
 inputHtml : Model -> Html Msg
@@ -257,7 +257,7 @@ inputHtml model =
             , alignItems center
             ]
         ]
-        [ div [ css [ fontSize (px 32) ] ] [ text "Input Phrase" ]
+        [ div [ css [ fontSize (px 24) ] ] [ text "Input Phrase" ]
         , styledInput
             [ id "input"
             , type_ "text"
@@ -272,8 +272,9 @@ submitButtonHtml : Html Msg
 submitButtonHtml =
     div
         [ css
-            [ Css.textAlign Css.center
-            , Css.alignItems Css.center
+            [ textAlign center
+            , alignItems center
+            , padding4 (px 2) (px 2) (px 2) (px 2)
             ]
         ]
         [ styledSubmitButton
@@ -288,8 +289,9 @@ resetButtonHtml : Html Msg
 resetButtonHtml =
     div
         [ css
-            [ Css.textAlign Css.center
-            , Css.alignItems Css.center
+            [ textAlign center
+            , alignItems center
+            , padding4 (px 2) (px 2) (px 2) (px 2)
             ]
         ]
         [ styledSubmitButton
@@ -313,8 +315,8 @@ buttonsHtml =
             )
         |> div
             [ css
-                [ Css.textAlign Css.center
-                , Css.alignItems Css.center
+                [ textAlign center
+                , alignItems center
                 ]
             ]
 
@@ -338,16 +340,16 @@ phraseHtml model =
             (\char ->
                 span
                     [ css
-                        [ Css.padding (px 2)
-                        , Css.fontSize (px 32)
+                        [ padding (px 2)
+                        , fontSize (px 32)
                         ]
                     ]
                     [ text char ]
             )
         |> div
             [ css
-                [ Css.textAlign Css.center
-                , Css.alignItems Css.center
+                [ textAlign center
+                , alignItems center
                 ]
             ]
 
@@ -372,7 +374,7 @@ winningHangmanHtml asciiArt =
         [ css
             [ textAlign center
             , alignItems center
-            , fontSize (px 24)
+            , fontSize (px 32)
             , lineHeight (pct 50)
             ]
         ]
@@ -381,7 +383,7 @@ winningHangmanHtml asciiArt =
         [ css
             [ textAlign center
             , alignItems center
-            , fontSize (px 24)
+            , fontSize (px 32)
             , lineHeight (pct 50)
             ]
         ]
@@ -395,7 +397,7 @@ livingHangmanHtml asciiArt =
         [ css
             [ textAlign center
             , alignItems center
-            , fontSize (px 24)
+            , fontSize (px 32)
             , lineHeight (pct 50)
             ]
         ]
@@ -404,7 +406,7 @@ livingHangmanHtml asciiArt =
         [ css
             [ textAlign center
             , alignItems center
-            , fontSize (px 24)
+            , fontSize (px 32)
             , lineHeight (pct 50)
             ]
         ]
@@ -418,7 +420,7 @@ deadHangmanHtml =
         [ css
             [ textAlign center
             , alignItems center
-            , fontSize (px 24)
+            , fontSize (px 32)
             , lineHeight (pct 50)
             ]
         ]
@@ -443,7 +445,7 @@ deadHangmanHtml =
         [ css
             [ textAlign center
             , alignItems center
-            , fontSize (px 24)
+            , fontSize (px 32)
             , lineHeight (pct 50)
             ]
         ]
@@ -458,14 +460,11 @@ deadHangmanHtml =
 styledForm : List (Attribute msg) -> List (Html msg) -> Html msg
 styledForm =
     styled Html.Styled.form
-        [ borderRadius (px 50)
-        , backgroundColor (hex "#f2f2f2")
-        , Css.width (pct 90)
-        , Css.height (pct 90)
-        , Css.margin (px 0)
-        , Css.position absolute
-        , Css.left (pct 5)
-        , Css.top (pct 5)
+        [ borderRadius (px 25)
+        , backgroundColor (hex "#c0c0c0")
+        , width (pct 99)
+        , height (pct 99)
+        , position absolute
         ]
 
 
@@ -483,10 +482,10 @@ styledInput =
 styledSubmitButton : List (Attribute msg) -> List (Html msg) -> Html msg
 styledSubmitButton =
     styled Html.Styled.button
-        [ width (pct 25)
+        [ width (pct 80)
         , backgroundColor (hex "#397cd5")
         , color (hex "#fff")
-        , padding2 (px 12) (px 20)
+        , padding4 (px 20) (px 20) (px 20) (px 20)
         , border (px 0)
         , borderRadius (px 4)
         , fontSize (px 24)
@@ -496,7 +495,7 @@ styledSubmitButton =
 styledCharacterButton : List (Attribute msg) -> List (Html msg) -> Html msg
 styledCharacterButton =
     styled Html.Styled.button
-        [ Css.width (px 30)
+        [ width (pct 7)
         , backgroundColor (hex "#397cd5")
         , color (hex "#fff")
         , padding (px 10)
@@ -506,7 +505,7 @@ styledCharacterButton =
         , marginRight (px 1)
         , border (px 0)
         , borderRadius (px 4)
-        , fontSize (px 16)
+        , fontSize (px 24)
         ]
 
 

@@ -8226,6 +8226,8 @@ var $rtfeldman$elm_css$Css$marginLeft = $rtfeldman$elm_css$Css$prop1('margin-lef
 var $rtfeldman$elm_css$Css$marginRight = $rtfeldman$elm_css$Css$prop1('margin-right');
 var $rtfeldman$elm_css$Css$marginTop = $rtfeldman$elm_css$Css$prop1('margin-top');
 var $rtfeldman$elm_css$Css$padding = $rtfeldman$elm_css$Css$prop1('padding');
+var $rtfeldman$elm_css$Css$PercentageUnits = {$: 'PercentageUnits'};
+var $rtfeldman$elm_css$Css$pct = A2($rtfeldman$elm_css$Css$Internal$lengthConverter, $rtfeldman$elm_css$Css$PercentageUnits, '%');
 var $rtfeldman$elm_css$Css$PxUnits = {$: 'PxUnits'};
 var $rtfeldman$elm_css$Css$px = A2($rtfeldman$elm_css$Css$Internal$lengthConverter, $rtfeldman$elm_css$Css$PxUnits, 'px');
 var $rtfeldman$elm_css$Html$Styled$styled = F4(
@@ -8245,7 +8247,7 @@ var $author$project$Hangman$styledCharacterButton = A2(
 	_List_fromArray(
 		[
 			$rtfeldman$elm_css$Css$width(
-			$rtfeldman$elm_css$Css$px(30)),
+			$rtfeldman$elm_css$Css$pct(7)),
 			$rtfeldman$elm_css$Css$backgroundColor(
 			$rtfeldman$elm_css$Css$hex('#397cd5')),
 			$rtfeldman$elm_css$Css$color(
@@ -8265,7 +8267,7 @@ var $author$project$Hangman$styledCharacterButton = A2(
 			$rtfeldman$elm_css$Css$borderRadius(
 			$rtfeldman$elm_css$Css$px(4)),
 			$rtfeldman$elm_css$Css$fontSize(
-			$rtfeldman$elm_css$Css$px(16))
+			$rtfeldman$elm_css$Css$px(24))
 		]));
 var $rtfeldman$elm_css$VirtualDom$Styled$Unstyled = function (a) {
 	return {$: 'Unstyled', a: a};
@@ -8328,8 +8330,6 @@ var $author$project$Hangman$buttonsHtml = A2(
 		},
 		$author$project$Hangman$alphabet));
 var $rtfeldman$elm_css$Css$lineHeight = $rtfeldman$elm_css$Css$prop1('line-height');
-var $rtfeldman$elm_css$Css$PercentageUnits = {$: 'PercentageUnits'};
-var $rtfeldman$elm_css$Css$pct = A2($rtfeldman$elm_css$Css$Internal$lengthConverter, $rtfeldman$elm_css$Css$PercentageUnits, '%');
 var $rtfeldman$elm_css$Html$Styled$pre = $rtfeldman$elm_css$Html$Styled$node('pre');
 var $author$project$Hangman$deadHangmanHtml = _List_fromArray(
 	[
@@ -8343,7 +8343,7 @@ var $author$project$Hangman$deadHangmanHtml = _List_fromArray(
 						$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
 						$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center),
 						$rtfeldman$elm_css$Css$fontSize(
-						$rtfeldman$elm_css$Css$px(24)),
+						$rtfeldman$elm_css$Css$px(32)),
 						$rtfeldman$elm_css$Css$lineHeight(
 						$rtfeldman$elm_css$Css$pct(50))
 					]))
@@ -8362,7 +8362,7 @@ var $author$project$Hangman$deadHangmanHtml = _List_fromArray(
 						$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
 						$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center),
 						$rtfeldman$elm_css$Css$fontSize(
-						$rtfeldman$elm_css$Css$px(24)),
+						$rtfeldman$elm_css$Css$px(32)),
 						$rtfeldman$elm_css$Css$lineHeight(
 						$rtfeldman$elm_css$Css$pct(50))
 					]))
@@ -8462,7 +8462,7 @@ var $author$project$Hangman$livingHangmanHtml = function (asciiArt) {
 							$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
 							$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center),
 							$rtfeldman$elm_css$Css$fontSize(
-							$rtfeldman$elm_css$Css$px(24)),
+							$rtfeldman$elm_css$Css$px(32)),
 							$rtfeldman$elm_css$Css$lineHeight(
 							$rtfeldman$elm_css$Css$pct(50))
 						]))
@@ -8481,7 +8481,7 @@ var $author$project$Hangman$livingHangmanHtml = function (asciiArt) {
 							$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
 							$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center),
 							$rtfeldman$elm_css$Css$fontSize(
-							$rtfeldman$elm_css$Css$px(24)),
+							$rtfeldman$elm_css$Css$px(32)),
 							$rtfeldman$elm_css$Css$lineHeight(
 							$rtfeldman$elm_css$Css$pct(50))
 						]))
@@ -8505,7 +8505,7 @@ var $author$project$Hangman$winningHangmanHtml = function (asciiArt) {
 							$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
 							$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center),
 							$rtfeldman$elm_css$Css$fontSize(
-							$rtfeldman$elm_css$Css$px(24)),
+							$rtfeldman$elm_css$Css$px(32)),
 							$rtfeldman$elm_css$Css$lineHeight(
 							$rtfeldman$elm_css$Css$pct(50))
 						]))
@@ -8524,7 +8524,7 @@ var $author$project$Hangman$winningHangmanHtml = function (asciiArt) {
 							$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
 							$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center),
 							$rtfeldman$elm_css$Css$fontSize(
-							$rtfeldman$elm_css$Css$px(24)),
+							$rtfeldman$elm_css$Css$px(32)),
 							$rtfeldman$elm_css$Css$lineHeight(
 							$rtfeldman$elm_css$Css$pct(50))
 						]))
@@ -8644,7 +8644,7 @@ var $author$project$Hangman$inputHtml = function (model) {
 						_List_fromArray(
 							[
 								$rtfeldman$elm_css$Css$fontSize(
-								$rtfeldman$elm_css$Css$px(32))
+								$rtfeldman$elm_css$Css$px(24))
 							]))
 					]),
 				_List_fromArray(
@@ -8730,20 +8730,34 @@ var $author$project$Hangman$phraseHtml = function (model) {
 				A2($elm$core$String$split, '', model.inputPhrase))));
 };
 var $author$project$Hangman$Reset = {$: 'Reset'};
+var $rtfeldman$elm_css$Css$prop4 = F5(
+	function (key, argA, argB, argC, argD) {
+		return A2(
+			$rtfeldman$elm_css$Css$property,
+			key,
+			A2(
+				$elm$core$String$join,
+				' ',
+				_List_fromArray(
+					[argA.value, argB.value, argC.value, argD.value])));
+	});
+var $rtfeldman$elm_css$Css$padding4 = $rtfeldman$elm_css$Css$prop4('padding');
 var $author$project$Hangman$styledSubmitButton = A2(
 	$rtfeldman$elm_css$Html$Styled$styled,
 	$rtfeldman$elm_css$Html$Styled$button,
 	_List_fromArray(
 		[
 			$rtfeldman$elm_css$Css$width(
-			$rtfeldman$elm_css$Css$pct(25)),
+			$rtfeldman$elm_css$Css$pct(80)),
 			$rtfeldman$elm_css$Css$backgroundColor(
 			$rtfeldman$elm_css$Css$hex('#397cd5')),
 			$rtfeldman$elm_css$Css$color(
 			$rtfeldman$elm_css$Css$hex('#fff')),
-			A2(
-			$rtfeldman$elm_css$Css$padding2,
-			$rtfeldman$elm_css$Css$px(12),
+			A4(
+			$rtfeldman$elm_css$Css$padding4,
+			$rtfeldman$elm_css$Css$px(20),
+			$rtfeldman$elm_css$Css$px(20),
+			$rtfeldman$elm_css$Css$px(20),
 			$rtfeldman$elm_css$Css$px(20)),
 			$rtfeldman$elm_css$Css$border(
 			$rtfeldman$elm_css$Css$px(0)),
@@ -8760,7 +8774,13 @@ var $author$project$Hangman$resetButtonHtml = A2(
 			_List_fromArray(
 				[
 					$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
-					$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center)
+					$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center),
+					A4(
+					$rtfeldman$elm_css$Css$padding4,
+					$rtfeldman$elm_css$Css$px(2),
+					$rtfeldman$elm_css$Css$px(2),
+					$rtfeldman$elm_css$Css$px(2),
+					$rtfeldman$elm_css$Css$px(2))
 				]))
 		]),
 	_List_fromArray(
@@ -8780,30 +8800,21 @@ var $author$project$Hangman$resetButtonHtml = A2(
 var $rtfeldman$elm_css$Css$absolute = {position: $rtfeldman$elm_css$Css$Structure$Compatible, value: 'absolute'};
 var $rtfeldman$elm_css$Html$Styled$form = $rtfeldman$elm_css$Html$Styled$node('form');
 var $rtfeldman$elm_css$Css$height = $rtfeldman$elm_css$Css$prop1('height');
-var $rtfeldman$elm_css$Css$left = $rtfeldman$elm_css$Css$prop1('left');
-var $rtfeldman$elm_css$Css$margin = $rtfeldman$elm_css$Css$prop1('margin');
 var $rtfeldman$elm_css$Css$position = $rtfeldman$elm_css$Css$prop1('position');
-var $rtfeldman$elm_css$Css$top = $rtfeldman$elm_css$Css$prop1('top');
 var $author$project$Hangman$styledForm = A2(
 	$rtfeldman$elm_css$Html$Styled$styled,
 	$rtfeldman$elm_css$Html$Styled$form,
 	_List_fromArray(
 		[
 			$rtfeldman$elm_css$Css$borderRadius(
-			$rtfeldman$elm_css$Css$px(50)),
+			$rtfeldman$elm_css$Css$px(25)),
 			$rtfeldman$elm_css$Css$backgroundColor(
-			$rtfeldman$elm_css$Css$hex('#f2f2f2')),
+			$rtfeldman$elm_css$Css$hex('#c0c0c0')),
 			$rtfeldman$elm_css$Css$width(
-			$rtfeldman$elm_css$Css$pct(90)),
+			$rtfeldman$elm_css$Css$pct(99)),
 			$rtfeldman$elm_css$Css$height(
-			$rtfeldman$elm_css$Css$pct(90)),
-			$rtfeldman$elm_css$Css$margin(
-			$rtfeldman$elm_css$Css$px(0)),
-			$rtfeldman$elm_css$Css$position($rtfeldman$elm_css$Css$absolute),
-			$rtfeldman$elm_css$Css$left(
-			$rtfeldman$elm_css$Css$pct(5)),
-			$rtfeldman$elm_css$Css$top(
-			$rtfeldman$elm_css$Css$pct(5))
+			$rtfeldman$elm_css$Css$pct(99)),
+			$rtfeldman$elm_css$Css$position($rtfeldman$elm_css$Css$absolute)
 		]));
 var $author$project$Hangman$submitButtonHtml = A2(
 	$rtfeldman$elm_css$Html$Styled$div,
@@ -8813,7 +8824,13 @@ var $author$project$Hangman$submitButtonHtml = A2(
 			_List_fromArray(
 				[
 					$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
-					$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center)
+					$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center),
+					A4(
+					$rtfeldman$elm_css$Css$padding4,
+					$rtfeldman$elm_css$Css$px(2),
+					$rtfeldman$elm_css$Css$px(2),
+					$rtfeldman$elm_css$Css$px(2),
+					$rtfeldman$elm_css$Css$px(2))
 				]))
 		]),
 	_List_fromArray(
@@ -8840,7 +8857,7 @@ var $author$project$Hangman$titleHtml = A2(
 				[
 					$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
 					$rtfeldman$elm_css$Css$fontSize(
-					$rtfeldman$elm_css$Css$px(48))
+					$rtfeldman$elm_css$Css$px(32))
 				]))
 		]),
 	_List_fromArray(
@@ -8870,10 +8887,10 @@ var $author$project$Hangman$view = function (model) {
 						$author$project$Hangman$titleHtml,
 						$author$project$Hangman$inputHtml(model),
 						$author$project$Hangman$submitButtonHtml,
+						$author$project$Hangman$resetButtonHtml,
 						$author$project$Hangman$buttonsHtml,
 						$author$project$Hangman$phraseHtml(model),
-						$author$project$Hangman$hangmanHtml(model),
-						$author$project$Hangman$resetButtonHtml
+						$author$project$Hangman$hangmanHtml(model)
 					]))
 			]));
 };
