@@ -8807,6 +8807,7 @@ var $rtfeldman$elm_css$Css$alignSelf = function (fn) {
 var $rtfeldman$elm_css$Html$Styled$form = $rtfeldman$elm_css$Html$Styled$node('form');
 var $rtfeldman$elm_css$Css$height = $rtfeldman$elm_css$Css$prop1('height');
 var $rtfeldman$elm_css$Css$paddingBottom = $rtfeldman$elm_css$Css$prop1('padding-bottom');
+var $rtfeldman$elm_css$Css$paddingTop = $rtfeldman$elm_css$Css$prop1('padding-top');
 var $author$project$Hangman$styledForm = A2(
 	$rtfeldman$elm_css$Html$Styled$styled,
 	$rtfeldman$elm_css$Html$Styled$form,
@@ -8821,8 +8822,10 @@ var $author$project$Hangman$styledForm = A2(
 			$rtfeldman$elm_css$Css$height(
 			$rtfeldman$elm_css$Css$pct(100)),
 			$rtfeldman$elm_css$Css$alignSelf($rtfeldman$elm_css$Css$center),
+			$rtfeldman$elm_css$Css$paddingTop(
+			$rtfeldman$elm_css$Css$pct(1)),
 			$rtfeldman$elm_css$Css$paddingBottom(
-			$rtfeldman$elm_css$Css$pct(4))
+			$rtfeldman$elm_css$Css$pct(1))
 		]));
 var $author$project$Hangman$submitButtonHtml = A2(
 	$rtfeldman$elm_css$Html$Styled$div,
