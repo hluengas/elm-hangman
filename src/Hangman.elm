@@ -40,7 +40,7 @@ type Msg
 
 init : Model
 init =
-    { inputPhrase = "_"
+    { inputPhrase = " "
     , inputSoFar = ""
     , guessedChars = Set.empty
     , numIncorrectGuesses = 0
@@ -231,7 +231,7 @@ hangmanArt =
 
 |       |
 
-========="""]
+=========""" ]
 
 
 
@@ -246,7 +246,7 @@ titleHtml =
             , fontSize (px 48)
             ]
         ]
-        [ text "Hangman Game" ]
+        [h1 [] [ text "Hangman Game" ]]
 
 
 inputHtml : Model -> Html Msg
@@ -327,8 +327,10 @@ phraseHtml model =
             (\char ->
                 if char == " " then
                     " "
+
                 else if Set.member (String.toLower char) model.guessedChars then
                     char
+
                 else
                     "_"
             )
@@ -350,7 +352,6 @@ phraseHtml model =
             ]
 
 
-
 hangmanHtml : Model -> Html Msg
 hangmanHtml model =
     case Array.get model.numIncorrectGuesses hangmanArt of
@@ -358,8 +359,9 @@ hangmanHtml model =
             div [] deadHangmanHtml
 
         Just hangmanAscii ->
-            if String.contains model.resultPhrase model.inputPhrase then 
+            if String.contains model.resultPhrase model.inputPhrase then
                 div [] (winningHangmanHtml hangmanAscii)
+
             else
                 div [] (livingHangmanHtml hangmanAscii)
 

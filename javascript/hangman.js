@@ -4406,7 +4406,7 @@ var $elm$core$Set$Set_elm_builtin = function (a) {
 var $elm$core$Dict$RBEmpty_elm_builtin = {$: 'RBEmpty_elm_builtin'};
 var $elm$core$Dict$empty = $elm$core$Dict$RBEmpty_elm_builtin;
 var $elm$core$Set$empty = $elm$core$Set$Set_elm_builtin($elm$core$Dict$empty);
-var $author$project$Hangman$init = {guessedChars: $elm$core$Set$empty, inputPhrase: '_', inputSoFar: '', numIncorrectGuesses: 0, resultPhrase: '_'};
+var $author$project$Hangman$init = {guessedChars: $elm$core$Set$empty, inputPhrase: ' ', inputSoFar: '', numIncorrectGuesses: 0, resultPhrase: '_'};
 var $elm$core$Basics$EQ = {$: 'EQ'};
 var $elm$core$Basics$GT = {$: 'GT'};
 var $elm$core$Basics$LT = {$: 'LT'};
@@ -8830,6 +8830,7 @@ var $author$project$Hangman$submitButtonHtml = A2(
 					$rtfeldman$elm_css$Html$Styled$text('Submit Phrase')
 				]))
 		]));
+var $rtfeldman$elm_css$Html$Styled$h1 = $rtfeldman$elm_css$Html$Styled$node('h1');
 var $author$project$Hangman$titleHtml = A2(
 	$rtfeldman$elm_css$Html$Styled$div,
 	_List_fromArray(
@@ -8844,7 +8845,13 @@ var $author$project$Hangman$titleHtml = A2(
 		]),
 	_List_fromArray(
 		[
-			$rtfeldman$elm_css$Html$Styled$text('Hangman Game')
+			A2(
+			$rtfeldman$elm_css$Html$Styled$h1,
+			_List_Nil,
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$text('Hangman Game')
+				]))
 		]));
 var $author$project$Hangman$view = function (model) {
 	return A2(
