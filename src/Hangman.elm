@@ -465,8 +465,7 @@ styledForm =
         , width (pct 100)
         , height (pct 100)
         , alignSelf center
-        , paddingTop (pct 1)
-        , paddingBottom (pct 1)
+        , paddingBottom (pct 2)
         ]
 
 
