@@ -716,27 +716,27 @@ deadHangmanHtml =
 
 wallpaperColor : String
 wallpaperColor =
-    "#E6B3AD"
+    "#C4FFF9"
 
 
 buttonMainColor : String
 buttonMainColor =
-    "#0C5A7D"
+    "#011627"
 
 
 unGuessedColor : String
 unGuessedColor =
-    "#468FB0"
+    "#6E8894"
 
 
 correctColor : String
 correctColor =
-    "#71E3C8"
+    "#78BC61"
 
 
 wrongColor : String
 wrongColor =
-    "#B04656"
+    "#875053"
 
 
 styledForm : List (Attribute msg) -> List (Html msg) -> Html msg
