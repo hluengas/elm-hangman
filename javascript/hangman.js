@@ -4406,7 +4406,7 @@ var $elm$core$Set$Set_elm_builtin = function (a) {
 var $elm$core$Dict$RBEmpty_elm_builtin = {$: 'RBEmpty_elm_builtin'};
 var $elm$core$Dict$empty = $elm$core$Dict$RBEmpty_elm_builtin;
 var $elm$core$Set$empty = $elm$core$Set$Set_elm_builtin($elm$core$Dict$empty);
-var $author$project$Hangman$init = {guessedChars: $elm$core$Set$empty, inputPhrase: '', inputSoFar: '', numIncorrectGuesses: 0};
+var $author$project$Hangman$init = {guessedChars: $elm$core$Set$empty, inputPhrase: '_', inputSoFar: '', numIncorrectGuesses: 0, resultPhrase: '_'};
 var $elm$core$Basics$EQ = {$: 'EQ'};
 var $elm$core$Basics$GT = {$: 'GT'};
 var $elm$core$Basics$LT = {$: 'LT'};
@@ -7536,12 +7536,61 @@ var $rtfeldman$elm_css$VirtualDom$Styled$toUnstyled = function (vdom) {
 	}
 };
 var $rtfeldman$elm_css$Html$Styled$toUnstyled = $rtfeldman$elm_css$VirtualDom$Styled$toUnstyled;
+var $elm$core$String$concat = function (strings) {
+	return A2($elm$core$String$join, '', strings);
+};
 var $elm$core$Set$insert = F2(
 	function (key, _v0) {
 		var dict = _v0.a;
 		return $elm$core$Set$Set_elm_builtin(
 			A3($elm$core$Dict$insert, key, _Utils_Tuple0, dict));
 	});
+var $elm$core$Dict$get = F2(
+	function (targetKey, dict) {
+		get:
+		while (true) {
+			if (dict.$ === 'RBEmpty_elm_builtin') {
+				return $elm$core$Maybe$Nothing;
+			} else {
+				var key = dict.b;
+				var value = dict.c;
+				var left = dict.d;
+				var right = dict.e;
+				var _v1 = A2($elm$core$Basics$compare, targetKey, key);
+				switch (_v1.$) {
+					case 'LT':
+						var $temp$targetKey = targetKey,
+							$temp$dict = left;
+						targetKey = $temp$targetKey;
+						dict = $temp$dict;
+						continue get;
+					case 'EQ':
+						return $elm$core$Maybe$Just(value);
+					default:
+						var $temp$targetKey = targetKey,
+							$temp$dict = right;
+						targetKey = $temp$targetKey;
+						dict = $temp$dict;
+						continue get;
+				}
+			}
+		}
+	});
+var $elm$core$Dict$member = F2(
+	function (key, dict) {
+		var _v0 = A2($elm$core$Dict$get, key, dict);
+		if (_v0.$ === 'Just') {
+			return true;
+		} else {
+			return false;
+		}
+	});
+var $elm$core$Set$member = F2(
+	function (key, _v0) {
+		var dict = _v0.a;
+		return A2($elm$core$Dict$member, key, dict);
+	});
+var $elm$core$String$toLower = _String_toLower;
 var $author$project$Hangman$update = F2(
 	function (message, model) {
 		switch (message.$) {
@@ -7553,13 +7602,41 @@ var $author$project$Hangman$update = F2(
 			case 'SaveInputPhrase':
 				return _Utils_update(
 					model,
-					{guessedChars: $author$project$Hangman$init.guessedChars, inputPhrase: model.inputSoFar, inputSoFar: '', numIncorrectGuesses: $author$project$Hangman$init.numIncorrectGuesses});
+					{
+						guessedChars: $author$project$Hangman$init.guessedChars,
+						inputPhrase: model.inputSoFar,
+						inputSoFar: '',
+						numIncorrectGuesses: $author$project$Hangman$init.numIncorrectGuesses,
+						resultPhrase: $elm$core$String$concat(
+							A2(
+								$elm$core$List$map,
+								function (c) {
+									return (c === ' ') ? ' ' : (A2(
+										$elm$core$Set$member,
+										$elm$core$String$toLower(c),
+										model.guessedChars) ? c : '_');
+								},
+								A2($elm$core$String$split, '', model.inputSoFar)))
+					});
 			case 'GuessButton':
 				var _char = message.a;
 				return A2($elm$core$String$contains, _char, model.inputPhrase) ? _Utils_update(
 					model,
 					{
-						guessedChars: A2($elm$core$Set$insert, _char, model.guessedChars)
+						guessedChars: A2($elm$core$Set$insert, _char, model.guessedChars),
+						resultPhrase: $elm$core$String$concat(
+							A2(
+								$elm$core$List$map,
+								function (c) {
+									return (c === ' ') ? ' ' : (A2(
+										$elm$core$Set$member,
+										$elm$core$String$toLower(c),
+										model.guessedChars) ? c : (A2(
+										$elm$core$String$contains,
+										$elm$core$String$toLower(c),
+										_char) ? c : '_'));
+								},
+								A2($elm$core$String$split, '', model.inputPhrase)))
 					}) : _Utils_update(
 					model,
 					{
@@ -7997,7 +8074,6 @@ var $rtfeldman$elm_hex$Hex$fromString = function (str) {
 		return A2($elm$core$Result$mapError, formatError, result);
 	}
 };
-var $elm$core$String$toLower = _String_toLower;
 var $rtfeldman$elm_css$Css$validHex = F5(
 	function (str, _v0, _v1, _v2, _v3) {
 		var r1 = _v0.a;
@@ -8372,7 +8448,7 @@ var $elm$core$Array$fromList = function (list) {
 };
 var $author$project$Hangman$hangmanArt = $elm$core$Array$fromList(
 	_List_fromArray(
-		['\n+---+---+\n\n|   ≣   |\n\n|       |\n\n|       |\n\n|       |\n\n|       |\n\n=========', '\n+---+---+\n\n|   ≣   |\n\n|   0   |\n\n|       |\n\n|       |\n\n|       |\n\n=========', '\n+---+---+\n\n|   ≣   |\n\n|   0   |\n\n|   |   |\n\n|       |\n\n|       |\n\n=========', '\n+---+---+\n\n|   ≣   |\n\n|   0   |\n\n|  /|   |\n\n|       |\n\n|       |\n\n=========', '\n+---+---+\n\n|   ≣   |\n\n|   0   |\n\n|  /|\\  |\n\n|       |\n\n|       |\n\n=========', '\n+---+---+\n\n|   ≣   |\n\n|   0   |\n\n|  /|\\  |\n\n|  /    |\n\n|       |\n\n=========', '\n+---+---+\n\n|   ≣   |\n\n|   0   |\n\n|  /|\\  |\n\n|  / \\  |\n\n|       |\n\n=========']));
+		['\n+---+---+\n\n|   ≣   |\n\n|       |\n\n|       |\n\n|       |\n\n|       |\n\n=========', '\n+---+---+\n\n|   ≣   |\n\n|   0   |\n\n|       |\n\n|       |\n\n|       |\n\n=========', '\n+---+---+\n\n|   ≣   |\n\n|   0   |\n\n|   |   |\n\n|       |\n\n|       |\n\n=========', '\n+---+---+\n\n|   ≣   |\n\n|   0   |\n\n|  /|   |\n\n|       |\n\n|       |\n\n=========', '\n+---+---+\n\n|   ≣   |\n\n|   0   |\n\n|  /|\\  |\n\n|       |\n\n|       |\n\n=========', '\n+---+---+\n\n|   ≣   |\n\n|   0   |\n\n|  /|\\  |\n\n|  /    |\n\n|       |\n\n=========']));
 var $author$project$Hangman$livingHangmanHtml = function (asciiArt) {
 	return _List_fromArray(
 		[
@@ -8416,13 +8492,59 @@ var $author$project$Hangman$livingHangmanHtml = function (asciiArt) {
 				]))
 		]);
 };
+var $author$project$Hangman$winningHangmanHtml = function (asciiArt) {
+	return _List_fromArray(
+		[
+			A2(
+			$rtfeldman$elm_css$Html$Styled$pre,
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$Attributes$css(
+					_List_fromArray(
+						[
+							$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
+							$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center),
+							$rtfeldman$elm_css$Css$fontSize(
+							$rtfeldman$elm_css$Css$px(24)),
+							$rtfeldman$elm_css$Css$lineHeight(
+							$rtfeldman$elm_css$Css$pct(50))
+						]))
+				]),
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$text(asciiArt)
+				])),
+			A2(
+			$rtfeldman$elm_css$Html$Styled$pre,
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$Attributes$css(
+					_List_fromArray(
+						[
+							$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
+							$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center),
+							$rtfeldman$elm_css$Css$fontSize(
+							$rtfeldman$elm_css$Css$px(24)),
+							$rtfeldman$elm_css$Css$lineHeight(
+							$rtfeldman$elm_css$Css$pct(50))
+						]))
+				]),
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$text('You Win!')
+				]))
+		]);
+};
 var $author$project$Hangman$hangmanHtml = function (model) {
 	var _v0 = A2($elm$core$Array$get, model.numIncorrectGuesses, $author$project$Hangman$hangmanArt);
 	if (_v0.$ === 'Nothing') {
 		return A2($rtfeldman$elm_css$Html$Styled$div, _List_Nil, $author$project$Hangman$deadHangmanHtml);
 	} else {
 		var hangmanAscii = _v0.a;
-		return A2(
+		return A2($elm$core$String$contains, model.resultPhrase, model.inputPhrase) ? A2(
+			$rtfeldman$elm_css$Html$Styled$div,
+			_List_Nil,
+			$author$project$Hangman$winningHangmanHtml(hangmanAscii)) : A2(
 			$rtfeldman$elm_css$Html$Styled$div,
 			_List_Nil,
 			$author$project$Hangman$livingHangmanHtml(hangmanAscii));
@@ -8485,7 +8607,7 @@ var $author$project$Hangman$styledInput = A2(
 	_List_fromArray(
 		[
 			$rtfeldman$elm_css$Css$width(
-			$rtfeldman$elm_css$Css$px(260)),
+			$rtfeldman$elm_css$Css$pct(25)),
 			A2(
 			$rtfeldman$elm_css$Css$padding2,
 			$rtfeldman$elm_css$Css$px(12),
@@ -8563,51 +8685,6 @@ var $rtfeldman$elm_css$Html$Styled$Events$onSubmit = function (msg) {
 			$rtfeldman$elm_css$Html$Styled$Events$alwaysPreventDefault,
 			$elm$json$Json$Decode$succeed(msg)));
 };
-var $elm$core$Dict$get = F2(
-	function (targetKey, dict) {
-		get:
-		while (true) {
-			if (dict.$ === 'RBEmpty_elm_builtin') {
-				return $elm$core$Maybe$Nothing;
-			} else {
-				var key = dict.b;
-				var value = dict.c;
-				var left = dict.d;
-				var right = dict.e;
-				var _v1 = A2($elm$core$Basics$compare, targetKey, key);
-				switch (_v1.$) {
-					case 'LT':
-						var $temp$targetKey = targetKey,
-							$temp$dict = left;
-						targetKey = $temp$targetKey;
-						dict = $temp$dict;
-						continue get;
-					case 'EQ':
-						return $elm$core$Maybe$Just(value);
-					default:
-						var $temp$targetKey = targetKey,
-							$temp$dict = right;
-						targetKey = $temp$targetKey;
-						dict = $temp$dict;
-						continue get;
-				}
-			}
-		}
-	});
-var $elm$core$Dict$member = F2(
-	function (key, dict) {
-		var _v0 = A2($elm$core$Dict$get, key, dict);
-		if (_v0.$ === 'Just') {
-			return true;
-		} else {
-			return false;
-		}
-	});
-var $elm$core$Set$member = F2(
-	function (key, _v0) {
-		var dict = _v0.a;
-		return A2($elm$core$Dict$member, key, dict);
-	});
 var $rtfeldman$elm_css$Html$Styled$span = $rtfeldman$elm_css$Html$Styled$node('span');
 var $author$project$Hangman$phraseHtml = function (model) {
 	return A2(
@@ -8659,7 +8736,7 @@ var $author$project$Hangman$styledSubmitButton = A2(
 	_List_fromArray(
 		[
 			$rtfeldman$elm_css$Css$width(
-			$rtfeldman$elm_css$Css$pct(15)),
+			$rtfeldman$elm_css$Css$pct(25)),
 			$rtfeldman$elm_css$Css$backgroundColor(
 			$rtfeldman$elm_css$Css$hex('#397cd5')),
 			$rtfeldman$elm_css$Css$color(
@@ -8673,7 +8750,7 @@ var $author$project$Hangman$styledSubmitButton = A2(
 			$rtfeldman$elm_css$Css$borderRadius(
 			$rtfeldman$elm_css$Css$px(4)),
 			$rtfeldman$elm_css$Css$fontSize(
-			$rtfeldman$elm_css$Css$px(32))
+			$rtfeldman$elm_css$Css$px(24))
 		]));
 var $author$project$Hangman$resetButtonHtml = A2(
 	$rtfeldman$elm_css$Html$Styled$div,
@@ -8717,16 +8794,16 @@ var $author$project$Hangman$styledForm = A2(
 			$rtfeldman$elm_css$Css$backgroundColor(
 			$rtfeldman$elm_css$Css$hex('#f2f2f2')),
 			$rtfeldman$elm_css$Css$width(
-			$rtfeldman$elm_css$Css$pct(50)),
+			$rtfeldman$elm_css$Css$pct(90)),
 			$rtfeldman$elm_css$Css$height(
-			$rtfeldman$elm_css$Css$pct(50)),
+			$rtfeldman$elm_css$Css$pct(90)),
 			$rtfeldman$elm_css$Css$margin(
 			$rtfeldman$elm_css$Css$px(0)),
 			$rtfeldman$elm_css$Css$position($rtfeldman$elm_css$Css$absolute),
 			$rtfeldman$elm_css$Css$left(
-			$rtfeldman$elm_css$Css$pct(25)),
+			$rtfeldman$elm_css$Css$pct(5)),
 			$rtfeldman$elm_css$Css$top(
-			$rtfeldman$elm_css$Css$pct(25))
+			$rtfeldman$elm_css$Css$pct(5))
 		]));
 var $author$project$Hangman$submitButtonHtml = A2(
 	$rtfeldman$elm_css$Html$Styled$div,

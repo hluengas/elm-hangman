@@ -18,6 +18,7 @@ type alias Model =
     , inputSoFar : String
     , guessedChars : Set String
     , numIncorrectGuesses : Int
+    , resultPhrase : String
     }
 
 
@@ -39,10 +40,11 @@ type Msg
 
 init : Model
 init =
-    { inputPhrase = ""
+    { inputPhrase = "_"
     , inputSoFar = ""
     , guessedChars = Set.empty
     , numIncorrectGuesses = 0
+    , resultPhrase = "_"
     }
 
 
@@ -81,11 +83,46 @@ update message model =
                 , inputSoFar = ""
                 , guessedChars = init.guessedChars
                 , numIncorrectGuesses = init.numIncorrectGuesses
+                , resultPhrase =
+                    model.inputSoFar
+                        |> String.split ""
+                        |> List.map
+                            (\c ->
+                                if c == " " then
+                                    " "
+
+                                else if Set.member (String.toLower c) model.guessedChars then
+                                    c
+
+                                else
+                                    "_"
+                            )
+                        |> String.concat
             }
 
         GuessButton char ->
             if String.contains char model.inputPhrase then
-                { model | guessedChars = Set.insert char model.guessedChars }
+                { model
+                    | guessedChars = Set.insert char model.guessedChars
+                    , resultPhrase =
+                        model.inputPhrase
+                            |> String.split ""
+                            |> List.map
+                                (\c ->
+                                    if c == " " then
+                                        " "
+
+                                    else if Set.member (String.toLower c) model.guessedChars then
+                                        c
+
+                                    else if String.contains (String.toLower c) char then
+                                        c
+
+                                    else
+                                        "_"
+                                )
+                            |> String.concat
+                }
 
             else
                 { model
@@ -194,20 +231,7 @@ hangmanArt =
 
 |       |
 
-=========""", """
-+---+---+
-
-|   ≣   |
-
-|   0   |
-
-|  /|\\  |
-
-|  / \\  |
-
-|       |
-
-=========""" ]
+========="""]
 
 
 
@@ -303,10 +327,8 @@ phraseHtml model =
             (\char ->
                 if char == " " then
                     " "
-
                 else if Set.member (String.toLower char) model.guessedChars then
                     char
-
                 else
                     "_"
             )
@@ -328,6 +350,7 @@ phraseHtml model =
             ]
 
 
+
 hangmanHtml : Model -> Html Msg
 hangmanHtml model =
     case Array.get model.numIncorrectGuesses hangmanArt of
@@ -335,7 +358,33 @@ hangmanHtml model =
             div [] deadHangmanHtml
 
         Just hangmanAscii ->
-            div [] (livingHangmanHtml hangmanAscii)
+            if String.contains model.resultPhrase model.inputPhrase then 
+                div [] (winningHangmanHtml hangmanAscii)
+            else
+                div [] (livingHangmanHtml hangmanAscii)
+
+
+winningHangmanHtml : String -> List (Html Msg)
+winningHangmanHtml asciiArt =
+    [ Html.Styled.pre
+        [ css
+            [ textAlign center
+            , alignItems center
+            , fontSize (px 24)
+            , lineHeight (pct 50)
+            ]
+        ]
+        [ text asciiArt ]
+    , Html.Styled.pre
+        [ css
+            [ textAlign center
+            , alignItems center
+            , fontSize (px 24)
+            , lineHeight (pct 50)
+            ]
+        ]
+        [ text "You Win!" ]
+    ]
 
 
 livingHangmanHtml : String -> List (Html Msg)
@@ -409,19 +458,19 @@ styledForm =
     styled Html.Styled.form
         [ borderRadius (px 50)
         , backgroundColor (hex "#f2f2f2")
-        , Css.width (pct 50)
-        , Css.height (pct 50)
+        , Css.width (pct 90)
+        , Css.height (pct 90)
         , Css.margin (px 0)
         , Css.position absolute
-        , Css.left (pct 25)
-        , Css.top (pct 25)
+        , Css.left (pct 5)
+        , Css.top (pct 5)
         ]
 
 
 styledInput : List (Attribute msg) -> List (Html msg) -> Html msg
 styledInput =
     styled Html.Styled.input
-        [ width (px 260)
+        [ width (pct 25)
         , padding2 (px 12) (px 20)
         , margin2 (px 8) (px 0)
         , border (px 0)
@@ -432,13 +481,13 @@ styledInput =
 styledSubmitButton : List (Attribute msg) -> List (Html msg) -> Html msg
 styledSubmitButton =
     styled Html.Styled.button
-        [ width (pct 15)
+        [ width (pct 25)
         , backgroundColor (hex "#397cd5")
         , color (hex "#fff")
         , padding2 (px 12) (px 20)
         , border (px 0)
         , borderRadius (px 4)
-        , fontSize (px 32)
+        , fontSize (px 24)
         ]
 
 
