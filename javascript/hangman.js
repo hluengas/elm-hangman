@@ -8173,6 +8173,7 @@ var $rtfeldman$elm_css$Html$Styled$button = $rtfeldman$elm_css$Html$Styled$node(
 var $rtfeldman$elm_css$Css$color = function (c) {
 	return A2($rtfeldman$elm_css$Css$property, 'color', c.value);
 };
+var $author$project$Hangman$correctColor = '#71E3C8';
 var $rtfeldman$elm_css$Css$fontSize = $rtfeldman$elm_css$Css$prop1('font-size');
 var $rtfeldman$elm_css$Css$withPrecedingHash = function (str) {
 	return A2($elm$core$String$startsWith, '#', str) ? str : A2(
@@ -8570,7 +8571,7 @@ var $rtfeldman$elm_css$Html$Styled$styled = F4(
 			children);
 	});
 var $rtfeldman$elm_css$Css$width = $rtfeldman$elm_css$Css$prop1('width');
-var $author$project$Hangman$styledCharacterButton = A2(
+var $author$project$Hangman$styledButtonGuessedCorrect = A2(
 	$rtfeldman$elm_css$Html$Styled$styled,
 	$rtfeldman$elm_css$Html$Styled$button,
 	_List_fromArray(
@@ -8578,7 +8579,65 @@ var $author$project$Hangman$styledCharacterButton = A2(
 			$rtfeldman$elm_css$Css$width(
 			$rtfeldman$elm_css$Css$pct(10)),
 			$rtfeldman$elm_css$Css$backgroundColor(
-			$rtfeldman$elm_css$Css$hex('#397cd5')),
+			$rtfeldman$elm_css$Css$hex($author$project$Hangman$correctColor)),
+			$rtfeldman$elm_css$Css$color(
+			$rtfeldman$elm_css$Css$hex('#fff')),
+			$rtfeldman$elm_css$Css$padding(
+			$rtfeldman$elm_css$Css$px(10)),
+			$rtfeldman$elm_css$Css$marginTop(
+			$rtfeldman$elm_css$Css$px(10)),
+			$rtfeldman$elm_css$Css$marginBottom(
+			$rtfeldman$elm_css$Css$px(10)),
+			$rtfeldman$elm_css$Css$marginLeft(
+			$rtfeldman$elm_css$Css$px(1)),
+			$rtfeldman$elm_css$Css$marginRight(
+			$rtfeldman$elm_css$Css$px(1)),
+			$rtfeldman$elm_css$Css$border(
+			$rtfeldman$elm_css$Css$px(0)),
+			$rtfeldman$elm_css$Css$borderRadius(
+			$rtfeldman$elm_css$Css$px(20)),
+			$rtfeldman$elm_css$Css$fontSize(
+			$rtfeldman$elm_css$Css$px(24))
+		]));
+var $author$project$Hangman$wrongColor = '#B04656';
+var $author$project$Hangman$styledButtonGuessedWrong = A2(
+	$rtfeldman$elm_css$Html$Styled$styled,
+	$rtfeldman$elm_css$Html$Styled$button,
+	_List_fromArray(
+		[
+			$rtfeldman$elm_css$Css$width(
+			$rtfeldman$elm_css$Css$pct(10)),
+			$rtfeldman$elm_css$Css$backgroundColor(
+			$rtfeldman$elm_css$Css$hex($author$project$Hangman$wrongColor)),
+			$rtfeldman$elm_css$Css$color(
+			$rtfeldman$elm_css$Css$hex('#fff')),
+			$rtfeldman$elm_css$Css$padding(
+			$rtfeldman$elm_css$Css$px(10)),
+			$rtfeldman$elm_css$Css$marginTop(
+			$rtfeldman$elm_css$Css$px(10)),
+			$rtfeldman$elm_css$Css$marginBottom(
+			$rtfeldman$elm_css$Css$px(10)),
+			$rtfeldman$elm_css$Css$marginLeft(
+			$rtfeldman$elm_css$Css$px(1)),
+			$rtfeldman$elm_css$Css$marginRight(
+			$rtfeldman$elm_css$Css$px(1)),
+			$rtfeldman$elm_css$Css$border(
+			$rtfeldman$elm_css$Css$px(0)),
+			$rtfeldman$elm_css$Css$borderRadius(
+			$rtfeldman$elm_css$Css$px(20)),
+			$rtfeldman$elm_css$Css$fontSize(
+			$rtfeldman$elm_css$Css$px(24))
+		]));
+var $author$project$Hangman$unGuessedColor = '#468FB0';
+var $author$project$Hangman$styledButtonUnguessed = A2(
+	$rtfeldman$elm_css$Html$Styled$styled,
+	$rtfeldman$elm_css$Html$Styled$button,
+	_List_fromArray(
+		[
+			$rtfeldman$elm_css$Css$width(
+			$rtfeldman$elm_css$Css$pct(10)),
+			$rtfeldman$elm_css$Css$backgroundColor(
+			$rtfeldman$elm_css$Css$hex($author$project$Hangman$unGuessedColor)),
 			$rtfeldman$elm_css$Css$color(
 			$rtfeldman$elm_css$Css$hex('#fff')),
 			$rtfeldman$elm_css$Css$padding(
@@ -8629,35 +8688,67 @@ var $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty = F2(
 			$elm$json$Json$Encode$string(string));
 	});
 var $rtfeldman$elm_css$Html$Styled$Attributes$type_ = $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty('type');
-var $author$project$Hangman$buttonsHtml = A2(
-	$rtfeldman$elm_css$Html$Styled$div,
-	_List_fromArray(
-		[
-			$rtfeldman$elm_css$Html$Styled$Attributes$css(
-			_List_fromArray(
-				[
-					$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
-					$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center)
-				]))
-		]),
-	A2(
-		$elm$core$List$map,
-		function (_char) {
-			return A2(
-				$author$project$Hangman$styledCharacterButton,
+var $author$project$Hangman$buttonsHtml = function (model) {
+	return A2(
+		$rtfeldman$elm_css$Html$Styled$div,
+		_List_fromArray(
+			[
+				$rtfeldman$elm_css$Html$Styled$Attributes$css(
 				_List_fromArray(
 					[
-						$rtfeldman$elm_css$Html$Styled$Attributes$type_('button'),
-						$rtfeldman$elm_css$Html$Styled$Events$onClick(
-						$author$project$Hangman$GuessButton(
-							$elm$core$String$toLower(_char)))
-					]),
-				_List_fromArray(
-					[
-						$rtfeldman$elm_css$Html$Styled$text(_char)
-					]));
-		},
-		$author$project$Hangman$alphabet));
+						$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
+						$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center)
+					]))
+			]),
+		A2(
+			$elm$core$List$map,
+			function (_char) {
+				return A2(
+					$elm$core$Set$member,
+					$elm$core$String$toLower(_char),
+					model.guessedChars) ? (A2(
+					$elm$core$String$contains,
+					$elm$core$String$toLower(_char),
+					model.inputPhrase) ? A2(
+					$author$project$Hangman$styledButtonGuessedCorrect,
+					_List_fromArray(
+						[
+							$rtfeldman$elm_css$Html$Styled$Attributes$type_('button'),
+							$rtfeldman$elm_css$Html$Styled$Events$onClick(
+							$author$project$Hangman$GuessButton(
+								$elm$core$String$toLower(_char)))
+						]),
+					_List_fromArray(
+						[
+							$rtfeldman$elm_css$Html$Styled$text(_char)
+						])) : A2(
+					$author$project$Hangman$styledButtonGuessedWrong,
+					_List_fromArray(
+						[
+							$rtfeldman$elm_css$Html$Styled$Attributes$type_('button'),
+							$rtfeldman$elm_css$Html$Styled$Events$onClick(
+							$author$project$Hangman$GuessButton(
+								$elm$core$String$toLower(_char)))
+						]),
+					_List_fromArray(
+						[
+							$rtfeldman$elm_css$Html$Styled$text(_char)
+						]))) : A2(
+					$author$project$Hangman$styledButtonUnguessed,
+					_List_fromArray(
+						[
+							$rtfeldman$elm_css$Html$Styled$Attributes$type_('button'),
+							$rtfeldman$elm_css$Html$Styled$Events$onClick(
+							$author$project$Hangman$GuessButton(
+								$elm$core$String$toLower(_char)))
+						]),
+					_List_fromArray(
+						[
+							$rtfeldman$elm_css$Html$Styled$text(_char)
+						]));
+			},
+			$author$project$Hangman$alphabet));
+};
 var $rtfeldman$elm_css$Css$lineHeight = $rtfeldman$elm_css$Css$prop1('line-height');
 var $rtfeldman$elm_css$Html$Styled$pre = $rtfeldman$elm_css$Html$Styled$node('pre');
 var $author$project$Hangman$deadHangmanHtml = _List_fromArray(
@@ -8994,6 +9085,7 @@ var $rtfeldman$elm_css$Css$alignSelf = function (fn) {
 var $rtfeldman$elm_css$Html$Styled$form = $rtfeldman$elm_css$Html$Styled$node('form');
 var $rtfeldman$elm_css$Css$height = $rtfeldman$elm_css$Css$prop1('height');
 var $rtfeldman$elm_css$Css$paddingBottom = $rtfeldman$elm_css$Css$prop1('padding-bottom');
+var $author$project$Hangman$wallpaperColor = '#E6B3AD';
 var $author$project$Hangman$styledForm = A2(
 	$rtfeldman$elm_css$Html$Styled$styled,
 	$rtfeldman$elm_css$Html$Styled$form,
@@ -9002,7 +9094,7 @@ var $author$project$Hangman$styledForm = A2(
 			$rtfeldman$elm_css$Css$borderRadius(
 			$rtfeldman$elm_css$Css$px(25)),
 			$rtfeldman$elm_css$Css$backgroundColor(
-			$rtfeldman$elm_css$Css$hex('#c0c0c0')),
+			$rtfeldman$elm_css$Css$hex($author$project$Hangman$wallpaperColor)),
 			$rtfeldman$elm_css$Css$width(
 			$rtfeldman$elm_css$Css$pct(100)),
 			$rtfeldman$elm_css$Css$height(
@@ -9025,8 +9117,9 @@ var $rtfeldman$elm_css$Css$prop4 = F5(
 					[argA.value, argB.value, argC.value, argD.value])));
 	});
 var $rtfeldman$elm_css$Css$padding4 = $rtfeldman$elm_css$Css$prop4('padding');
+var $author$project$Hangman$buttonMainColor = '#0C5A7D';
 var $rtfeldman$elm_css$Css$margin4 = $rtfeldman$elm_css$Css$prop4('margin');
-var $author$project$Hangman$styledSubmitButton = A2(
+var $author$project$Hangman$styledButtonMain = A2(
 	$rtfeldman$elm_css$Html$Styled$styled,
 	$rtfeldman$elm_css$Html$Styled$button,
 	_List_fromArray(
@@ -9034,7 +9127,7 @@ var $author$project$Hangman$styledSubmitButton = A2(
 			$rtfeldman$elm_css$Css$width(
 			$rtfeldman$elm_css$Css$pct(30)),
 			$rtfeldman$elm_css$Css$backgroundColor(
-			$rtfeldman$elm_css$Css$hex('#397cd5')),
+			$rtfeldman$elm_css$Css$hex($author$project$Hangman$buttonMainColor)),
 			$rtfeldman$elm_css$Css$color(
 			$rtfeldman$elm_css$Css$hex('#fff')),
 			A4(
@@ -9076,7 +9169,7 @@ var $author$project$Hangman$submitButtonHtml = A2(
 	_List_fromArray(
 		[
 			A2(
-			$author$project$Hangman$styledSubmitButton,
+			$author$project$Hangman$styledButtonMain,
 			_List_fromArray(
 				[
 					$rtfeldman$elm_css$Html$Styled$Attributes$type_('button'),
@@ -9087,7 +9180,7 @@ var $author$project$Hangman$submitButtonHtml = A2(
 					$rtfeldman$elm_css$Html$Styled$text('Random Phrase')
 				])),
 			A2(
-			$author$project$Hangman$styledSubmitButton,
+			$author$project$Hangman$styledButtonMain,
 			_List_fromArray(
 				[
 					$rtfeldman$elm_css$Html$Styled$Attributes$type_('button'),
@@ -9098,7 +9191,7 @@ var $author$project$Hangman$submitButtonHtml = A2(
 					$rtfeldman$elm_css$Html$Styled$text('Submit Phrase')
 				])),
 			A2(
-			$author$project$Hangman$styledSubmitButton,
+			$author$project$Hangman$styledButtonMain,
 			_List_fromArray(
 				[
 					$rtfeldman$elm_css$Html$Styled$Attributes$type_('button'),
@@ -9149,7 +9242,7 @@ var $author$project$Hangman$view = function (model) {
 						$author$project$Hangman$titleHtml,
 						$author$project$Hangman$inputHtml(model),
 						$author$project$Hangman$submitButtonHtml,
-						$author$project$Hangman$buttonsHtml,
+						$author$project$Hangman$buttonsHtml(model),
 						$author$project$Hangman$phraseHtml(model),
 						$author$project$Hangman$hangmanHtml(model)
 					]))

@@ -66,7 +66,7 @@ view model =
             [ titleHtml
             , inputHtml model
             , submitButtonHtml
-            , buttonsHtml
+            , buttonsHtml model
             , phraseHtml model
             , hangmanHtml model
             ]
@@ -524,17 +524,17 @@ submitButtonHtml =
             , padding4 (px 2) (px 2) (px 2) (px 2)
             ]
         ]
-        [ styledSubmitButton
+        [ styledButtonMain
             [ type_ "button"
             , onClick GenerateRandomNumber
             ]
             [ text "Random Phrase" ]
-        , styledSubmitButton
+        , styledButtonMain
             [ type_ "button"
             , onClick SaveInputPhrase
             ]
             [ text "Submit Phrase" ]
-        , styledSubmitButton
+        , styledButtonMain
             [ type_ "button"
             , onClick Reset
             ]
@@ -542,16 +542,32 @@ submitButtonHtml =
         ]
 
 
-buttonsHtml : Html Msg
-buttonsHtml =
+buttonsHtml : Model -> Html Msg
+buttonsHtml model =
     alphabet
         |> List.map
             (\char ->
-                styledCharacterButton
-                    [ type_ "button"
-                    , onClick (GuessButton (String.toLower char))
-                    ]
-                    [ text char ]
+                if Set.member (String.toLower char) model.guessedChars then
+                    if String.contains (String.toLower char) model.inputPhrase then
+                        styledButtonGuessedCorrect
+                            [ type_ "button"
+                            , onClick (GuessButton (String.toLower char))
+                            ]
+                            [ text char ]
+
+                    else
+                        styledButtonGuessedWrong
+                            [ type_ "button"
+                            , onClick (GuessButton (String.toLower char))
+                            ]
+                            [ text char ]
+
+                else
+                    styledButtonUnguessed
+                        [ type_ "button"
+                        , onClick (GuessButton (String.toLower char))
+                        ]
+                        [ text char ]
             )
         |> div
             [ css
@@ -697,11 +713,36 @@ deadHangmanHtml =
 -- style components
 
 
+wallpaperColor : String
+wallpaperColor =
+    "#E6B3AD"
+
+
+buttonMainColor : String
+buttonMainColor =
+    "#0C5A7D"
+
+
+unGuessedColor : String
+unGuessedColor =
+    "#468FB0"
+
+
+correctColor : String
+correctColor =
+    "#71E3C8"
+
+
+wrongColor : String
+wrongColor =
+    "#B04656"
+
+
 styledForm : List (Attribute msg) -> List (Html msg) -> Html msg
 styledForm =
     styled Html.Styled.form
         [ borderRadius (px 25)
-        , backgroundColor (hex "#c0c0c0")
+        , backgroundColor (hex wallpaperColor)
         , width (pct 100)
         , height (pct 100)
         , alignSelf center
@@ -720,11 +761,11 @@ styledInput =
         ]
 
 
-styledSubmitButton : List (Attribute msg) -> List (Html msg) -> Html msg
-styledSubmitButton =
+styledButtonMain : List (Attribute msg) -> List (Html msg) -> Html msg
+styledButtonMain =
     styled Html.Styled.button
         [ width (pct 30)
-        , backgroundColor (hex "#397cd5")
+        , backgroundColor (hex buttonMainColor)
         , color (hex "#fff")
         , padding4 (px 20) (px 20) (px 20) (px 20)
         , border (px 0)
@@ -734,11 +775,45 @@ styledSubmitButton =
         ]
 
 
-styledCharacterButton : List (Attribute msg) -> List (Html msg) -> Html msg
-styledCharacterButton =
+styledButtonUnguessed : List (Attribute msg) -> List (Html msg) -> Html msg
+styledButtonUnguessed =
     styled Html.Styled.button
         [ width (pct 10)
-        , backgroundColor (hex "#397cd5")
+        , backgroundColor (hex unGuessedColor)
+        , color (hex "#fff")
+        , padding (px 10)
+        , marginTop (px 10)
+        , marginBottom (px 10)
+        , marginLeft (px 1)
+        , marginRight (px 1)
+        , border (px 0)
+        , borderRadius (px 20)
+        , fontSize (px 24)
+        ]
+
+
+styledButtonGuessedCorrect : List (Attribute msg) -> List (Html msg) -> Html msg
+styledButtonGuessedCorrect =
+    styled Html.Styled.button
+        [ width (pct 10)
+        , backgroundColor (hex correctColor)
+        , color (hex "#fff")
+        , padding (px 10)
+        , marginTop (px 10)
+        , marginBottom (px 10)
+        , marginLeft (px 1)
+        , marginRight (px 1)
+        , border (px 0)
+        , borderRadius (px 20)
+        , fontSize (px 24)
+        ]
+
+
+styledButtonGuessedWrong : List (Attribute msg) -> List (Html msg) -> Html msg
+styledButtonGuessedWrong =
+    styled Html.Styled.button
+        [ width (pct 10)
+        , backgroundColor (hex wrongColor)
         , color (hex "#fff")
         , padding (px 10)
         , marginTop (px 10)
