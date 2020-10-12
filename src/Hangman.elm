@@ -462,9 +462,10 @@ styledForm =
     styled Html.Styled.form
         [ borderRadius (px 25)
         , backgroundColor (hex "#c0c0c0")
-        , width (pct 99)
-        , height (pct 99)
-        , position absolute
+        , width (pct 100)
+        , height (pct 100)
+        , alignSelf center
+        , paddingBottom (pct 4)
         ]
 
 

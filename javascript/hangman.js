@@ -8797,10 +8797,16 @@ var $author$project$Hangman$resetButtonHtml = A2(
 					$rtfeldman$elm_css$Html$Styled$text('Reset Game')
 				]))
 		]));
-var $rtfeldman$elm_css$Css$absolute = {position: $rtfeldman$elm_css$Css$Structure$Compatible, value: 'absolute'};
+var $rtfeldman$elm_css$Css$alignSelf = function (fn) {
+	return A3(
+		$rtfeldman$elm_css$Css$Internal$getOverloadedProperty,
+		'alignSelf',
+		'align-self',
+		fn($rtfeldman$elm_css$Css$Internal$lengthForOverloadedProperty));
+};
 var $rtfeldman$elm_css$Html$Styled$form = $rtfeldman$elm_css$Html$Styled$node('form');
 var $rtfeldman$elm_css$Css$height = $rtfeldman$elm_css$Css$prop1('height');
-var $rtfeldman$elm_css$Css$position = $rtfeldman$elm_css$Css$prop1('position');
+var $rtfeldman$elm_css$Css$paddingBottom = $rtfeldman$elm_css$Css$prop1('padding-bottom');
 var $author$project$Hangman$styledForm = A2(
 	$rtfeldman$elm_css$Html$Styled$styled,
 	$rtfeldman$elm_css$Html$Styled$form,
@@ -8811,10 +8817,12 @@ var $author$project$Hangman$styledForm = A2(
 			$rtfeldman$elm_css$Css$backgroundColor(
 			$rtfeldman$elm_css$Css$hex('#c0c0c0')),
 			$rtfeldman$elm_css$Css$width(
-			$rtfeldman$elm_css$Css$pct(99)),
+			$rtfeldman$elm_css$Css$pct(100)),
 			$rtfeldman$elm_css$Css$height(
-			$rtfeldman$elm_css$Css$pct(99)),
-			$rtfeldman$elm_css$Css$position($rtfeldman$elm_css$Css$absolute)
+			$rtfeldman$elm_css$Css$pct(100)),
+			$rtfeldman$elm_css$Css$alignSelf($rtfeldman$elm_css$Css$center),
+			$rtfeldman$elm_css$Css$paddingBottom(
+			$rtfeldman$elm_css$Css$pct(4))
 		]));
 var $author$project$Hangman$submitButtonHtml = A2(
 	$rtfeldman$elm_css$Html$Styled$div,
