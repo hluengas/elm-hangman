@@ -4406,7 +4406,7 @@ var $elm$core$Set$Set_elm_builtin = function (a) {
 var $elm$core$Dict$RBEmpty_elm_builtin = {$: 'RBEmpty_elm_builtin'};
 var $elm$core$Dict$empty = $elm$core$Dict$RBEmpty_elm_builtin;
 var $elm$core$Set$empty = $elm$core$Set$Set_elm_builtin($elm$core$Dict$empty);
-var $author$project$Hangman$init = {guessedChars: $elm$core$Set$empty, inputPhrase: '', inputSoFar: ''};
+var $author$project$Hangman$init = {guessedChars: $elm$core$Set$empty, inputPhrase: '', inputSoFar: '', numIncorrectGuesses: 0};
 var $elm$core$Basics$EQ = {$: 'EQ'};
 var $elm$core$Basics$GT = {$: 'GT'};
 var $elm$core$Basics$LT = {$: 'LT'};
@@ -7553,14 +7553,21 @@ var $author$project$Hangman$update = F2(
 			case 'SaveInputPhrase':
 				return _Utils_update(
 					model,
-					{inputPhrase: model.inputSoFar, inputSoFar: ''});
+					{guessedChars: $author$project$Hangman$init.guessedChars, inputPhrase: model.inputSoFar, inputSoFar: '', numIncorrectGuesses: $author$project$Hangman$init.numIncorrectGuesses});
 			case 'GuessButton':
 				var _char = message.a;
-				return _Utils_update(
+				return A2($elm$core$String$contains, _char, model.inputPhrase) ? _Utils_update(
 					model,
 					{
 						guessedChars: A2($elm$core$Set$insert, _char, model.guessedChars)
+					}) : _Utils_update(
+					model,
+					{
+						guessedChars: A2($elm$core$Set$insert, _char, model.guessedChars),
+						numIncorrectGuesses: model.numIncorrectGuesses + 1
 					});
+			case 'Reset':
+				return $author$project$Hangman$init;
 			default:
 				return model;
 		}
@@ -8244,6 +8251,183 @@ var $author$project$Hangman$buttonsHtml = A2(
 					]));
 		},
 		$author$project$Hangman$alphabet));
+var $rtfeldman$elm_css$Css$lineHeight = $rtfeldman$elm_css$Css$prop1('line-height');
+var $rtfeldman$elm_css$Css$PercentageUnits = {$: 'PercentageUnits'};
+var $rtfeldman$elm_css$Css$pct = A2($rtfeldman$elm_css$Css$Internal$lengthConverter, $rtfeldman$elm_css$Css$PercentageUnits, '%');
+var $rtfeldman$elm_css$Html$Styled$pre = $rtfeldman$elm_css$Html$Styled$node('pre');
+var $author$project$Hangman$deadHangmanHtml = _List_fromArray(
+	[
+		A2(
+		$rtfeldman$elm_css$Html$Styled$pre,
+		_List_fromArray(
+			[
+				$rtfeldman$elm_css$Html$Styled$Attributes$css(
+				_List_fromArray(
+					[
+						$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
+						$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center),
+						$rtfeldman$elm_css$Css$fontSize(
+						$rtfeldman$elm_css$Css$px(24)),
+						$rtfeldman$elm_css$Css$lineHeight(
+						$rtfeldman$elm_css$Css$pct(50))
+					]))
+			]),
+		_List_fromArray(
+			[
+				$rtfeldman$elm_css$Html$Styled$text('\n+---+---+\n\n|   ≣   |\n\n|   0   |\n\n|  /|\\  |\n\n|  / \\  |\n\n|       |\n\n=========\n                ')
+			])),
+		A2(
+		$rtfeldman$elm_css$Html$Styled$pre,
+		_List_fromArray(
+			[
+				$rtfeldman$elm_css$Html$Styled$Attributes$css(
+				_List_fromArray(
+					[
+						$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
+						$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center),
+						$rtfeldman$elm_css$Css$fontSize(
+						$rtfeldman$elm_css$Css$px(24)),
+						$rtfeldman$elm_css$Css$lineHeight(
+						$rtfeldman$elm_css$Css$pct(50))
+					]))
+			]),
+		_List_fromArray(
+			[
+				$rtfeldman$elm_css$Html$Styled$text('You Lose!')
+			]))
+	]);
+var $elm$core$Array$bitMask = 4294967295 >>> (32 - $elm$core$Array$shiftStep);
+var $elm$core$Basics$ge = _Utils_ge;
+var $elm$core$Elm$JsArray$unsafeGet = _JsArray_unsafeGet;
+var $elm$core$Array$getHelp = F3(
+	function (shift, index, tree) {
+		getHelp:
+		while (true) {
+			var pos = $elm$core$Array$bitMask & (index >>> shift);
+			var _v0 = A2($elm$core$Elm$JsArray$unsafeGet, pos, tree);
+			if (_v0.$ === 'SubTree') {
+				var subTree = _v0.a;
+				var $temp$shift = shift - $elm$core$Array$shiftStep,
+					$temp$index = index,
+					$temp$tree = subTree;
+				shift = $temp$shift;
+				index = $temp$index;
+				tree = $temp$tree;
+				continue getHelp;
+			} else {
+				var values = _v0.a;
+				return A2($elm$core$Elm$JsArray$unsafeGet, $elm$core$Array$bitMask & index, values);
+			}
+		}
+	});
+var $elm$core$Array$tailIndex = function (len) {
+	return (len >>> 5) << 5;
+};
+var $elm$core$Array$get = F2(
+	function (index, _v0) {
+		var len = _v0.a;
+		var startShift = _v0.b;
+		var tree = _v0.c;
+		var tail = _v0.d;
+		return ((index < 0) || (_Utils_cmp(index, len) > -1)) ? $elm$core$Maybe$Nothing : ((_Utils_cmp(
+			index,
+			$elm$core$Array$tailIndex(len)) > -1) ? $elm$core$Maybe$Just(
+			A2($elm$core$Elm$JsArray$unsafeGet, $elm$core$Array$bitMask & index, tail)) : $elm$core$Maybe$Just(
+			A3($elm$core$Array$getHelp, startShift, index, tree)));
+	});
+var $elm$core$Array$fromListHelp = F3(
+	function (list, nodeList, nodeListSize) {
+		fromListHelp:
+		while (true) {
+			var _v0 = A2($elm$core$Elm$JsArray$initializeFromList, $elm$core$Array$branchFactor, list);
+			var jsArray = _v0.a;
+			var remainingItems = _v0.b;
+			if (_Utils_cmp(
+				$elm$core$Elm$JsArray$length(jsArray),
+				$elm$core$Array$branchFactor) < 0) {
+				return A2(
+					$elm$core$Array$builderToArray,
+					true,
+					{nodeList: nodeList, nodeListSize: nodeListSize, tail: jsArray});
+			} else {
+				var $temp$list = remainingItems,
+					$temp$nodeList = A2(
+					$elm$core$List$cons,
+					$elm$core$Array$Leaf(jsArray),
+					nodeList),
+					$temp$nodeListSize = nodeListSize + 1;
+				list = $temp$list;
+				nodeList = $temp$nodeList;
+				nodeListSize = $temp$nodeListSize;
+				continue fromListHelp;
+			}
+		}
+	});
+var $elm$core$Array$fromList = function (list) {
+	if (!list.b) {
+		return $elm$core$Array$empty;
+	} else {
+		return A3($elm$core$Array$fromListHelp, list, _List_Nil, 0);
+	}
+};
+var $author$project$Hangman$hangmanArt = $elm$core$Array$fromList(
+	_List_fromArray(
+		['\n+---+---+\n\n|   ≣   |\n\n|       |\n\n|       |\n\n|       |\n\n|       |\n\n=========', '\n+---+---+\n\n|   ≣   |\n\n|   0   |\n\n|       |\n\n|       |\n\n|       |\n\n=========', '\n+---+---+\n\n|   ≣   |\n\n|   0   |\n\n|   |   |\n\n|       |\n\n|       |\n\n=========', '\n+---+---+\n\n|   ≣   |\n\n|   0   |\n\n|  /|   |\n\n|       |\n\n|       |\n\n=========', '\n+---+---+\n\n|   ≣   |\n\n|   0   |\n\n|  /|\\  |\n\n|       |\n\n|       |\n\n=========', '\n+---+---+\n\n|   ≣   |\n\n|   0   |\n\n|  /|\\  |\n\n|  /    |\n\n|       |\n\n=========', '\n+---+---+\n\n|   ≣   |\n\n|   0   |\n\n|  /|\\  |\n\n|  / \\  |\n\n|       |\n\n=========']));
+var $author$project$Hangman$livingHangmanHtml = function (asciiArt) {
+	return _List_fromArray(
+		[
+			A2(
+			$rtfeldman$elm_css$Html$Styled$pre,
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$Attributes$css(
+					_List_fromArray(
+						[
+							$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
+							$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center),
+							$rtfeldman$elm_css$Css$fontSize(
+							$rtfeldman$elm_css$Css$px(24)),
+							$rtfeldman$elm_css$Css$lineHeight(
+							$rtfeldman$elm_css$Css$pct(50))
+						]))
+				]),
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$text(asciiArt)
+				])),
+			A2(
+			$rtfeldman$elm_css$Html$Styled$pre,
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$Attributes$css(
+					_List_fromArray(
+						[
+							$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
+							$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center),
+							$rtfeldman$elm_css$Css$fontSize(
+							$rtfeldman$elm_css$Css$px(24)),
+							$rtfeldman$elm_css$Css$lineHeight(
+							$rtfeldman$elm_css$Css$pct(50))
+						]))
+				]),
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$text('')
+				]))
+		]);
+};
+var $author$project$Hangman$hangmanHtml = function (model) {
+	var _v0 = A2($elm$core$Array$get, model.numIncorrectGuesses, $author$project$Hangman$hangmanArt);
+	if (_v0.$ === 'Nothing') {
+		return A2($rtfeldman$elm_css$Html$Styled$div, _List_Nil, $author$project$Hangman$deadHangmanHtml);
+	} else {
+		var hangmanAscii = _v0.a;
+		return A2(
+			$rtfeldman$elm_css$Html$Styled$div,
+			_List_Nil,
+			$author$project$Hangman$livingHangmanHtml(hangmanAscii));
+	}
+};
 var $author$project$Hangman$SaveInputSoFar = function (a) {
 	return {$: 'SaveInputSoFar', a: a};
 };
@@ -8468,13 +8652,59 @@ var $author$project$Hangman$phraseHtml = function (model) {
 				},
 				A2($elm$core$String$split, '', model.inputPhrase))));
 };
+var $author$project$Hangman$Reset = {$: 'Reset'};
+var $author$project$Hangman$styledSubmitButton = A2(
+	$rtfeldman$elm_css$Html$Styled$styled,
+	$rtfeldman$elm_css$Html$Styled$button,
+	_List_fromArray(
+		[
+			$rtfeldman$elm_css$Css$width(
+			$rtfeldman$elm_css$Css$pct(15)),
+			$rtfeldman$elm_css$Css$backgroundColor(
+			$rtfeldman$elm_css$Css$hex('#397cd5')),
+			$rtfeldman$elm_css$Css$color(
+			$rtfeldman$elm_css$Css$hex('#fff')),
+			A2(
+			$rtfeldman$elm_css$Css$padding2,
+			$rtfeldman$elm_css$Css$px(12),
+			$rtfeldman$elm_css$Css$px(20)),
+			$rtfeldman$elm_css$Css$border(
+			$rtfeldman$elm_css$Css$px(0)),
+			$rtfeldman$elm_css$Css$borderRadius(
+			$rtfeldman$elm_css$Css$px(4)),
+			$rtfeldman$elm_css$Css$fontSize(
+			$rtfeldman$elm_css$Css$px(32))
+		]));
+var $author$project$Hangman$resetButtonHtml = A2(
+	$rtfeldman$elm_css$Html$Styled$div,
+	_List_fromArray(
+		[
+			$rtfeldman$elm_css$Html$Styled$Attributes$css(
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
+					$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center)
+				]))
+		]),
+	_List_fromArray(
+		[
+			A2(
+			$author$project$Hangman$styledSubmitButton,
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$Attributes$type_('button'),
+					$rtfeldman$elm_css$Html$Styled$Events$onClick($author$project$Hangman$Reset)
+				]),
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$text('Reset Game')
+				]))
+		]));
 var $rtfeldman$elm_css$Css$absolute = {position: $rtfeldman$elm_css$Css$Structure$Compatible, value: 'absolute'};
 var $rtfeldman$elm_css$Html$Styled$form = $rtfeldman$elm_css$Html$Styled$node('form');
 var $rtfeldman$elm_css$Css$height = $rtfeldman$elm_css$Css$prop1('height');
 var $rtfeldman$elm_css$Css$left = $rtfeldman$elm_css$Css$prop1('left');
 var $rtfeldman$elm_css$Css$margin = $rtfeldman$elm_css$Css$prop1('margin');
-var $rtfeldman$elm_css$Css$PercentageUnits = {$: 'PercentageUnits'};
-var $rtfeldman$elm_css$Css$pct = A2($rtfeldman$elm_css$Css$Internal$lengthConverter, $rtfeldman$elm_css$Css$PercentageUnits, '%');
 var $rtfeldman$elm_css$Css$position = $rtfeldman$elm_css$Css$prop1('position');
 var $rtfeldman$elm_css$Css$top = $rtfeldman$elm_css$Css$prop1('top');
 var $author$project$Hangman$styledForm = A2(
@@ -8497,28 +8727,6 @@ var $author$project$Hangman$styledForm = A2(
 			$rtfeldman$elm_css$Css$pct(25)),
 			$rtfeldman$elm_css$Css$top(
 			$rtfeldman$elm_css$Css$pct(25))
-		]));
-var $author$project$Hangman$styledSubmitButton = A2(
-	$rtfeldman$elm_css$Html$Styled$styled,
-	$rtfeldman$elm_css$Html$Styled$button,
-	_List_fromArray(
-		[
-			$rtfeldman$elm_css$Css$width(
-			$rtfeldman$elm_css$Css$pct(15)),
-			$rtfeldman$elm_css$Css$backgroundColor(
-			$rtfeldman$elm_css$Css$hex('#397cd5')),
-			$rtfeldman$elm_css$Css$color(
-			$rtfeldman$elm_css$Css$hex('#fff')),
-			A2(
-			$rtfeldman$elm_css$Css$padding2,
-			$rtfeldman$elm_css$Css$px(12),
-			$rtfeldman$elm_css$Css$px(20)),
-			$rtfeldman$elm_css$Css$border(
-			$rtfeldman$elm_css$Css$px(0)),
-			$rtfeldman$elm_css$Css$borderRadius(
-			$rtfeldman$elm_css$Css$px(4)),
-			$rtfeldman$elm_css$Css$fontSize(
-			$rtfeldman$elm_css$Css$px(32))
 		]));
 var $author$project$Hangman$submitButtonHtml = A2(
 	$rtfeldman$elm_css$Html$Styled$div,
@@ -8579,7 +8787,9 @@ var $author$project$Hangman$view = function (model) {
 						$author$project$Hangman$inputHtml(model),
 						$author$project$Hangman$submitButtonHtml,
 						$author$project$Hangman$buttonsHtml,
-						$author$project$Hangman$phraseHtml(model)
+						$author$project$Hangman$phraseHtml(model),
+						$author$project$Hangman$hangmanHtml(model),
+						$author$project$Hangman$resetButtonHtml
 					]))
 			]));
 };

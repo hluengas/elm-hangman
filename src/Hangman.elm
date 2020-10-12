@@ -1,8 +1,9 @@
 module Hangman exposing (..)
 
+import Array exposing (Array)
 import Browser exposing (sandbox)
 import Css exposing (..)
-import Html.Styled exposing (Attribute, Html, button, div, h1, h2, h3, h4, input, span, styled, text, toUnstyled)
+import Html.Styled exposing (Attribute, Html, button, div, h1, h2, h3, h4, input, pre, span, styled, text, toUnstyled)
 import Html.Styled.Attributes exposing (css, id, type_, value)
 import Html.Styled.Events exposing (onClick, onInput, onSubmit)
 import Set exposing (Set)
@@ -16,17 +17,19 @@ type alias Model =
     { inputPhrase : String
     , inputSoFar : String
     , guessedChars : Set String
+    , numIncorrectGuesses : Int
     }
 
 
 
--- Msg types
+-- Msg type
 
 
 type Msg
     = SaveInputPhrase
     | SaveInputSoFar String
     | GuessButton String
+    | Reset
     | NoOp
 
 
@@ -39,6 +42,7 @@ init =
     { inputPhrase = ""
     , inputSoFar = ""
     , guessedChars = Set.empty
+    , numIncorrectGuesses = 0
     }
 
 
@@ -55,6 +59,8 @@ view model =
             , submitButtonHtml
             , buttonsHtml
             , phraseHtml model
+            , hangmanHtml model
+            , resetButtonHtml
             ]
         ]
 
@@ -70,10 +76,25 @@ update message model =
             { model | inputSoFar = inputSoFar }
 
         SaveInputPhrase ->
-            { model | inputPhrase = model.inputSoFar, inputSoFar = "" }
+            { model
+                | inputPhrase = model.inputSoFar
+                , inputSoFar = ""
+                , guessedChars = init.guessedChars
+                , numIncorrectGuesses = init.numIncorrectGuesses
+            }
 
         GuessButton char ->
-            { model | guessedChars = Set.insert char model.guessedChars }
+            if String.contains char model.inputPhrase then
+                { model | guessedChars = Set.insert char model.guessedChars }
+
+            else
+                { model
+                    | guessedChars = Set.insert char model.guessedChars
+                    , numIncorrectGuesses = model.numIncorrectGuesses + 1
+                }
+
+        Reset ->
+            init
 
         NoOp ->
             model
@@ -86,6 +107,107 @@ update message model =
 alphabet : List String
 alphabet =
     String.split "" "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+
+
+-- hangman ascii art constant
+
+
+hangmanArt : Array String
+hangmanArt =
+    Array.fromList
+        [ """
++---+---+
+
+|   ≣   |
+
+|       |
+
+|       |
+
+|       |
+
+|       |
+
+=========""", """
++---+---+
+
+|   ≣   |
+
+|   0   |
+
+|       |
+
+|       |
+
+|       |
+
+=========""", """
++---+---+
+
+|   ≣   |
+
+|   0   |
+
+|   |   |
+
+|       |
+
+|       |
+
+=========""", """
++---+---+
+
+|   ≣   |
+
+|   0   |
+
+|  /|   |
+
+|       |
+
+|       |
+
+=========""", """
++---+---+
+
+|   ≣   |
+
+|   0   |
+
+|  /|\\  |
+
+|       |
+
+|       |
+
+=========""", """
++---+---+
+
+|   ≣   |
+
+|   0   |
+
+|  /|\\  |
+
+|  /    |
+
+|       |
+
+=========""", """
++---+---+
+
+|   ≣   |
+
+|   0   |
+
+|  /|\\  |
+
+|  / \\  |
+
+|       |
+
+=========""" ]
 
 
 
@@ -135,6 +257,22 @@ submitButtonHtml =
             , onClick SaveInputPhrase
             ]
             [ text "Submit Phrase" ]
+        ]
+
+
+resetButtonHtml : Html Msg
+resetButtonHtml =
+    div
+        [ css
+            [ Css.textAlign Css.center
+            , Css.alignItems Css.center
+            ]
+        ]
+        [ styledSubmitButton
+            [ type_ "button"
+            , onClick Reset
+            ]
+            [ text "Reset Game" ]
         ]
 
 
@@ -188,6 +326,78 @@ phraseHtml model =
                 , Css.alignItems Css.center
                 ]
             ]
+
+
+hangmanHtml : Model -> Html Msg
+hangmanHtml model =
+    case Array.get model.numIncorrectGuesses hangmanArt of
+        Nothing ->
+            div [] deadHangmanHtml
+
+        Just hangmanAscii ->
+            div [] (livingHangmanHtml hangmanAscii)
+
+
+livingHangmanHtml : String -> List (Html Msg)
+livingHangmanHtml asciiArt =
+    [ Html.Styled.pre
+        [ css
+            [ textAlign center
+            , alignItems center
+            , fontSize (px 24)
+            , lineHeight (pct 50)
+            ]
+        ]
+        [ text asciiArt ]
+    , Html.Styled.pre
+        [ css
+            [ textAlign center
+            , alignItems center
+            , fontSize (px 24)
+            , lineHeight (pct 50)
+            ]
+        ]
+        [ text "" ]
+    ]
+
+
+deadHangmanHtml : List (Html Msg)
+deadHangmanHtml =
+    [ Html.Styled.pre
+        [ css
+            [ textAlign center
+            , alignItems center
+            , fontSize (px 24)
+            , lineHeight (pct 50)
+            ]
+        ]
+        [ text
+            """
++---+---+
+
+|   ≣   |
+
+|   0   |
+
+|  /|\\  |
+
+|  / \\  |
+
+|       |
+
+=========
+                """
+        ]
+    , Html.Styled.pre
+        [ css
+            [ textAlign center
+            , alignItems center
+            , fontSize (px 24)
+            , lineHeight (pct 50)
+            ]
+        ]
+        [ text "You Lose!" ]
+    ]
 
 
 
