@@ -95,7 +95,7 @@ update message model =
                         |> List.map
                             (\c ->
                                 if c == " " then
-                                    " "
+                                    "\u{00A0}\u{00A0}\u{00A0}"
 
                                 else if Set.member (String.toLower c) model.guessedChars then
                                     c
@@ -118,7 +118,7 @@ update message model =
                             |> List.map
                                 (\c ->
                                     if c == " " then
-                                        " "
+                                        "\u{00A0}\u{00A0}\u{00A0}"
 
                                     else if Set.member (String.toLower c) model.guessedChars then
                                         c
@@ -585,7 +585,7 @@ phraseHtml model =
         |> List.map
             (\char ->
                 if char == " " then
-                    " "
+                    "\u{00A0}\u{00A0}\u{00A0}"
 
                 else if Set.member (String.toLower char) model.guessedChars then
                     char

@@ -7912,7 +7912,7 @@ var $author$project$Hangman$update = F2(
 								A2(
 									$elm$core$List$map,
 									function (c) {
-										return (c === ' ') ? ' ' : (A2(
+										return (c === ' ') ? '\u00A0\u00A0\u00A0' : (A2(
 											$elm$core$Set$member,
 											$elm$core$String$toLower(c),
 											model.guessedChars) ? c : '_');
@@ -7931,7 +7931,7 @@ var $author$project$Hangman$update = F2(
 								A2(
 									$elm$core$List$map,
 									function (c) {
-										return (c === ' ') ? ' ' : (A2(
+										return (c === ' ') ? '\u00A0\u00A0\u00A0' : (A2(
 											$elm$core$Set$member,
 											$elm$core$String$toLower(c),
 											model.guessedChars) ? c : (A2(
@@ -9068,7 +9068,7 @@ var $author$project$Hangman$phraseHtml = function (model) {
 			A2(
 				$elm$core$List$map,
 				function (_char) {
-					return (_char === ' ') ? ' ' : (A2(
+					return (_char === ' ') ? '\u00A0\u00A0\u00A0' : (A2(
 						$elm$core$Set$member,
 						$elm$core$String$toLower(_char),
 						model.guessedChars) ? _char : '_');
