@@ -8667,7 +8667,7 @@ var $author$project$Hangman$coloredCharacterButton = F2(
 			model.guessedChars) ? (A2(
 			$elm$core$String$contains,
 			$elm$core$String$toLower(_char),
-			model.hangmanPhrase) ? A2(
+			$elm$core$String$toLower(model.hangmanPhrase)) ? A2(
 			$author$project$Hangman$styledButtonGuessedCorrect,
 			_List_fromArray(
 				[

@@ -446,7 +446,7 @@ hidePhraseCharacters model char =
 coloredCharacterButton : Model -> String -> Html Msg
 coloredCharacterButton model char =
     if Set.member (String.toLower char) model.guessedChars then
-        if String.contains (String.toLower char) model.hangmanPhrase then
+        if String.contains (String.toLower char) (String.toLower model.hangmanPhrase) then
             styledButtonGuessedCorrect
                 [ type_ "button"
                 , onClick (GuessButton (String.toLower char))
