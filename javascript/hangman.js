@@ -5242,7 +5242,7 @@ var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $author$project$Hangman$init = function (_v0) {
 	return _Utils_Tuple2(
-		{guessedChars: $elm$core$Set$empty, inputPhrase: ' ', inputSoFar: '', numIncorrectGuesses: 0, randomValue: 0, resultPhrase: '_'},
+		{guessedChars: $elm$core$Set$empty, hangmanPhrase: ' ', inputField: '', randomValue: 0},
 		$elm$core$Platform$Cmd$none);
 };
 var $elm$core$Platform$Sub$batch = _Platform_batch;
@@ -7569,13 +7569,143 @@ var $rtfeldman$elm_css$VirtualDom$Styled$toUnstyled = function (vdom) {
 	}
 };
 var $rtfeldman$elm_css$Html$Styled$toUnstyled = $rtfeldman$elm_css$VirtualDom$Styled$toUnstyled;
+var $author$project$Hangman$donQuixoteText = '\nIn a village of La Mancha, the name of which I have no desire to call\nto mind, there lived not long since one of those gentlemen that keep a\nlance in the lance-rack, an old buckler, a lean hack, and a greyhound\nfor coursing. An olla of rather more beef than mutton, a salad on most\nnights, scraps on Saturdays, lentils on Fridays, and a pigeon or so\nextra on Sundays, made away with three-quarters of his income. The rest\nof it went in a doublet of fine cloth and velvet breeches and shoes to\nmatch for holidays, while on week-days he made a brave figure in his\nbest homespun. He had in his house a housekeeper past forty, a niece\nunder twenty, and a lad for the field and market-place, who used to\nsaddle the hack as well as handle the bill-hook. The age of this\ngentleman of ours was bordering on fifty; he was of a hardy habit,\nspare, gaunt-featured, a very early riser and a great sportsman. They\nwill have it his surname was Quixada or Quesada (for here there is some\ndifference of opinion among the authors who write on the subject),\nalthough from reasonable conjectures it seems plain that he was called\nQuexana. This, however, is of but little importance to our tale; it\nwill be enough not to stray a hair’s breadth from the truth in the\ntelling of it.\n\nYou must know, then, that the above-named gentleman whenever he was at\nleisure (which was mostly all the year round) gave himself up to\nreading books of chivalry with such ardour and avidity that he almost\nentirely neglected the pursuit of his field-sports, and even the\nmanagement of his property; and to such a pitch did his eagerness and\ninfatuation go that he sold many an acre of tillageland to buy books of\nchivalry to read, and brought home as many of them as he could get. But\nof all there were none he liked so well as those of the famous\nFeliciano de Silva’s composition, for their lucidity of style and\ncomplicated conceits were as pearls in his sight, particularly when in\nhis reading he came upon courtships and cartels, where he often found\npassages like “_the reason of the unreason with which my reason is\nafflicted so weakens my reason that with reason I murmur at your\nbeauty;” or again, “the high heavens, that of your divinity divinely\nfortify you with the stars, render you deserving of the desert your\ngreatness deserves_.” Over conceits of this sort the poor gentleman\nlost his wits, and used to lie awake striving to understand them and\nworm the meaning out of them; what Aristotle himself could not have\nmade out or extracted had he come to life again for that special\npurpose. He was not at all easy about the wounds which Don Belianis\ngave and took, because it seemed to him that, great as were the\nsurgeons who had cured him, he must have had his face and body covered\nall over with seams and scars. He commended, however, the author’s way\nof ending his book with the promise of that interminable adventure, and\nmany a time was he tempted to take up his pen and finish it properly as\nis there proposed, which no doubt he would have done, and made a\nsuccessful piece of work of it too, had not greater and more absorbing\nthoughts prevented him.\n\nMany an argument did he have with the curate of his village (a learned\nman, and a graduate of Siguenza) as to which had been the better\nknight, Palmerin of England or Amadis of Gaul. Master Nicholas, the\nvillage barber, however, used to say that neither of them came up to\nthe Knight of Phœbus, and that if there was any that could compare with\n_him_ it was Don Galaor, the brother of Amadis of Gaul, because he had\na spirit that was equal to every occasion, and was no finikin knight,\nnor lachrymose like his brother, while in the matter of valour he was\nnot a whit behind him. In short, he became so absorbed in his books\nthat he spent his nights from sunset to sunrise, and his days from dawn\nto dark, poring over them; and what with little sleep and much reading\nhis brains got so dry that he lost his wits. His fancy grew full of\nwhat he used to read about in his books, enchantments, quarrels,\nbattles, challenges, wounds, wooings, loves, agonies, and all sorts of\nimpossible nonsense; and it so possessed his mind that the whole fabric\nof invention and fancy he read of was true, that to him no history in\nthe world had more reality in it. He used to say the Cid Ruy Diaz was a\nvery good knight, but that he was not to be compared with the Knight of\nthe Burning Sword who with one back-stroke cut in half two fierce and\nmonstrous giants. He thought more of Bernardo del Carpio because at\nRoncesvalles he slew Roland in spite of enchantments, availing himself\nof the artifice of Hercules when he strangled Antæus the son of Terra\nin his arms. He approved highly of the giant Morgante, because,\nalthough of the giant breed which is always arrogant and\nill-conditioned, he alone was affable and well-bred. But above all he\nadmired Reinaldos of Montalban, especially when he saw him sallying\nforth from his castle and robbing everyone he met, and when beyond the\nseas he stole that image of Mahomet which, as his history says, was\nentirely of gold. To have a bout of kicking at that traitor of a\nGanelon he would have given his housekeeper, and his niece into the\nbargain.\n\nIn short, his wits being quite gone, he hit upon the strangest notion\nthat ever madman in this world hit upon, and that was that he fancied\nit was right and requisite, as well for the support of his own honour\nas for the service of his country, that he should make a knight-errant\nof himself, roaming the world over in full armour and on horseback in\nquest of adventures, and putting in practice himself all that he had\nread of as being the usual practices of knights-errant; righting every\nkind of wrong, and exposing himself to peril and danger from which, in\nthe issue, he was to reap eternal renown and fame. Already the poor man\nsaw himself crowned by the might of his arm Emperor of Trebizond at\nleast; and so, led away by the intense enjoyment he found in these\npleasant fancies, he set himself forthwith to put his scheme into\nexecution.\n\nThe first thing he did was to clean up some armour that had belonged to\nhis great-grandfather, and had been for ages lying forgotten in a\ncorner eaten with rust and covered with mildew. He scoured and polished\nit as best he could, but he perceived one great defect in it, that it\nhad no closed helmet, nothing but a simple morion. This deficiency,\nhowever, his ingenuity supplied, for he contrived a kind of half-helmet\nof pasteboard which, fitted on to the morion, looked like a whole one.\nIt is true that, in order to see if it was strong and fit to stand a\ncut, he drew his sword and gave it a couple of slashes, the first of\nwhich undid in an instant what had taken him a week to do. The ease\nwith which he had knocked it to pieces disconcerted him somewhat, and\nto guard against that danger he set to work again, fixing bars of iron\non the inside until he was satisfied with its strength; and then, not\ncaring to try any more experiments with it, he passed it and adopted it\nas a helmet of the most perfect construction.\n\nHe next proceeded to inspect his hack, which, with more quartos than a\nreal and more blemishes than the steed of Gonela, that “_tantum pellis\net ossa fuit_,” surpassed in his eyes the Bucephalus of Alexander or\nthe Babieca of the Cid. Four days were spent in thinking what name to\ngive him, because (as he said to himself) it was not right that a horse\nbelonging to a knight so famous, and one with such merits of his own,\nshould be without some distinctive name, and he strove to adapt it so\nas to indicate what he had been before belonging to a knight-errant,\nand what he then was; for it was only reasonable that, his master\ntaking a new character, he should take a new name, and that it should\nbe a distinguished and full-sounding one, befitting the new order and\ncalling he was about to follow. And so, after having composed, struck\nout, rejected, added to, unmade, and remade a multitude of names out of\nhis memory and fancy, he decided upon calling him Rocinante, a name, to\nhis thinking, lofty, sonorous, and significant of his condition as a\nhack before he became what he now was, the first and foremost of all\nthe hacks in the world.\n\nHaving got a name for his horse so much to his taste, he was anxious to\nget one for himself, and he was eight days more pondering over this\npoint, till at last he made up his mind to call himself “Don Quixote,”\nwhence, as has been already said, the authors of this veracious history\nhave inferred that his name must have been beyond a doubt Quixada, and\nnot Quesada as others would have it. Recollecting, however, that the\nvaliant Amadis was not content to call himself curtly Amadis and\nnothing more, but added the name of his kingdom and country to make it\nfamous, and called himself Amadis of Gaul, he, like a good knight,\nresolved to add on the name of his, and to style himself Don Quixote of\nLa Mancha, whereby, he considered, he described accurately his origin\nand country, and did honour to it in taking his surname from it.\n\nSo then, his armour being furbished, his morion turned into a helmet,\nhis hack christened, and he himself confirmed, he came to the\nconclusion that nothing more was needed now but to look out for a lady\nto be in love with; for a knight-errant without love was like a tree\nwithout leaves or fruit, or a body without a soul. As he said to\nhimself, “If, for my sins, or by my good fortune, I come across some\ngiant hereabouts, a common occurrence with knights-errant, and\noverthrow him in one onslaught, or cleave him asunder to the waist, or,\nin short, vanquish and subdue him, will it not be well to have someone\nI may send him to as a present, that he may come in and fall on his\nknees before my sweet lady, and in a humble, submissive voice say, ‘I\nam the giant Caraculiambro, lord of the island of Malindrania,\nvanquished in single combat by the never sufficiently extolled knight\nDon Quixote of La Mancha, who has commanded me to present myself before\nyour Grace, that your Highness dispose of me at your pleasure’?” Oh,\nhow our good gentleman enjoyed the delivery of this speech, especially\nwhen he had thought of someone to call his Lady! There was, so the\nstory goes, in a village near his own a very good-looking farm-girl\nwith whom he had been at one time in love, though, so far as is known,\nshe never knew it nor gave a thought to the matter. Her name was\nAldonza Lorenzo, and upon her he thought fit to confer the title of\nLady of his Thoughts; and after some search for a name which should not\nbe out of harmony with her own, and should suggest and indicate that of\na princess and great lady, he decided upon calling her Dulcinea del\nToboso—she being of El Toboso—a name, to his mind, musical, uncommon,\nand significant, like all those he had already bestowed upon himself\nand the things belonging to him.\n';
+var $elm$core$String$filter = _String_filter;
+var $elm$core$Array$fromListHelp = F3(
+	function (list, nodeList, nodeListSize) {
+		fromListHelp:
+		while (true) {
+			var _v0 = A2($elm$core$Elm$JsArray$initializeFromList, $elm$core$Array$branchFactor, list);
+			var jsArray = _v0.a;
+			var remainingItems = _v0.b;
+			if (_Utils_cmp(
+				$elm$core$Elm$JsArray$length(jsArray),
+				$elm$core$Array$branchFactor) < 0) {
+				return A2(
+					$elm$core$Array$builderToArray,
+					true,
+					{nodeList: nodeList, nodeListSize: nodeListSize, tail: jsArray});
+			} else {
+				var $temp$list = remainingItems,
+					$temp$nodeList = A2(
+					$elm$core$List$cons,
+					$elm$core$Array$Leaf(jsArray),
+					nodeList),
+					$temp$nodeListSize = nodeListSize + 1;
+				list = $temp$list;
+				nodeList = $temp$nodeList;
+				nodeListSize = $temp$nodeListSize;
+				continue fromListHelp;
+			}
+		}
+	});
+var $elm$core$Array$fromList = function (list) {
+	if (!list.b) {
+		return $elm$core$Array$empty;
+	} else {
+		return A3($elm$core$Array$fromListHelp, list, _List_Nil, 0);
+	}
+};
+var $elm$core$String$words = _String_words;
+var $author$project$Hangman$alphabeticWordsFromText = function (text) {
+	return $elm$core$Array$fromList(
+		A2(
+			$elm$core$List$map,
+			$elm$core$String$filter($elm$core$Char$isAlpha),
+			$elm$core$String$words(text)));
+};
+var $elm$core$Array$bitMask = 4294967295 >>> (32 - $elm$core$Array$shiftStep);
+var $elm$core$Basics$ge = _Utils_ge;
+var $elm$core$Elm$JsArray$unsafeGet = _JsArray_unsafeGet;
+var $elm$core$Array$getHelp = F3(
+	function (shift, index, tree) {
+		getHelp:
+		while (true) {
+			var pos = $elm$core$Array$bitMask & (index >>> shift);
+			var _v0 = A2($elm$core$Elm$JsArray$unsafeGet, pos, tree);
+			if (_v0.$ === 'SubTree') {
+				var subTree = _v0.a;
+				var $temp$shift = shift - $elm$core$Array$shiftStep,
+					$temp$index = index,
+					$temp$tree = subTree;
+				shift = $temp$shift;
+				index = $temp$index;
+				tree = $temp$tree;
+				continue getHelp;
+			} else {
+				var values = _v0.a;
+				return A2($elm$core$Elm$JsArray$unsafeGet, $elm$core$Array$bitMask & index, values);
+			}
+		}
+	});
+var $elm$core$Array$tailIndex = function (len) {
+	return (len >>> 5) << 5;
+};
+var $elm$core$Array$get = F2(
+	function (index, _v0) {
+		var len = _v0.a;
+		var startShift = _v0.b;
+		var tree = _v0.c;
+		var tail = _v0.d;
+		return ((index < 0) || (_Utils_cmp(index, len) > -1)) ? $elm$core$Maybe$Nothing : ((_Utils_cmp(
+			index,
+			$elm$core$Array$tailIndex(len)) > -1) ? $elm$core$Maybe$Just(
+			A2($elm$core$Elm$JsArray$unsafeGet, $elm$core$Array$bitMask & index, tail)) : $elm$core$Maybe$Just(
+			A3($elm$core$Array$getHelp, startShift, index, tree)));
+	});
+var $author$project$Hangman$getRandomPhrase = function (rndNum) {
+	return A2(
+		$elm$core$String$join,
+		' ',
+		_List_fromArray(
+			[
+				function () {
+				var _v0 = A2(
+					$elm$core$Array$get,
+					rndNum,
+					$author$project$Hangman$alphabeticWordsFromText($author$project$Hangman$donQuixoteText));
+				if (_v0.$ === 'Nothing') {
+					return 'default';
+				} else {
+					var string = _v0.a;
+					return string;
+				}
+			}(),
+				function () {
+				var _v1 = A2(
+					$elm$core$Array$get,
+					rndNum + 1,
+					$author$project$Hangman$alphabeticWordsFromText($author$project$Hangman$donQuixoteText));
+				if (_v1.$ === 'Nothing') {
+					return 'default';
+				} else {
+					var string = _v1.a;
+					return string;
+				}
+			}(),
+				function () {
+				var _v2 = A2(
+					$elm$core$Array$get,
+					rndNum + 2,
+					$author$project$Hangman$alphabeticWordsFromText($author$project$Hangman$donQuixoteText));
+				if (_v2.$ === 'Nothing') {
+					return 'default';
+				} else {
+					var string = _v2.a;
+					return string;
+				}
+			}()
+			]));
+};
+var $elm$core$Set$insert = F2(
+	function (key, _v0) {
+		var dict = _v0.a;
+		return $elm$core$Set$Set_elm_builtin(
+			A3($elm$core$Dict$insert, key, _Utils_Tuple0, dict));
+	});
 var $author$project$Hangman$NewRandomNumber = function (a) {
 	return {$: 'NewRandomNumber', a: a};
 };
-var $elm$core$String$concat = function (strings) {
-	return A2($elm$core$String$join, '', strings);
-};
-var $author$project$Hangman$donQuixote = '\nIn a village of La Mancha, the name of which I have no desire to call\nto mind, there lived not long since one of those gentlemen that keep a\nlance in the lance-rack, an old buckler, a lean hack, and a greyhound\nfor coursing. An olla of rather more beef than mutton, a salad on most\nnights, scraps on Saturdays, lentils on Fridays, and a pigeon or so\nextra on Sundays, made away with three-quarters of his income. The rest\nof it went in a doublet of fine cloth and velvet breeches and shoes to\nmatch for holidays, while on week-days he made a brave figure in his\nbest homespun. He had in his house a housekeeper past forty, a niece\nunder twenty, and a lad for the field and market-place, who used to\nsaddle the hack as well as handle the bill-hook. The age of this\ngentleman of ours was bordering on fifty; he was of a hardy habit,\nspare, gaunt-featured, a very early riser and a great sportsman. They\nwill have it his surname was Quixada or Quesada (for here there is some\ndifference of opinion among the authors who write on the subject),\nalthough from reasonable conjectures it seems plain that he was called\nQuexana. This, however, is of but little importance to our tale; it\nwill be enough not to stray a hair’s breadth from the truth in the\ntelling of it.\n\nYou must know, then, that the above-named gentleman whenever he was at\nleisure (which was mostly all the year round) gave himself up to\nreading books of chivalry with such ardour and avidity that he almost\nentirely neglected the pursuit of his field-sports, and even the\nmanagement of his property; and to such a pitch did his eagerness and\ninfatuation go that he sold many an acre of tillageland to buy books of\nchivalry to read, and brought home as many of them as he could get. But\nof all there were none he liked so well as those of the famous\nFeliciano de Silva’s composition, for their lucidity of style and\ncomplicated conceits were as pearls in his sight, particularly when in\nhis reading he came upon courtships and cartels, where he often found\npassages like “_the reason of the unreason with which my reason is\nafflicted so weakens my reason that with reason I murmur at your\nbeauty;” or again, “the high heavens, that of your divinity divinely\nfortify you with the stars, render you deserving of the desert your\ngreatness deserves_.” Over conceits of this sort the poor gentleman\nlost his wits, and used to lie awake striving to understand them and\nworm the meaning out of them; what Aristotle himself could not have\nmade out or extracted had he come to life again for that special\npurpose. He was not at all easy about the wounds which Don Belianis\ngave and took, because it seemed to him that, great as were the\nsurgeons who had cured him, he must have had his face and body covered\nall over with seams and scars. He commended, however, the author’s way\nof ending his book with the promise of that interminable adventure, and\nmany a time was he tempted to take up his pen and finish it properly as\nis there proposed, which no doubt he would have done, and made a\nsuccessful piece of work of it too, had not greater and more absorbing\nthoughts prevented him.\n\nMany an argument did he have with the curate of his village (a learned\nman, and a graduate of Siguenza) as to which had been the better\nknight, Palmerin of England or Amadis of Gaul. Master Nicholas, the\nvillage barber, however, used to say that neither of them came up to\nthe Knight of Phœbus, and that if there was any that could compare with\n_him_ it was Don Galaor, the brother of Amadis of Gaul, because he had\na spirit that was equal to every occasion, and was no finikin knight,\nnor lachrymose like his brother, while in the matter of valour he was\nnot a whit behind him. In short, he became so absorbed in his books\nthat he spent his nights from sunset to sunrise, and his days from dawn\nto dark, poring over them; and what with little sleep and much reading\nhis brains got so dry that he lost his wits. His fancy grew full of\nwhat he used to read about in his books, enchantments, quarrels,\nbattles, challenges, wounds, wooings, loves, agonies, and all sorts of\nimpossible nonsense; and it so possessed his mind that the whole fabric\nof invention and fancy he read of was true, that to him no history in\nthe world had more reality in it. He used to say the Cid Ruy Diaz was a\nvery good knight, but that he was not to be compared with the Knight of\nthe Burning Sword who with one back-stroke cut in half two fierce and\nmonstrous giants. He thought more of Bernardo del Carpio because at\nRoncesvalles he slew Roland in spite of enchantments, availing himself\nof the artifice of Hercules when he strangled Antæus the son of Terra\nin his arms. He approved highly of the giant Morgante, because,\nalthough of the giant breed which is always arrogant and\nill-conditioned, he alone was affable and well-bred. But above all he\nadmired Reinaldos of Montalban, especially when he saw him sallying\nforth from his castle and robbing everyone he met, and when beyond the\nseas he stole that image of Mahomet which, as his history says, was\nentirely of gold. To have a bout of kicking at that traitor of a\nGanelon he would have given his housekeeper, and his niece into the\nbargain.\n\nIn short, his wits being quite gone, he hit upon the strangest notion\nthat ever madman in this world hit upon, and that was that he fancied\nit was right and requisite, as well for the support of his own honour\nas for the service of his country, that he should make a knight-errant\nof himself, roaming the world over in full armour and on horseback in\nquest of adventures, and putting in practice himself all that he had\nread of as being the usual practices of knights-errant; righting every\nkind of wrong, and exposing himself to peril and danger from which, in\nthe issue, he was to reap eternal renown and fame. Already the poor man\nsaw himself crowned by the might of his arm Emperor of Trebizond at\nleast; and so, led away by the intense enjoyment he found in these\npleasant fancies, he set himself forthwith to put his scheme into\nexecution.\n\nThe first thing he did was to clean up some armour that had belonged to\nhis great-grandfather, and had been for ages lying forgotten in a\ncorner eaten with rust and covered with mildew. He scoured and polished\nit as best he could, but he perceived one great defect in it, that it\nhad no closed helmet, nothing but a simple morion. This deficiency,\nhowever, his ingenuity supplied, for he contrived a kind of half-helmet\nof pasteboard which, fitted on to the morion, looked like a whole one.\nIt is true that, in order to see if it was strong and fit to stand a\ncut, he drew his sword and gave it a couple of slashes, the first of\nwhich undid in an instant what had taken him a week to do. The ease\nwith which he had knocked it to pieces disconcerted him somewhat, and\nto guard against that danger he set to work again, fixing bars of iron\non the inside until he was satisfied with its strength; and then, not\ncaring to try any more experiments with it, he passed it and adopted it\nas a helmet of the most perfect construction.\n\nHe next proceeded to inspect his hack, which, with more quartos than a\nreal and more blemishes than the steed of Gonela, that “_tantum pellis\net ossa fuit_,” surpassed in his eyes the Bucephalus of Alexander or\nthe Babieca of the Cid. Four days were spent in thinking what name to\ngive him, because (as he said to himself) it was not right that a horse\nbelonging to a knight so famous, and one with such merits of his own,\nshould be without some distinctive name, and he strove to adapt it so\nas to indicate what he had been before belonging to a knight-errant,\nand what he then was; for it was only reasonable that, his master\ntaking a new character, he should take a new name, and that it should\nbe a distinguished and full-sounding one, befitting the new order and\ncalling he was about to follow. And so, after having composed, struck\nout, rejected, added to, unmade, and remade a multitude of names out of\nhis memory and fancy, he decided upon calling him Rocinante, a name, to\nhis thinking, lofty, sonorous, and significant of his condition as a\nhack before he became what he now was, the first and foremost of all\nthe hacks in the world.\n\nHaving got a name for his horse so much to his taste, he was anxious to\nget one for himself, and he was eight days more pondering over this\npoint, till at last he made up his mind to call himself “Don Quixote,”\nwhence, as has been already said, the authors of this veracious history\nhave inferred that his name must have been beyond a doubt Quixada, and\nnot Quesada as others would have it. Recollecting, however, that the\nvaliant Amadis was not content to call himself curtly Amadis and\nnothing more, but added the name of his kingdom and country to make it\nfamous, and called himself Amadis of Gaul, he, like a good knight,\nresolved to add on the name of his, and to style himself Don Quixote of\nLa Mancha, whereby, he considered, he described accurately his origin\nand country, and did honour to it in taking his surname from it.\n\nSo then, his armour being furbished, his morion turned into a helmet,\nhis hack christened, and he himself confirmed, he came to the\nconclusion that nothing more was needed now but to look out for a lady\nto be in love with; for a knight-errant without love was like a tree\nwithout leaves or fruit, or a body without a soul. As he said to\nhimself, “If, for my sins, or by my good fortune, I come across some\ngiant hereabouts, a common occurrence with knights-errant, and\noverthrow him in one onslaught, or cleave him asunder to the waist, or,\nin short, vanquish and subdue him, will it not be well to have someone\nI may send him to as a present, that he may come in and fall on his\nknees before my sweet lady, and in a humble, submissive voice say, ‘I\nam the giant Caraculiambro, lord of the island of Malindrania,\nvanquished in single combat by the never sufficiently extolled knight\nDon Quixote of La Mancha, who has commanded me to present myself before\nyour Grace, that your Highness dispose of me at your pleasure’?” Oh,\nhow our good gentleman enjoyed the delivery of this speech, especially\nwhen he had thought of someone to call his Lady! There was, so the\nstory goes, in a village near his own a very good-looking farm-girl\nwith whom he had been at one time in love, though, so far as is known,\nshe never knew it nor gave a thought to the matter. Her name was\nAldonza Lorenzo, and upon her he thought fit to confer the title of\nLady of his Thoughts; and after some search for a name which should not\nbe out of harmony with her own, and should suggest and indicate that of\na princess and great lady, he decided upon calling her Dulcinea del\nToboso—she being of El Toboso—a name, to his mind, musical, uncommon,\nand significant, like all those he had already bestowed upon himself\nand the things belonging to him.\n';
 var $elm$random$Random$Generate = function (a) {
 	return {$: 'Generate', a: a};
 };
@@ -7682,130 +7812,6 @@ var $elm$random$Random$generate = F2(
 			$elm$random$Random$Generate(
 				A2($elm$random$Random$map, tagger, generator)));
 	});
-var $elm$core$String$filter = _String_filter;
-var $elm$core$Array$fromListHelp = F3(
-	function (list, nodeList, nodeListSize) {
-		fromListHelp:
-		while (true) {
-			var _v0 = A2($elm$core$Elm$JsArray$initializeFromList, $elm$core$Array$branchFactor, list);
-			var jsArray = _v0.a;
-			var remainingItems = _v0.b;
-			if (_Utils_cmp(
-				$elm$core$Elm$JsArray$length(jsArray),
-				$elm$core$Array$branchFactor) < 0) {
-				return A2(
-					$elm$core$Array$builderToArray,
-					true,
-					{nodeList: nodeList, nodeListSize: nodeListSize, tail: jsArray});
-			} else {
-				var $temp$list = remainingItems,
-					$temp$nodeList = A2(
-					$elm$core$List$cons,
-					$elm$core$Array$Leaf(jsArray),
-					nodeList),
-					$temp$nodeListSize = nodeListSize + 1;
-				list = $temp$list;
-				nodeList = $temp$nodeList;
-				nodeListSize = $temp$nodeListSize;
-				continue fromListHelp;
-			}
-		}
-	});
-var $elm$core$Array$fromList = function (list) {
-	if (!list.b) {
-		return $elm$core$Array$empty;
-	} else {
-		return A3($elm$core$Array$fromListHelp, list, _List_Nil, 0);
-	}
-};
-var $elm$core$String$words = _String_words;
-var $author$project$Hangman$donAlphaWords = $elm$core$Array$fromList(
-	A2(
-		$elm$core$List$map,
-		function (word) {
-			return A2($elm$core$String$filter, $elm$core$Char$isAlpha, word);
-		},
-		$elm$core$String$words($author$project$Hangman$donQuixote)));
-var $elm$core$Array$bitMask = 4294967295 >>> (32 - $elm$core$Array$shiftStep);
-var $elm$core$Basics$ge = _Utils_ge;
-var $elm$core$Elm$JsArray$unsafeGet = _JsArray_unsafeGet;
-var $elm$core$Array$getHelp = F3(
-	function (shift, index, tree) {
-		getHelp:
-		while (true) {
-			var pos = $elm$core$Array$bitMask & (index >>> shift);
-			var _v0 = A2($elm$core$Elm$JsArray$unsafeGet, pos, tree);
-			if (_v0.$ === 'SubTree') {
-				var subTree = _v0.a;
-				var $temp$shift = shift - $elm$core$Array$shiftStep,
-					$temp$index = index,
-					$temp$tree = subTree;
-				shift = $temp$shift;
-				index = $temp$index;
-				tree = $temp$tree;
-				continue getHelp;
-			} else {
-				var values = _v0.a;
-				return A2($elm$core$Elm$JsArray$unsafeGet, $elm$core$Array$bitMask & index, values);
-			}
-		}
-	});
-var $elm$core$Array$tailIndex = function (len) {
-	return (len >>> 5) << 5;
-};
-var $elm$core$Array$get = F2(
-	function (index, _v0) {
-		var len = _v0.a;
-		var startShift = _v0.b;
-		var tree = _v0.c;
-		var tail = _v0.d;
-		return ((index < 0) || (_Utils_cmp(index, len) > -1)) ? $elm$core$Maybe$Nothing : ((_Utils_cmp(
-			index,
-			$elm$core$Array$tailIndex(len)) > -1) ? $elm$core$Maybe$Just(
-			A2($elm$core$Elm$JsArray$unsafeGet, $elm$core$Array$bitMask & index, tail)) : $elm$core$Maybe$Just(
-			A3($elm$core$Array$getHelp, startShift, index, tree)));
-	});
-var $author$project$Hangman$getRandomPhrase = function (rndNum) {
-	return A2(
-		$elm$core$String$join,
-		' ',
-		_List_fromArray(
-			[
-				function () {
-				var _v0 = A2($elm$core$Array$get, rndNum, $author$project$Hangman$donAlphaWords);
-				if (_v0.$ === 'Nothing') {
-					return 'default';
-				} else {
-					var string = _v0.a;
-					return string;
-				}
-			}(),
-				function () {
-				var _v1 = A2($elm$core$Array$get, rndNum + 1, $author$project$Hangman$donAlphaWords);
-				if (_v1.$ === 'Nothing') {
-					return 'default';
-				} else {
-					var string = _v1.a;
-					return string;
-				}
-			}(),
-				function () {
-				var _v2 = A2($elm$core$Array$get, rndNum + 2, $author$project$Hangman$donAlphaWords);
-				if (_v2.$ === 'Nothing') {
-					return 'default';
-				} else {
-					var string = _v2.a;
-					return string;
-				}
-			}()
-			]));
-};
-var $elm$core$Set$insert = F2(
-	function (key, _v0) {
-		var dict = _v0.a;
-		return $elm$core$Set$Set_elm_builtin(
-			A3($elm$core$Dict$insert, key, _Utils_Tuple0, dict));
-	});
 var $elm$random$Random$peel = function (_v0) {
 	var state = _v0.a;
 	var word = (state ^ (state >>> ((state >>> 28) + 4))) * 277803737;
@@ -7843,130 +7849,60 @@ var $elm$random$Random$int = F2(
 				}
 			});
 	});
-var $elm$core$Dict$get = F2(
-	function (targetKey, dict) {
-		get:
-		while (true) {
-			if (dict.$ === 'RBEmpty_elm_builtin') {
-				return $elm$core$Maybe$Nothing;
-			} else {
-				var key = dict.b;
-				var value = dict.c;
-				var left = dict.d;
-				var right = dict.e;
-				var _v1 = A2($elm$core$Basics$compare, targetKey, key);
-				switch (_v1.$) {
-					case 'LT':
-						var $temp$targetKey = targetKey,
-							$temp$dict = left;
-						targetKey = $temp$targetKey;
-						dict = $temp$dict;
-						continue get;
-					case 'EQ':
-						return $elm$core$Maybe$Just(value);
-					default:
-						var $temp$targetKey = targetKey,
-							$temp$dict = right;
-						targetKey = $temp$targetKey;
-						dict = $temp$dict;
-						continue get;
-				}
-			}
-		}
-	});
-var $elm$core$Dict$member = F2(
-	function (key, dict) {
-		var _v0 = A2($elm$core$Dict$get, key, dict);
-		if (_v0.$ === 'Just') {
-			return true;
-		} else {
-			return false;
-		}
-	});
-var $elm$core$Set$member = F2(
-	function (key, _v0) {
-		var dict = _v0.a;
-		return A2($elm$core$Dict$member, key, dict);
-	});
-var $elm$core$String$toLower = _String_toLower;
+var $elm$core$Array$length = function (_v0) {
+	var len = _v0.a;
+	return len;
+};
+var $author$project$Hangman$randomTextIndex = function (text) {
+	return A2(
+		$elm$random$Random$generate,
+		$author$project$Hangman$NewRandomNumber,
+		A2(
+			$elm$random$Random$int,
+			0,
+			$elm$core$Array$length(
+				$author$project$Hangman$alphabeticWordsFromText(text))));
+};
 var $author$project$Hangman$update = F2(
 	function (message, model) {
 		switch (message.$) {
 			case 'SaveInputSoFar':
-				var inputSoFar = message.a;
+				var inputText = message.a;
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{inputSoFar: inputSoFar}),
+						{inputField: inputText}),
 					$elm$core$Platform$Cmd$none);
-			case 'SaveInputPhrase':
+			case 'SaveHangmanPhrase':
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
 						{
 							guessedChars: $author$project$Hangman$init(_Utils_Tuple0).a.guessedChars,
-							inputPhrase: model.inputSoFar,
-							inputSoFar: '',
-							numIncorrectGuesses: $author$project$Hangman$init(_Utils_Tuple0).a.numIncorrectGuesses,
-							resultPhrase: $elm$core$String$concat(
-								A2(
-									$elm$core$List$map,
-									function (c) {
-										return (c === ' ') ? '\u00A0\u00A0\u00A0' : (A2(
-											$elm$core$Set$member,
-											$elm$core$String$toLower(c),
-											model.guessedChars) ? c : '_');
-									},
-									A2($elm$core$String$split, '', model.inputSoFar)))
+							hangmanPhrase: model.inputField,
+							inputField: ''
 						}),
 					$elm$core$Platform$Cmd$none);
 			case 'GuessButton':
 				var _char = message.a;
-				return A2($elm$core$String$contains, _char, model.inputPhrase) ? _Utils_Tuple2(
+				return _Utils_Tuple2(
 					_Utils_update(
 						model,
 						{
-							guessedChars: A2($elm$core$Set$insert, _char, model.guessedChars),
-							resultPhrase: $elm$core$String$concat(
-								A2(
-									$elm$core$List$map,
-									function (c) {
-										return (c === ' ') ? '\u00A0\u00A0\u00A0' : (A2(
-											$elm$core$Set$member,
-											$elm$core$String$toLower(c),
-											model.guessedChars) ? c : (A2(
-											$elm$core$String$contains,
-											$elm$core$String$toLower(c),
-											_char) ? c : '_'));
-									},
-									A2($elm$core$String$split, '', model.inputPhrase)))
-						}),
-					$elm$core$Platform$Cmd$none) : _Utils_Tuple2(
-					_Utils_update(
-						model,
-						{
-							guessedChars: A2($elm$core$Set$insert, _char, model.guessedChars),
-							numIncorrectGuesses: model.numIncorrectGuesses + 1
+							guessedChars: A2($elm$core$Set$insert, _char, model.guessedChars)
 						}),
 					$elm$core$Platform$Cmd$none);
-			case 'GenerateRandomNumber':
+			case 'GenerateRandomTextIndex':
 				return _Utils_Tuple2(
 					model,
-					A2(
-						$elm$random$Random$generate,
-						$author$project$Hangman$NewRandomNumber,
-						A2(
-							$elm$random$Random$int,
-							0,
-							$elm$core$List$length(
-								$elm$core$String$words($author$project$Hangman$donQuixote)))));
+					$author$project$Hangman$randomTextIndex($author$project$Hangman$donQuixoteText));
 			case 'NewRandomNumber':
 				var randomNumber = message.a;
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
 						{
-							inputPhrase: $author$project$Hangman$getRandomPhrase(randomNumber),
+							hangmanPhrase: $author$project$Hangman$getRandomPhrase(randomNumber),
 							randomValue: randomNumber
 						}),
 					$elm$core$Platform$Cmd$none);
@@ -7978,10 +7914,7 @@ var $author$project$Hangman$update = F2(
 				return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
 		}
 	});
-var $author$project$Hangman$SaveInputPhrase = {$: 'SaveInputPhrase'};
-var $author$project$Hangman$GuessButton = function (a) {
-	return {$: 'GuessButton', a: a};
-};
+var $author$project$Hangman$SaveHangmanPhrase = {$: 'SaveHangmanPhrase'};
 var $rtfeldman$elm_css$Css$Preprocess$ApplyStyles = function (a) {
 	return {$: 'ApplyStyles', a: a};
 };
@@ -8093,55 +8026,61 @@ var $rtfeldman$elm_css$Css$prop1 = F2(
 		return A2($rtfeldman$elm_css$Css$property, key, arg.value);
 	});
 var $rtfeldman$elm_css$Css$center = $rtfeldman$elm_css$Css$prop1('center');
+var $author$project$Hangman$GuessButton = function (a) {
+	return {$: 'GuessButton', a: a};
+};
+var $elm$core$Dict$get = F2(
+	function (targetKey, dict) {
+		get:
+		while (true) {
+			if (dict.$ === 'RBEmpty_elm_builtin') {
+				return $elm$core$Maybe$Nothing;
+			} else {
+				var key = dict.b;
+				var value = dict.c;
+				var left = dict.d;
+				var right = dict.e;
+				var _v1 = A2($elm$core$Basics$compare, targetKey, key);
+				switch (_v1.$) {
+					case 'LT':
+						var $temp$targetKey = targetKey,
+							$temp$dict = left;
+						targetKey = $temp$targetKey;
+						dict = $temp$dict;
+						continue get;
+					case 'EQ':
+						return $elm$core$Maybe$Just(value);
+					default:
+						var $temp$targetKey = targetKey,
+							$temp$dict = right;
+						targetKey = $temp$targetKey;
+						dict = $temp$dict;
+						continue get;
+				}
+			}
+		}
+	});
+var $elm$core$Dict$member = F2(
+	function (key, dict) {
+		var _v0 = A2($elm$core$Dict$get, key, dict);
+		if (_v0.$ === 'Just') {
+			return true;
+		} else {
+			return false;
+		}
+	});
+var $elm$core$Set$member = F2(
+	function (key, _v0) {
+		var dict = _v0.a;
+		return A2($elm$core$Dict$member, key, dict);
+	});
+var $elm$virtual_dom$VirtualDom$Normal = function (a) {
+	return {$: 'Normal', a: a};
+};
 var $rtfeldman$elm_css$VirtualDom$Styled$Attribute = F3(
 	function (a, b, c) {
 		return {$: 'Attribute', a: a, b: b, c: c};
 	});
-var $rtfeldman$elm_css$VirtualDom$Styled$murmurSeed = 15739;
-var $rtfeldman$elm_css$VirtualDom$Styled$getClassname = function (styles) {
-	return $elm$core$List$isEmpty(styles) ? 'unstyled' : A2(
-		$elm$core$String$cons,
-		_Utils_chr('_'),
-		$rtfeldman$elm_hex$Hex$toString(
-			A2(
-				$rtfeldman$elm_css$ElmCssVendor$Murmur3$hashString,
-				$rtfeldman$elm_css$VirtualDom$Styled$murmurSeed,
-				$rtfeldman$elm_css$Css$Preprocess$Resolve$compile(
-					$elm$core$List$singleton(
-						$rtfeldman$elm_css$Css$Preprocess$stylesheet(
-							$elm$core$List$singleton(
-								A2(
-									$rtfeldman$elm_css$VirtualDom$Styled$makeSnippet,
-									styles,
-									$rtfeldman$elm_css$Css$Structure$UniversalSelectorSequence(_List_Nil)))))))));
-};
-var $elm$virtual_dom$VirtualDom$property = F2(
-	function (key, value) {
-		return A2(
-			_VirtualDom_property,
-			_VirtualDom_noInnerHtmlOrFormAction(key),
-			_VirtualDom_noJavaScriptOrHtmlUri(value));
-	});
-var $elm$json$Json$Encode$string = _Json_wrap;
-var $rtfeldman$elm_css$Html$Styled$Internal$css = function (styles) {
-	var classname = $rtfeldman$elm_css$VirtualDom$Styled$getClassname(styles);
-	var classProperty = A2(
-		$elm$virtual_dom$VirtualDom$property,
-		'className',
-		$elm$json$Json$Encode$string(classname));
-	return A3($rtfeldman$elm_css$VirtualDom$Styled$Attribute, classProperty, styles, classname);
-};
-var $rtfeldman$elm_css$Html$Styled$Attributes$css = $rtfeldman$elm_css$Html$Styled$Internal$css;
-var $rtfeldman$elm_css$VirtualDom$Styled$Node = F3(
-	function (a, b, c) {
-		return {$: 'Node', a: a, b: b, c: c};
-	});
-var $rtfeldman$elm_css$VirtualDom$Styled$node = $rtfeldman$elm_css$VirtualDom$Styled$Node;
-var $rtfeldman$elm_css$Html$Styled$node = $rtfeldman$elm_css$VirtualDom$Styled$node;
-var $rtfeldman$elm_css$Html$Styled$div = $rtfeldman$elm_css$Html$Styled$node('div');
-var $elm$virtual_dom$VirtualDom$Normal = function (a) {
-	return {$: 'Normal', a: a};
-};
 var $elm$virtual_dom$VirtualDom$on = _VirtualDom_on;
 var $rtfeldman$elm_css$VirtualDom$Styled$on = F2(
 	function (eventName, handler) {
@@ -8169,6 +8108,12 @@ var $rtfeldman$elm_css$Css$backgroundColor = function (c) {
 };
 var $rtfeldman$elm_css$Css$border = $rtfeldman$elm_css$Css$prop1('border');
 var $rtfeldman$elm_css$Css$borderRadius = $rtfeldman$elm_css$Css$prop1('border-radius');
+var $rtfeldman$elm_css$VirtualDom$Styled$Node = F3(
+	function (a, b, c) {
+		return {$: 'Node', a: a, b: b, c: c};
+	});
+var $rtfeldman$elm_css$VirtualDom$Styled$node = $rtfeldman$elm_css$VirtualDom$Styled$Node;
+var $rtfeldman$elm_css$Html$Styled$node = $rtfeldman$elm_css$VirtualDom$Styled$node;
 var $rtfeldman$elm_css$Html$Styled$button = $rtfeldman$elm_css$Html$Styled$node('button');
 var $rtfeldman$elm_css$Css$color = function (c) {
 	return A2($rtfeldman$elm_css$Css$property, 'color', c.value);
@@ -8404,6 +8349,7 @@ var $rtfeldman$elm_hex$Hex$fromString = function (str) {
 		return A2($elm$core$Result$mapError, formatError, result);
 	}
 };
+var $elm$core$String$toLower = _String_toLower;
 var $rtfeldman$elm_css$Css$validHex = F5(
 	function (str, _v0, _v1, _v2, _v3) {
 		var r1 = _v0.a;
@@ -8560,6 +8506,40 @@ var $rtfeldman$elm_css$Css$PercentageUnits = {$: 'PercentageUnits'};
 var $rtfeldman$elm_css$Css$pct = A2($rtfeldman$elm_css$Css$Internal$lengthConverter, $rtfeldman$elm_css$Css$PercentageUnits, '%');
 var $rtfeldman$elm_css$Css$PxUnits = {$: 'PxUnits'};
 var $rtfeldman$elm_css$Css$px = A2($rtfeldman$elm_css$Css$Internal$lengthConverter, $rtfeldman$elm_css$Css$PxUnits, 'px');
+var $rtfeldman$elm_css$VirtualDom$Styled$murmurSeed = 15739;
+var $rtfeldman$elm_css$VirtualDom$Styled$getClassname = function (styles) {
+	return $elm$core$List$isEmpty(styles) ? 'unstyled' : A2(
+		$elm$core$String$cons,
+		_Utils_chr('_'),
+		$rtfeldman$elm_hex$Hex$toString(
+			A2(
+				$rtfeldman$elm_css$ElmCssVendor$Murmur3$hashString,
+				$rtfeldman$elm_css$VirtualDom$Styled$murmurSeed,
+				$rtfeldman$elm_css$Css$Preprocess$Resolve$compile(
+					$elm$core$List$singleton(
+						$rtfeldman$elm_css$Css$Preprocess$stylesheet(
+							$elm$core$List$singleton(
+								A2(
+									$rtfeldman$elm_css$VirtualDom$Styled$makeSnippet,
+									styles,
+									$rtfeldman$elm_css$Css$Structure$UniversalSelectorSequence(_List_Nil)))))))));
+};
+var $elm$virtual_dom$VirtualDom$property = F2(
+	function (key, value) {
+		return A2(
+			_VirtualDom_property,
+			_VirtualDom_noInnerHtmlOrFormAction(key),
+			_VirtualDom_noJavaScriptOrHtmlUri(value));
+	});
+var $elm$json$Json$Encode$string = _Json_wrap;
+var $rtfeldman$elm_css$Html$Styled$Internal$css = function (styles) {
+	var classname = $rtfeldman$elm_css$VirtualDom$Styled$getClassname(styles);
+	var classProperty = A2(
+		$elm$virtual_dom$VirtualDom$property,
+		'className',
+		$elm$json$Json$Encode$string(classname));
+	return A3($rtfeldman$elm_css$VirtualDom$Styled$Attribute, classProperty, styles, classname);
+};
 var $rtfeldman$elm_css$Html$Styled$styled = F4(
 	function (fn, styles, attrs, children) {
 		return A2(
@@ -8665,13 +8645,6 @@ var $rtfeldman$elm_css$VirtualDom$Styled$text = function (str) {
 		$elm$virtual_dom$VirtualDom$text(str));
 };
 var $rtfeldman$elm_css$Html$Styled$text = $rtfeldman$elm_css$VirtualDom$Styled$text;
-var $rtfeldman$elm_css$Css$textAlign = function (fn) {
-	return A3(
-		$rtfeldman$elm_css$Css$Internal$getOverloadedProperty,
-		'textAlign',
-		'text-align',
-		fn($rtfeldman$elm_css$Css$Internal$lengthForOverloadedProperty));
-};
 var $rtfeldman$elm_css$VirtualDom$Styled$property = F2(
 	function (key, value) {
 		return A3(
@@ -8688,7 +8661,62 @@ var $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty = F2(
 			$elm$json$Json$Encode$string(string));
 	});
 var $rtfeldman$elm_css$Html$Styled$Attributes$type_ = $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty('type');
-var $author$project$Hangman$buttonsHtml = function (model) {
+var $author$project$Hangman$coloredCharacterButton = F2(
+	function (model, _char) {
+		return A2(
+			$elm$core$Set$member,
+			$elm$core$String$toLower(_char),
+			model.guessedChars) ? (A2(
+			$elm$core$String$contains,
+			$elm$core$String$toLower(_char),
+			model.hangmanPhrase) ? A2(
+			$author$project$Hangman$styledButtonGuessedCorrect,
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$Attributes$type_('button'),
+					$rtfeldman$elm_css$Html$Styled$Events$onClick(
+					$author$project$Hangman$GuessButton(
+						$elm$core$String$toLower(_char)))
+				]),
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$text(_char)
+				])) : A2(
+			$author$project$Hangman$styledButtonGuessedWrong,
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$Attributes$type_('button'),
+					$rtfeldman$elm_css$Html$Styled$Events$onClick(
+					$author$project$Hangman$GuessButton(
+						$elm$core$String$toLower(_char)))
+				]),
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$text(_char)
+				]))) : A2(
+			$author$project$Hangman$styledButtonUnguessed,
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$Attributes$type_('button'),
+					$rtfeldman$elm_css$Html$Styled$Events$onClick(
+					$author$project$Hangman$GuessButton(
+						$elm$core$String$toLower(_char)))
+				]),
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$text(_char)
+				]));
+	});
+var $rtfeldman$elm_css$Html$Styled$Attributes$css = $rtfeldman$elm_css$Html$Styled$Internal$css;
+var $rtfeldman$elm_css$Html$Styled$div = $rtfeldman$elm_css$Html$Styled$node('div');
+var $rtfeldman$elm_css$Css$textAlign = function (fn) {
+	return A3(
+		$rtfeldman$elm_css$Css$Internal$getOverloadedProperty,
+		'textAlign',
+		'text-align',
+		fn($rtfeldman$elm_css$Css$Internal$lengthForOverloadedProperty));
+};
+var $author$project$Hangman$characterButtonsView = function (model) {
 	return A2(
 		$rtfeldman$elm_css$Html$Styled$div,
 		_List_fromArray(
@@ -8702,53 +8730,10 @@ var $author$project$Hangman$buttonsHtml = function (model) {
 			]),
 		A2(
 			$elm$core$List$map,
-			function (_char) {
-				return A2(
-					$elm$core$Set$member,
-					$elm$core$String$toLower(_char),
-					model.guessedChars) ? (A2(
-					$elm$core$String$contains,
-					$elm$core$String$toLower(_char),
-					model.inputPhrase) ? A2(
-					$author$project$Hangman$styledButtonGuessedCorrect,
-					_List_fromArray(
-						[
-							$rtfeldman$elm_css$Html$Styled$Attributes$type_('button'),
-							$rtfeldman$elm_css$Html$Styled$Events$onClick(
-							$author$project$Hangman$GuessButton(
-								$elm$core$String$toLower(_char)))
-						]),
-					_List_fromArray(
-						[
-							$rtfeldman$elm_css$Html$Styled$text(_char)
-						])) : A2(
-					$author$project$Hangman$styledButtonGuessedWrong,
-					_List_fromArray(
-						[
-							$rtfeldman$elm_css$Html$Styled$Attributes$type_('button'),
-							$rtfeldman$elm_css$Html$Styled$Events$onClick(
-							$author$project$Hangman$GuessButton(
-								$elm$core$String$toLower(_char)))
-						]),
-					_List_fromArray(
-						[
-							$rtfeldman$elm_css$Html$Styled$text(_char)
-						]))) : A2(
-					$author$project$Hangman$styledButtonUnguessed,
-					_List_fromArray(
-						[
-							$rtfeldman$elm_css$Html$Styled$Attributes$type_('button'),
-							$rtfeldman$elm_css$Html$Styled$Events$onClick(
-							$author$project$Hangman$GuessButton(
-								$elm$core$String$toLower(_char)))
-						]),
-					_List_fromArray(
-						[
-							$rtfeldman$elm_css$Html$Styled$text(_char)
-						]));
-			},
+			$author$project$Hangman$coloredCharacterButton(model),
 			$author$project$Hangman$alphabet));
 };
+var $author$project$Hangman$hangmanArtDead = '\n+---+---+\n\n|   ≣   |\n\n|   0   |\n\n|  /|\\  |\n\n|  / \\  |\n\n|       |\n\n=========\n';
 var $rtfeldman$elm_css$Css$lineHeight = $rtfeldman$elm_css$Css$prop1('line-height');
 var $rtfeldman$elm_css$Html$Styled$pre = $rtfeldman$elm_css$Html$Styled$node('pre');
 var $author$project$Hangman$deadHangmanHtml = _List_fromArray(
@@ -8770,7 +8755,7 @@ var $author$project$Hangman$deadHangmanHtml = _List_fromArray(
 			]),
 		_List_fromArray(
 			[
-				$rtfeldman$elm_css$Html$Styled$text('\n+---+---+\n\n|   ≣   |\n\n|   0   |\n\n|  /|\\  |\n\n|  / \\  |\n\n|       |\n\n=========\n                ')
+				$rtfeldman$elm_css$Html$Styled$text($author$project$Hangman$hangmanArtDead)
 			])),
 		A2(
 		$rtfeldman$elm_css$Html$Styled$pre,
@@ -8792,9 +8777,26 @@ var $author$project$Hangman$deadHangmanHtml = _List_fromArray(
 				$rtfeldman$elm_css$Html$Styled$text('You Lose!')
 			]))
 	]);
-var $author$project$Hangman$hangmanArt = $elm$core$Array$fromList(
+var $author$project$Hangman$hangmanArtAlive = $elm$core$Array$fromList(
 	_List_fromArray(
 		['\n+---+---+\n\n|   ≣   |\n\n|       |\n\n|       |\n\n|       |\n\n|       |\n\n=========', '\n+---+---+\n\n|   ≣   |\n\n|   0   |\n\n|       |\n\n|       |\n\n|       |\n\n=========', '\n+---+---+\n\n|   ≣   |\n\n|   0   |\n\n|   |   |\n\n|       |\n\n|       |\n\n=========', '\n+---+---+\n\n|   ≣   |\n\n|   0   |\n\n|  /|   |\n\n|       |\n\n|       |\n\n=========', '\n+---+---+\n\n|   ≣   |\n\n|   0   |\n\n|  /|\\  |\n\n|       |\n\n|       |\n\n=========', '\n+---+---+\n\n|   ≣   |\n\n|   0   |\n\n|  /|\\  |\n\n|  /    |\n\n|       |\n\n=========']));
+var $elm$core$String$concat = function (strings) {
+	return A2($elm$core$String$join, '', strings);
+};
+var $author$project$Hangman$hidePhraseCharacters = F2(
+	function (model, _char) {
+		return (_char === ' ') ? '\u00A0\u00A0\u00A0' : (A2(
+			$elm$core$Set$member,
+			$elm$core$String$toLower(_char),
+			model.guessedChars) ? _char : '_');
+	});
+var $author$project$Hangman$hiddenPhraseString = function (model) {
+	return $elm$core$String$concat(
+		A2(
+			$elm$core$List$map,
+			$author$project$Hangman$hidePhraseCharacters(model),
+			A2($elm$core$String$split, '', model.hangmanPhrase)));
+};
 var $author$project$Hangman$livingHangmanHtml = function (asciiArt) {
 	return _List_fromArray(
 		[
@@ -8834,9 +8836,24 @@ var $author$project$Hangman$livingHangmanHtml = function (asciiArt) {
 				]),
 			_List_fromArray(
 				[
-					$rtfeldman$elm_css$Html$Styled$text('')
+					$rtfeldman$elm_css$Html$Styled$text('Keep Playing')
 				]))
 		]);
+};
+var $author$project$Hangman$listGuessedChars = function (model) {
+	return $elm$core$Set$toList(model.guessedChars);
+};
+var $author$project$Hangman$listIncorrectGuesses = function (model) {
+	return A2(
+		$elm$core$List$filter,
+		function (_char) {
+			return A2($elm$core$String$contains, _char, model.hangmanPhrase) ? false : true;
+		},
+		$author$project$Hangman$listGuessedChars(model));
+};
+var $author$project$Hangman$numIncorrectGuesses = function (model) {
+	return $elm$core$List$length(
+		$author$project$Hangman$listIncorrectGuesses(model));
 };
 var $author$project$Hangman$winningHangmanHtml = function (asciiArt) {
 	return _List_fromArray(
@@ -8881,13 +8898,19 @@ var $author$project$Hangman$winningHangmanHtml = function (asciiArt) {
 				]))
 		]);
 };
-var $author$project$Hangman$hangmanHtml = function (model) {
-	var _v0 = A2($elm$core$Array$get, model.numIncorrectGuesses, $author$project$Hangman$hangmanArt);
+var $author$project$Hangman$hangmanArtView = function (model) {
+	var _v0 = A2(
+		$elm$core$Array$get,
+		$author$project$Hangman$numIncorrectGuesses(model),
+		$author$project$Hangman$hangmanArtAlive);
 	if (_v0.$ === 'Nothing') {
 		return A2($rtfeldman$elm_css$Html$Styled$div, _List_Nil, $author$project$Hangman$deadHangmanHtml);
 	} else {
 		var hangmanAscii = _v0.a;
-		return A2($elm$core$String$contains, model.resultPhrase, model.inputPhrase) ? A2(
+		return A2(
+			$elm$core$String$contains,
+			'_',
+			$author$project$Hangman$hiddenPhraseString(model)) ? A2(
 			$rtfeldman$elm_css$Html$Styled$div,
 			_List_Nil,
 			$author$project$Hangman$winningHangmanHtml(hangmanAscii)) : A2(
@@ -8895,6 +8918,167 @@ var $author$project$Hangman$hangmanHtml = function (model) {
 			_List_Nil,
 			$author$project$Hangman$livingHangmanHtml(hangmanAscii));
 	}
+};
+var $rtfeldman$elm_css$Html$Styled$span = $rtfeldman$elm_css$Html$Styled$node('span');
+var $author$project$Hangman$addCharactersToSpan = function (_char) {
+	return A2(
+		$rtfeldman$elm_css$Html$Styled$span,
+		_List_fromArray(
+			[
+				$rtfeldman$elm_css$Html$Styled$Attributes$css(
+				_List_fromArray(
+					[
+						$rtfeldman$elm_css$Css$padding(
+						$rtfeldman$elm_css$Css$px(2)),
+						$rtfeldman$elm_css$Css$fontSize(
+						$rtfeldman$elm_css$Css$px(32))
+					]))
+			]),
+		_List_fromArray(
+			[
+				$rtfeldman$elm_css$Html$Styled$text(_char)
+			]));
+};
+var $author$project$Hangman$hangmanPhraseView = function (model) {
+	return A2(
+		$rtfeldman$elm_css$Html$Styled$div,
+		_List_fromArray(
+			[
+				$rtfeldman$elm_css$Html$Styled$Attributes$css(
+				_List_fromArray(
+					[
+						$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
+						$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center)
+					]))
+			]),
+		A2(
+			$elm$core$List$map,
+			$author$project$Hangman$addCharactersToSpan,
+			A2(
+				$elm$core$List$map,
+				$author$project$Hangman$hidePhraseCharacters(model),
+				A2($elm$core$String$split, '', model.hangmanPhrase))));
+};
+var $author$project$Hangman$GenerateRandomTextIndex = {$: 'GenerateRandomTextIndex'};
+var $author$project$Hangman$Reset = {$: 'Reset'};
+var $rtfeldman$elm_css$Css$prop4 = F5(
+	function (key, argA, argB, argC, argD) {
+		return A2(
+			$rtfeldman$elm_css$Css$property,
+			key,
+			A2(
+				$elm$core$String$join,
+				' ',
+				_List_fromArray(
+					[argA.value, argB.value, argC.value, argD.value])));
+	});
+var $rtfeldman$elm_css$Css$padding4 = $rtfeldman$elm_css$Css$prop4('padding');
+var $author$project$Hangman$buttonMainColor = '#011627';
+var $rtfeldman$elm_css$Css$margin4 = $rtfeldman$elm_css$Css$prop4('margin');
+var $author$project$Hangman$styledButtonMain = A2(
+	$rtfeldman$elm_css$Html$Styled$styled,
+	$rtfeldman$elm_css$Html$Styled$button,
+	_List_fromArray(
+		[
+			$rtfeldman$elm_css$Css$width(
+			$rtfeldman$elm_css$Css$pct(30)),
+			$rtfeldman$elm_css$Css$backgroundColor(
+			$rtfeldman$elm_css$Css$hex($author$project$Hangman$buttonMainColor)),
+			$rtfeldman$elm_css$Css$color(
+			$rtfeldman$elm_css$Css$hex('#fff')),
+			A4(
+			$rtfeldman$elm_css$Css$padding4,
+			$rtfeldman$elm_css$Css$px(20),
+			$rtfeldman$elm_css$Css$px(20),
+			$rtfeldman$elm_css$Css$px(20),
+			$rtfeldman$elm_css$Css$px(20)),
+			$rtfeldman$elm_css$Css$border(
+			$rtfeldman$elm_css$Css$px(0)),
+			A4(
+			$rtfeldman$elm_css$Css$margin4,
+			$rtfeldman$elm_css$Css$px(20),
+			$rtfeldman$elm_css$Css$px(20),
+			$rtfeldman$elm_css$Css$px(20),
+			$rtfeldman$elm_css$Css$px(20)),
+			$rtfeldman$elm_css$Css$borderRadius(
+			$rtfeldman$elm_css$Css$px(20)),
+			$rtfeldman$elm_css$Css$fontSize(
+			$rtfeldman$elm_css$Css$px(24))
+		]));
+var $author$project$Hangman$mainButtonsView = A2(
+	$rtfeldman$elm_css$Html$Styled$div,
+	_List_fromArray(
+		[
+			$rtfeldman$elm_css$Html$Styled$Attributes$css(
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
+					$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center),
+					A4(
+					$rtfeldman$elm_css$Css$padding4,
+					$rtfeldman$elm_css$Css$px(2),
+					$rtfeldman$elm_css$Css$px(2),
+					$rtfeldman$elm_css$Css$px(2),
+					$rtfeldman$elm_css$Css$px(2))
+				]))
+		]),
+	_List_fromArray(
+		[
+			A2(
+			$author$project$Hangman$styledButtonMain,
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$Attributes$type_('button'),
+					$rtfeldman$elm_css$Html$Styled$Events$onClick($author$project$Hangman$GenerateRandomTextIndex)
+				]),
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$text('Random Phrase')
+				])),
+			A2(
+			$author$project$Hangman$styledButtonMain,
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$Attributes$type_('button'),
+					$rtfeldman$elm_css$Html$Styled$Events$onClick($author$project$Hangman$SaveHangmanPhrase)
+				]),
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$text('Submit Phrase')
+				])),
+			A2(
+			$author$project$Hangman$styledButtonMain,
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$Attributes$type_('button'),
+					$rtfeldman$elm_css$Html$Styled$Events$onClick($author$project$Hangman$Reset)
+				]),
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$text('Reset Game')
+				]))
+		]));
+var $rtfeldman$elm_css$Html$Styled$Events$alwaysPreventDefault = function (msg) {
+	return _Utils_Tuple2(msg, true);
+};
+var $elm$virtual_dom$VirtualDom$MayPreventDefault = function (a) {
+	return {$: 'MayPreventDefault', a: a};
+};
+var $rtfeldman$elm_css$Html$Styled$Events$preventDefaultOn = F2(
+	function (event, decoder) {
+		return A2(
+			$rtfeldman$elm_css$VirtualDom$Styled$on,
+			event,
+			$elm$virtual_dom$VirtualDom$MayPreventDefault(decoder));
+	});
+var $rtfeldman$elm_css$Html$Styled$Events$onSubmit = function (msg) {
+	return A2(
+		$rtfeldman$elm_css$Html$Styled$Events$preventDefaultOn,
+		'submit',
+		A2(
+			$elm$json$Json$Decode$map,
+			$rtfeldman$elm_css$Html$Styled$Events$alwaysPreventDefault,
+			$elm$json$Json$Decode$succeed(msg)));
 };
 var $author$project$Hangman$SaveInputSoFar = function (a) {
 	return {$: 'SaveInputSoFar', a: a};
@@ -8968,7 +9152,7 @@ var $author$project$Hangman$styledInput = A2(
 			$rtfeldman$elm_css$Css$px(10))
 		]));
 var $rtfeldman$elm_css$Html$Styled$Attributes$value = $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty('value');
-var $author$project$Hangman$inputHtml = function (model) {
+var $author$project$Hangman$phraseInputView = function (model) {
 	return A2(
 		$rtfeldman$elm_css$Html$Styled$div,
 		_List_fromArray(
@@ -9004,76 +9188,10 @@ var $author$project$Hangman$inputHtml = function (model) {
 						$rtfeldman$elm_css$Html$Styled$Attributes$id('input'),
 						$rtfeldman$elm_css$Html$Styled$Attributes$type_('text'),
 						$rtfeldman$elm_css$Html$Styled$Events$onInput($author$project$Hangman$SaveInputSoFar),
-						$rtfeldman$elm_css$Html$Styled$Attributes$value(model.inputSoFar)
+						$rtfeldman$elm_css$Html$Styled$Attributes$value(model.inputField)
 					]),
 				_List_Nil)
 			]));
-};
-var $rtfeldman$elm_css$Html$Styled$Events$alwaysPreventDefault = function (msg) {
-	return _Utils_Tuple2(msg, true);
-};
-var $elm$virtual_dom$VirtualDom$MayPreventDefault = function (a) {
-	return {$: 'MayPreventDefault', a: a};
-};
-var $rtfeldman$elm_css$Html$Styled$Events$preventDefaultOn = F2(
-	function (event, decoder) {
-		return A2(
-			$rtfeldman$elm_css$VirtualDom$Styled$on,
-			event,
-			$elm$virtual_dom$VirtualDom$MayPreventDefault(decoder));
-	});
-var $rtfeldman$elm_css$Html$Styled$Events$onSubmit = function (msg) {
-	return A2(
-		$rtfeldman$elm_css$Html$Styled$Events$preventDefaultOn,
-		'submit',
-		A2(
-			$elm$json$Json$Decode$map,
-			$rtfeldman$elm_css$Html$Styled$Events$alwaysPreventDefault,
-			$elm$json$Json$Decode$succeed(msg)));
-};
-var $rtfeldman$elm_css$Html$Styled$span = $rtfeldman$elm_css$Html$Styled$node('span');
-var $author$project$Hangman$phraseHtml = function (model) {
-	return A2(
-		$rtfeldman$elm_css$Html$Styled$div,
-		_List_fromArray(
-			[
-				$rtfeldman$elm_css$Html$Styled$Attributes$css(
-				_List_fromArray(
-					[
-						$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
-						$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center)
-					]))
-			]),
-		A2(
-			$elm$core$List$map,
-			function (_char) {
-				return A2(
-					$rtfeldman$elm_css$Html$Styled$span,
-					_List_fromArray(
-						[
-							$rtfeldman$elm_css$Html$Styled$Attributes$css(
-							_List_fromArray(
-								[
-									$rtfeldman$elm_css$Css$padding(
-									$rtfeldman$elm_css$Css$px(2)),
-									$rtfeldman$elm_css$Css$fontSize(
-									$rtfeldman$elm_css$Css$px(32))
-								]))
-						]),
-					_List_fromArray(
-						[
-							$rtfeldman$elm_css$Html$Styled$text(_char)
-						]));
-			},
-			A2(
-				$elm$core$List$map,
-				function (_char) {
-					return (_char === ' ') ? '\u00A0\u00A0\u00A0' : (A2(
-						$elm$core$Set$member,
-						$elm$core$String$toLower(_char),
-						model.guessedChars) ? _char : '_');
-				},
-				A2($elm$core$String$split, '', model.inputPhrase))));
 };
 var $rtfeldman$elm_css$Css$alignSelf = function (fn) {
 	return A3(
@@ -9103,107 +9221,8 @@ var $author$project$Hangman$styledForm = A2(
 			$rtfeldman$elm_css$Css$paddingBottom(
 			$rtfeldman$elm_css$Css$pct(2))
 		]));
-var $author$project$Hangman$GenerateRandomNumber = {$: 'GenerateRandomNumber'};
-var $author$project$Hangman$Reset = {$: 'Reset'};
-var $rtfeldman$elm_css$Css$prop4 = F5(
-	function (key, argA, argB, argC, argD) {
-		return A2(
-			$rtfeldman$elm_css$Css$property,
-			key,
-			A2(
-				$elm$core$String$join,
-				' ',
-				_List_fromArray(
-					[argA.value, argB.value, argC.value, argD.value])));
-	});
-var $rtfeldman$elm_css$Css$padding4 = $rtfeldman$elm_css$Css$prop4('padding');
-var $author$project$Hangman$buttonMainColor = '#011627';
-var $rtfeldman$elm_css$Css$margin4 = $rtfeldman$elm_css$Css$prop4('margin');
-var $author$project$Hangman$styledButtonMain = A2(
-	$rtfeldman$elm_css$Html$Styled$styled,
-	$rtfeldman$elm_css$Html$Styled$button,
-	_List_fromArray(
-		[
-			$rtfeldman$elm_css$Css$width(
-			$rtfeldman$elm_css$Css$pct(30)),
-			$rtfeldman$elm_css$Css$backgroundColor(
-			$rtfeldman$elm_css$Css$hex($author$project$Hangman$buttonMainColor)),
-			$rtfeldman$elm_css$Css$color(
-			$rtfeldman$elm_css$Css$hex('#fff')),
-			A4(
-			$rtfeldman$elm_css$Css$padding4,
-			$rtfeldman$elm_css$Css$px(20),
-			$rtfeldman$elm_css$Css$px(20),
-			$rtfeldman$elm_css$Css$px(20),
-			$rtfeldman$elm_css$Css$px(20)),
-			$rtfeldman$elm_css$Css$border(
-			$rtfeldman$elm_css$Css$px(0)),
-			A4(
-			$rtfeldman$elm_css$Css$margin4,
-			$rtfeldman$elm_css$Css$px(20),
-			$rtfeldman$elm_css$Css$px(20),
-			$rtfeldman$elm_css$Css$px(20),
-			$rtfeldman$elm_css$Css$px(20)),
-			$rtfeldman$elm_css$Css$borderRadius(
-			$rtfeldman$elm_css$Css$px(20)),
-			$rtfeldman$elm_css$Css$fontSize(
-			$rtfeldman$elm_css$Css$px(24))
-		]));
-var $author$project$Hangman$submitButtonHtml = A2(
-	$rtfeldman$elm_css$Html$Styled$div,
-	_List_fromArray(
-		[
-			$rtfeldman$elm_css$Html$Styled$Attributes$css(
-			_List_fromArray(
-				[
-					$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
-					$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center),
-					A4(
-					$rtfeldman$elm_css$Css$padding4,
-					$rtfeldman$elm_css$Css$px(2),
-					$rtfeldman$elm_css$Css$px(2),
-					$rtfeldman$elm_css$Css$px(2),
-					$rtfeldman$elm_css$Css$px(2))
-				]))
-		]),
-	_List_fromArray(
-		[
-			A2(
-			$author$project$Hangman$styledButtonMain,
-			_List_fromArray(
-				[
-					$rtfeldman$elm_css$Html$Styled$Attributes$type_('button'),
-					$rtfeldman$elm_css$Html$Styled$Events$onClick($author$project$Hangman$GenerateRandomNumber)
-				]),
-			_List_fromArray(
-				[
-					$rtfeldman$elm_css$Html$Styled$text('Random Phrase')
-				])),
-			A2(
-			$author$project$Hangman$styledButtonMain,
-			_List_fromArray(
-				[
-					$rtfeldman$elm_css$Html$Styled$Attributes$type_('button'),
-					$rtfeldman$elm_css$Html$Styled$Events$onClick($author$project$Hangman$SaveInputPhrase)
-				]),
-			_List_fromArray(
-				[
-					$rtfeldman$elm_css$Html$Styled$text('Submit Phrase')
-				])),
-			A2(
-			$author$project$Hangman$styledButtonMain,
-			_List_fromArray(
-				[
-					$rtfeldman$elm_css$Html$Styled$Attributes$type_('button'),
-					$rtfeldman$elm_css$Html$Styled$Events$onClick($author$project$Hangman$Reset)
-				]),
-			_List_fromArray(
-				[
-					$rtfeldman$elm_css$Html$Styled$text('Reset Game')
-				]))
-		]));
 var $rtfeldman$elm_css$Html$Styled$h1 = $rtfeldman$elm_css$Html$Styled$node('h1');
-var $author$project$Hangman$titleHtml = A2(
+var $author$project$Hangman$titleView = A2(
 	$rtfeldman$elm_css$Html$Styled$div,
 	_List_fromArray(
 		[
@@ -9235,16 +9254,16 @@ var $author$project$Hangman$view = function (model) {
 				$author$project$Hangman$styledForm,
 				_List_fromArray(
 					[
-						$rtfeldman$elm_css$Html$Styled$Events$onSubmit($author$project$Hangman$SaveInputPhrase)
+						$rtfeldman$elm_css$Html$Styled$Events$onSubmit($author$project$Hangman$SaveHangmanPhrase)
 					]),
 				_List_fromArray(
 					[
-						$author$project$Hangman$titleHtml,
-						$author$project$Hangman$inputHtml(model),
-						$author$project$Hangman$submitButtonHtml,
-						$author$project$Hangman$buttonsHtml(model),
-						$author$project$Hangman$phraseHtml(model),
-						$author$project$Hangman$hangmanHtml(model)
+						$author$project$Hangman$titleView,
+						$author$project$Hangman$phraseInputView(model),
+						$author$project$Hangman$mainButtonsView,
+						$author$project$Hangman$characterButtonsView(model),
+						$author$project$Hangman$hangmanPhraseView(model),
+						$author$project$Hangman$hangmanArtView(model)
 					]))
 			]));
 };

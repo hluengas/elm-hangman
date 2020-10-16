@@ -15,11 +15,9 @@ import Set exposing (Set)
 
 
 type alias Model =
-    { inputPhrase : String
-    , inputSoFar : String
+    { hangmanPhrase : String
+    , inputField : String
     , guessedChars : Set String
-    , numIncorrectGuesses : Int
-    , resultPhrase : String
     , randomValue : Int
     }
 
@@ -29,12 +27,12 @@ type alias Model =
 
 
 type Msg
-    = SaveInputPhrase
+    = SaveHangmanPhrase
     | SaveInputSoFar String
     | GuessButton String
     | Reset
-    | GenerateRandomNumber
-    | NewRandomNumber Int
+    | GenerateRandomTextIndex
+    | NewRandomTextIndex Int
     | NoOp
 
 
@@ -44,11 +42,9 @@ type Msg
 
 init : () -> ( Model, Cmd Msg )
 init _ =
-    ( { inputPhrase = " "
-      , inputSoFar = ""
+    ( { hangmanPhrase = " "
+      , inputField = ""
       , guessedChars = Set.empty
-      , numIncorrectGuesses = 0
-      , resultPhrase = "_"
       , randomValue = 0
       }
     , Cmd.none
@@ -62,13 +58,13 @@ init _ =
 view : Model -> Html Msg
 view model =
     div []
-        [ styledForm [ onSubmit SaveInputPhrase ]
-            [ titleHtml
-            , inputHtml model
-            , submitButtonHtml
-            , buttonsHtml model
-            , phraseHtml model
-            , hangmanHtml model
+        [ styledForm [ onSubmit SaveHangmanPhrase ]
+            [ titleView
+            , phraseInputView model
+            , mainButtonsView
+            , characterButtonsView model
+            , hangmanPhraseView model
+            , hangmanArtView model
             ]
         ]
 
@@ -80,76 +76,30 @@ view model =
 update : Msg -> Model -> ( Model, Cmd Msg )
 update message model =
     case message of
-        SaveInputSoFar inputSoFar ->
-            ( { model | inputSoFar = inputSoFar }, Cmd.none )
+        SaveInputSoFar inputText ->
+            ( { model | inputField = inputText }, Cmd.none )
 
-        SaveInputPhrase ->
+        SaveHangmanPhrase ->
             ( { model
-                | inputPhrase = model.inputSoFar
-                , inputSoFar = ""
+                | hangmanPhrase = model.inputField
+                , inputField = ""
                 , guessedChars = (Tuple.first (init ())).guessedChars
-                , numIncorrectGuesses = (Tuple.first (init ())).numIncorrectGuesses
-                , resultPhrase =
-                    model.inputSoFar
-                        |> String.split ""
-                        |> List.map
-                            (\c ->
-                                if c == " " then
-                                    "\u{00A0}\u{00A0}\u{00A0}"
-
-                                else if Set.member (String.toLower c) model.guessedChars then
-                                    c
-
-                                else
-                                    "_"
-                            )
-                        |> String.concat
               }
             , Cmd.none
             )
 
         GuessButton char ->
-            if String.contains char model.inputPhrase then
-                ( { model
-                    | guessedChars = Set.insert char model.guessedChars
-                    , resultPhrase =
-                        model.inputPhrase
-                            |> String.split ""
-                            |> List.map
-                                (\c ->
-                                    if c == " " then
-                                        "\u{00A0}\u{00A0}\u{00A0}"
+            ( { model | guessedChars = Set.insert char model.guessedChars }
+            , Cmd.none
+            )
 
-                                    else if Set.member (String.toLower c) model.guessedChars then
-                                        c
+        GenerateRandomTextIndex ->
+            ( model, randomTextIndex donQuixoteText )
 
-                                    else if String.contains (String.toLower c) char then
-                                        c
-
-                                    else
-                                        "_"
-                                )
-                            |> String.concat
-                  }
-                , Cmd.none
-                )
-
-            else
-                ( { model
-                    | guessedChars = Set.insert char model.guessedChars
-                    , numIncorrectGuesses = model.numIncorrectGuesses + 1
-                  }
-                , Cmd.none
-                )
-
-        GenerateRandomNumber ->
-            ( model, Random.generate NewRandomNumber (Random.int 0 (List.length (String.words donQuixote))) )
-
-        NewRandomNumber randomNumber ->
+        NewRandomTextIndex index ->
             ( { model
-                | randomValue = randomNumber
-                , inputPhrase =
-                    getRandomPhrase randomNumber
+                | randomValue = index
+                , hangmanPhrase = getRandomPhrase index
               }
             , Cmd.none
             )
@@ -162,7 +112,407 @@ update message model =
 
 
 
--- alphabet constant
+-- html components
+
+
+titleView : Html Msg
+titleView =
+    div
+        [ css
+            [ textAlign center
+            , fontSize (px 32)
+            ]
+        ]
+        [ h1 [] [ text "Hangman Game" ] ]
+
+
+phraseInputView : Model -> Html Msg
+phraseInputView model =
+    div
+        [ css
+            [ textAlign center
+            , alignItems center
+            ]
+        ]
+        [ div [ css [ fontSize (px 24) ] ] [ text "Input Phrase" ]
+        , styledInput
+            [ id "input"
+            , type_ "text"
+            , onInput SaveInputSoFar
+            , value model.inputField
+            ]
+            []
+        ]
+
+
+mainButtonsView : Html Msg
+mainButtonsView =
+    div
+        [ css
+            [ textAlign center
+            , alignItems center
+            , padding4 (px 2) (px 2) (px 2) (px 2)
+            ]
+        ]
+        [ styledButtonMain
+            [ type_ "button"
+            , onClick GenerateRandomTextIndex
+            ]
+            [ text "Random Phrase" ]
+        , styledButtonMain
+            [ type_ "button"
+            , onClick SaveHangmanPhrase
+            ]
+            [ text "Submit Phrase" ]
+        , styledButtonMain
+            [ type_ "button"
+            , onClick Reset
+            ]
+            [ text "Reset Game" ]
+        ]
+
+
+characterButtonsView : Model -> Html Msg
+characterButtonsView model =
+    alphabet
+        |> List.map (coloredCharacterButton model)
+        |> div
+            [ css
+                [ textAlign center
+                , alignItems center
+                ]
+            ]
+
+
+hangmanPhraseView : Model -> Html Msg
+hangmanPhraseView model =
+    model.hangmanPhrase
+        |> String.split ""
+        |> List.map (hidePhraseCharacters model)
+        |> List.map addCharactersToSpan
+        |> div
+            [ css
+                [ textAlign center
+                , alignItems center
+                ]
+            ]
+
+
+hangmanArtView : Model -> Html Msg
+hangmanArtView model =
+    case Array.get (numIncorrectGuesses model) hangmanArtAlive of
+        Nothing ->
+            div [] deadHangmanHtml
+
+        Just hangmanAscii ->
+            if String.contains "_" (hiddenPhraseString model) then
+                div [] (winningHangmanHtml hangmanAscii)
+
+            else
+                div [] (livingHangmanHtml hangmanAscii)
+
+
+winningHangmanHtml : String -> List (Html Msg)
+winningHangmanHtml asciiArt =
+    [ Html.Styled.pre
+        [ css
+            [ textAlign center
+            , alignItems center
+            , fontSize (px 32)
+            , lineHeight (pct 50)
+            ]
+        ]
+        [ text asciiArt ]
+    , Html.Styled.pre
+        [ css
+            [ textAlign center
+            , alignItems center
+            , fontSize (px 32)
+            , lineHeight (pct 50)
+            ]
+        ]
+        [ text "You Win!" ]
+    ]
+
+
+livingHangmanHtml : String -> List (Html Msg)
+livingHangmanHtml asciiArt =
+    [ Html.Styled.pre
+        [ css
+            [ textAlign center
+            , alignItems center
+            , fontSize (px 32)
+            , lineHeight (pct 50)
+            ]
+        ]
+        [ text asciiArt ]
+    , Html.Styled.pre
+        [ css
+            [ textAlign center
+            , alignItems center
+            , fontSize (px 32)
+            , lineHeight (pct 50)
+            ]
+        ]
+        [ text "Keep Playing" ]
+    ]
+
+
+deadHangmanHtml : List (Html Msg)
+deadHangmanHtml =
+    [ Html.Styled.pre
+        [ css
+            [ textAlign center
+            , alignItems center
+            , fontSize (px 32)
+            , lineHeight (pct 50)
+            ]
+        ]
+        [ text hangmanArtDead ]
+    , Html.Styled.pre
+        [ css
+            [ textAlign center
+            , alignItems center
+            , fontSize (px 32)
+            , lineHeight (pct 50)
+            ]
+        ]
+        [ text "You Lose!" ]
+    ]
+
+
+
+-- style components
+
+
+wallpaperColor : String
+wallpaperColor =
+    "#C4FFF9"
+
+
+buttonMainColor : String
+buttonMainColor =
+    "#011627"
+
+
+unGuessedColor : String
+unGuessedColor =
+    "#6E8894"
+
+
+correctColor : String
+correctColor =
+    "#78BC61"
+
+
+wrongColor : String
+wrongColor =
+    "#875053"
+
+
+styledForm : List (Attribute msg) -> List (Html msg) -> Html msg
+styledForm =
+    styled Html.Styled.form
+        [ borderRadius (px 25)
+        , backgroundColor (hex wallpaperColor)
+        , width (pct 100)
+        , height (pct 100)
+        , alignSelf center
+        , paddingBottom (pct 2)
+        ]
+
+
+styledInput : List (Attribute msg) -> List (Html msg) -> Html msg
+styledInput =
+    styled Html.Styled.input
+        [ width (pct 25)
+        , padding2 (px 12) (px 20)
+        , margin2 (px 8) (px 0)
+        , border (px 0)
+        , borderRadius (px 10)
+        ]
+
+
+styledButtonMain : List (Attribute msg) -> List (Html msg) -> Html msg
+styledButtonMain =
+    styled Html.Styled.button
+        [ width (pct 30)
+        , backgroundColor (hex buttonMainColor)
+        , color (hex "#fff")
+        , padding4 (px 20) (px 20) (px 20) (px 20)
+        , border (px 0)
+        , margin4 (px 20) (px 20) (px 20) (px 20)
+        , borderRadius (px 20)
+        , fontSize (px 24)
+        ]
+
+
+styledButtonUnguessed : List (Attribute msg) -> List (Html msg) -> Html msg
+styledButtonUnguessed =
+    styled Html.Styled.button
+        [ width (pct 10)
+        , backgroundColor (hex unGuessedColor)
+        , color (hex "#fff")
+        , padding (px 10)
+        , marginTop (px 10)
+        , marginBottom (px 10)
+        , marginLeft (px 1)
+        , marginRight (px 1)
+        , border (px 0)
+        , borderRadius (px 20)
+        , fontSize (px 24)
+        ]
+
+
+styledButtonGuessedCorrect : List (Attribute msg) -> List (Html msg) -> Html msg
+styledButtonGuessedCorrect =
+    styled Html.Styled.button
+        [ width (pct 10)
+        , backgroundColor (hex correctColor)
+        , color (hex "#fff")
+        , padding (px 10)
+        , marginTop (px 10)
+        , marginBottom (px 10)
+        , marginLeft (px 1)
+        , marginRight (px 1)
+        , border (px 0)
+        , borderRadius (px 20)
+        , fontSize (px 24)
+        ]
+
+
+styledButtonGuessedWrong : List (Attribute msg) -> List (Html msg) -> Html msg
+styledButtonGuessedWrong =
+    styled Html.Styled.button
+        [ width (pct 10)
+        , backgroundColor (hex wrongColor)
+        , color (hex "#fff")
+        , padding (px 10)
+        , marginTop (px 10)
+        , marginBottom (px 10)
+        , marginLeft (px 1)
+        , marginRight (px 1)
+        , border (px 0)
+        , borderRadius (px 20)
+        , fontSize (px 24)
+        ]
+
+
+
+-- main function
+
+
+main : Program () Model Msg
+main =
+    Browser.element
+        { init = init
+        , view = view >> toUnstyled
+        , update = update
+        , subscriptions = \_ -> Sub.none
+        }
+
+
+
+-- Helper Functions / Constants
+
+
+addCharactersToSpan : String -> Html Msg
+addCharactersToSpan char =
+    span
+        [ css
+            [ padding (px 2)
+            , fontSize (px 32)
+            ]
+        ]
+        [ text char ]
+
+
+hiddenPhraseString : Model -> String
+hiddenPhraseString model =
+    model.hangmanPhrase
+        |> String.split ""
+        |> List.map (hidePhraseCharacters model)
+        |> String.concat
+
+
+hidePhraseCharacters : Model -> String -> String
+hidePhraseCharacters model char =
+    if char == " " then
+        "\u{00A0}\u{00A0}\u{00A0}"
+
+    else if Set.member (String.toLower char) model.guessedChars then
+        char
+
+    else
+        "_"
+
+
+coloredCharacterButton : Model -> String -> Html Msg
+coloredCharacterButton model char =
+    if Set.member (String.toLower char) model.guessedChars then
+        if String.contains (String.toLower char) model.hangmanPhrase then
+            styledButtonGuessedCorrect
+                [ type_ "button"
+                , onClick (GuessButton (String.toLower char))
+                ]
+                [ text char ]
+
+        else
+            styledButtonGuessedWrong
+                [ type_ "button"
+                , onClick (GuessButton (String.toLower char))
+                ]
+                [ text char ]
+
+    else
+        styledButtonUnguessed
+            [ type_ "button"
+            , onClick (GuessButton (String.toLower char))
+            ]
+            [ text char ]
+
+
+listGuessedChars : Model -> List String
+listGuessedChars model =
+    Set.toList model.guessedChars
+
+
+listCorrectGuesses : Model -> List String
+listCorrectGuesses model =
+    listGuessedChars model
+        |> List.filter
+            (\char ->
+                if String.contains char model.hangmanPhrase then
+                    True
+
+                else
+                    False
+            )
+
+
+listIncorrectGuesses : Model -> List String
+listIncorrectGuesses model =
+    listGuessedChars model
+        |> List.filter
+            (\char ->
+                if String.contains char model.hangmanPhrase then
+                    False
+
+                else
+                    True
+            )
+
+
+numIncorrectGuesses : Model -> Basics.Int
+numIncorrectGuesses model =
+    listIncorrectGuesses model
+        |> List.length
+
+
+numCorrectGuesses : Model -> Basics.Int
+numCorrectGuesses model =
+    listCorrectGuesses model
+        |> List.length
 
 
 alphabet : List String
@@ -170,12 +520,74 @@ alphabet =
     String.split "" "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 
+randomTextIndex : String -> Cmd Msg
+randomTextIndex text =
+    text
+        |> alphabeticWordsFromText
+        |> Array.length
+        |> Random.int 0
+        |> Random.generate NewRandomTextIndex
 
--- hangman ascii art constant
+
+alphabeticWordsFromText : String -> Array String
+alphabeticWordsFromText text =
+    text
+        |> String.words
+        |> List.map (String.filter Char.isAlpha)
+        |> Array.fromList
 
 
-hangmanArt : Array String
-hangmanArt =
+getRandomPhrase : Int -> String
+getRandomPhrase rndNum =
+    [ case
+        Array.get rndNum (alphabeticWordsFromText donQuixoteText)
+      of
+        Nothing ->
+            "default"
+
+        Just string ->
+            string
+    , case
+        Array.get (rndNum + 1) (alphabeticWordsFromText donQuixoteText)
+      of
+        Nothing ->
+            "default"
+
+        Just string ->
+            string
+    , case
+        Array.get (rndNum + 2) (alphabeticWordsFromText donQuixoteText)
+      of
+        Nothing ->
+            "default"
+
+        Just string ->
+            string
+    ]
+        |> String.join " "
+
+
+hangmanArtDead : String
+hangmanArtDead =
+    """
++---+---+
+
+|   ≣   |
+
+|   0   |
+
+|  /|\\  |
+
+|  / \\  |
+
+|       |
+
+=========
+"""
+
+
+hangmanArtAlive : Array String
+hangmanArtAlive =
     Array.fromList
         [ """
 +---+---+
@@ -258,12 +670,8 @@ hangmanArt =
 =========""" ]
 
 
-
--- don quixote text
-
-
-donQuixote : String
-donQuixote =
+donQuixoteText : String
+donQuixoteText =
     """
 In a village of La Mancha, the name of which I have no desire to call
 to mind, there lived not long since one of those gentlemen that keep a
@@ -435,407 +843,3 @@ Toboso—she being of El Toboso—a name, to his mind, musical, uncommon,
 and significant, like all those he had already bestowed upon himself
 and the things belonging to him.
 """
-
-
-
--- Don Word Array
-
-
-donAlphaWords : Array String
-donAlphaWords =
-    donQuixote
-        |> String.words
-        |> List.map
-            (\word ->
-                String.filter Char.isAlpha word
-            )
-        |> Array.fromList
-
-
-getRandomPhrase : Int -> String
-getRandomPhrase rndNum =
-    [ case
-        Array.get rndNum donAlphaWords
-      of
-        Nothing ->
-            "default"
-
-        Just string ->
-            string
-    , case
-        Array.get (rndNum + 1) donAlphaWords
-      of
-        Nothing ->
-            "default"
-
-        Just string ->
-            string
-    , case
-        Array.get (rndNum + 2) donAlphaWords
-      of
-        Nothing ->
-            "default"
-
-        Just string ->
-            string
-    ]
-        |> String.join " "
-
-
-
--- html components
-
-
-titleHtml : Html Msg
-titleHtml =
-    div
-        [ css
-            [ textAlign center
-            , fontSize (px 32)
-            ]
-        ]
-        [ h1 [] [ text "Hangman Game" ] ]
-
-
-inputHtml : Model -> Html Msg
-inputHtml model =
-    div
-        [ css
-            [ textAlign center
-            , alignItems center
-            ]
-        ]
-        [ div [ css [ fontSize (px 24) ] ] [ text "Input Phrase" ]
-        , styledInput
-            [ id "input"
-            , type_ "text"
-            , onInput SaveInputSoFar
-            , value model.inputSoFar
-            ]
-            []
-        ]
-
-
-submitButtonHtml : Html Msg
-submitButtonHtml =
-    div
-        [ css
-            [ textAlign center
-            , alignItems center
-            , padding4 (px 2) (px 2) (px 2) (px 2)
-            ]
-        ]
-        [ styledButtonMain
-            [ type_ "button"
-            , onClick GenerateRandomNumber
-            ]
-            [ text "Random Phrase" ]
-        , styledButtonMain
-            [ type_ "button"
-            , onClick SaveInputPhrase
-            ]
-            [ text "Submit Phrase" ]
-        , styledButtonMain
-            [ type_ "button"
-            , onClick Reset
-            ]
-            [ text "Reset Game" ]
-        ]
-
-
-buttonsHtml : Model -> Html Msg
-buttonsHtml model =
-    alphabet
-        |> List.map
-            (\char ->
-                if Set.member (String.toLower char) model.guessedChars then
-                    if String.contains (String.toLower char) model.inputPhrase then
-                        styledButtonGuessedCorrect
-                            [ type_ "button"
-                            , onClick (GuessButton (String.toLower char))
-                            ]
-                            [ text char ]
-
-                    else
-                        styledButtonGuessedWrong
-                            [ type_ "button"
-                            , onClick (GuessButton (String.toLower char))
-                            ]
-                            [ text char ]
-
-                else
-                    styledButtonUnguessed
-                        [ type_ "button"
-                        , onClick (GuessButton (String.toLower char))
-                        ]
-                        [ text char ]
-            )
-        |> div
-            [ css
-                [ textAlign center
-                , alignItems center
-                ]
-            ]
-
-
-phraseHtml : Model -> Html Msg
-phraseHtml model =
-    model.inputPhrase
-        |> String.split ""
-        |> List.map
-            (\char ->
-                if char == " " then
-                    "\u{00A0}\u{00A0}\u{00A0}"
-
-                else if Set.member (String.toLower char) model.guessedChars then
-                    char
-
-                else
-                    "_"
-            )
-        |> List.map
-            (\char ->
-                span
-                    [ css
-                        [ padding (px 2)
-                        , fontSize (px 32)
-                        ]
-                    ]
-                    [ text char ]
-            )
-        |> div
-            [ css
-                [ textAlign center
-                , alignItems center
-                ]
-            ]
-
-
-hangmanHtml : Model -> Html Msg
-hangmanHtml model =
-    case Array.get model.numIncorrectGuesses hangmanArt of
-        Nothing ->
-            div [] deadHangmanHtml
-
-        Just hangmanAscii ->
-            if String.contains model.resultPhrase model.inputPhrase then
-                div [] (winningHangmanHtml hangmanAscii)
-
-            else
-                div [] (livingHangmanHtml hangmanAscii)
-
-
-winningHangmanHtml : String -> List (Html Msg)
-winningHangmanHtml asciiArt =
-    [ Html.Styled.pre
-        [ css
-            [ textAlign center
-            , alignItems center
-            , fontSize (px 32)
-            , lineHeight (pct 50)
-            ]
-        ]
-        [ text asciiArt ]
-    , Html.Styled.pre
-        [ css
-            [ textAlign center
-            , alignItems center
-            , fontSize (px 32)
-            , lineHeight (pct 50)
-            ]
-        ]
-        [ text "You Win!" ]
-    ]
-
-
-livingHangmanHtml : String -> List (Html Msg)
-livingHangmanHtml asciiArt =
-    [ Html.Styled.pre
-        [ css
-            [ textAlign center
-            , alignItems center
-            , fontSize (px 32)
-            , lineHeight (pct 50)
-            ]
-        ]
-        [ text asciiArt ]
-    , Html.Styled.pre
-        [ css
-            [ textAlign center
-            , alignItems center
-            , fontSize (px 32)
-            , lineHeight (pct 50)
-            ]
-        ]
-        [ text "" ]
-    ]
-
-
-deadHangmanHtml : List (Html Msg)
-deadHangmanHtml =
-    [ Html.Styled.pre
-        [ css
-            [ textAlign center
-            , alignItems center
-            , fontSize (px 32)
-            , lineHeight (pct 50)
-            ]
-        ]
-        [ text
-            """
-+---+---+
-
-|   ≣   |
-
-|   0   |
-
-|  /|\\  |
-
-|  / \\  |
-
-|       |
-
-=========
-                """
-        ]
-    , Html.Styled.pre
-        [ css
-            [ textAlign center
-            , alignItems center
-            , fontSize (px 32)
-            , lineHeight (pct 50)
-            ]
-        ]
-        [ text "You Lose!" ]
-    ]
-
-
-
--- style components
-
-
-wallpaperColor : String
-wallpaperColor =
-    "#C4FFF9"
-
-
-buttonMainColor : String
-buttonMainColor =
-    "#011627"
-
-
-unGuessedColor : String
-unGuessedColor =
-    "#6E8894"
-
-
-correctColor : String
-correctColor =
-    "#78BC61"
-
-
-wrongColor : String
-wrongColor =
-    "#875053"
-
-
-styledForm : List (Attribute msg) -> List (Html msg) -> Html msg
-styledForm =
-    styled Html.Styled.form
-        [ borderRadius (px 25)
-        , backgroundColor (hex wallpaperColor)
-        , width (pct 100)
-        , height (pct 100)
-        , alignSelf center
-        , paddingBottom (pct 2)
-        ]
-
-
-styledInput : List (Attribute msg) -> List (Html msg) -> Html msg
-styledInput =
-    styled Html.Styled.input
-        [ width (pct 25)
-        , padding2 (px 12) (px 20)
-        , margin2 (px 8) (px 0)
-        , border (px 0)
-        , borderRadius (px 10)
-        ]
-
-
-styledButtonMain : List (Attribute msg) -> List (Html msg) -> Html msg
-styledButtonMain =
-    styled Html.Styled.button
-        [ width (pct 30)
-        , backgroundColor (hex buttonMainColor)
-        , color (hex "#fff")
-        , padding4 (px 20) (px 20) (px 20) (px 20)
-        , border (px 0)
-        , margin4 (px 20) (px 20) (px 20) (px 20)
-        , borderRadius (px 20)
-        , fontSize (px 24)
-        ]
-
-
-styledButtonUnguessed : List (Attribute msg) -> List (Html msg) -> Html msg
-styledButtonUnguessed =
-    styled Html.Styled.button
-        [ width (pct 10)
-        , backgroundColor (hex unGuessedColor)
-        , color (hex "#fff")
-        , padding (px 10)
-        , marginTop (px 10)
-        , marginBottom (px 10)
-        , marginLeft (px 1)
-        , marginRight (px 1)
-        , border (px 0)
-        , borderRadius (px 20)
-        , fontSize (px 24)
-        ]
-
-
-styledButtonGuessedCorrect : List (Attribute msg) -> List (Html msg) -> Html msg
-styledButtonGuessedCorrect =
-    styled Html.Styled.button
-        [ width (pct 10)
-        , backgroundColor (hex correctColor)
-        , color (hex "#fff")
-        , padding (px 10)
-        , marginTop (px 10)
-        , marginBottom (px 10)
-        , marginLeft (px 1)
-        , marginRight (px 1)
-        , border (px 0)
-        , borderRadius (px 20)
-        , fontSize (px 24)
-        ]
-
-
-styledButtonGuessedWrong : List (Attribute msg) -> List (Html msg) -> Html msg
-styledButtonGuessedWrong =
-    styled Html.Styled.button
-        [ width (pct 10)
-        , backgroundColor (hex wrongColor)
-        , color (hex "#fff")
-        , padding (px 10)
-        , marginTop (px 10)
-        , marginBottom (px 10)
-        , marginLeft (px 1)
-        , marginRight (px 1)
-        , border (px 0)
-        , borderRadius (px 20)
-        , fontSize (px 24)
-        ]
-
-
-
--- main function
-
-
-main : Program () Model Msg
-main =
-    Browser.element
-        { init = init
-        , view = view >> toUnstyled
-        , update = update
-        , subscriptions = \_ -> Sub.none
-        }
