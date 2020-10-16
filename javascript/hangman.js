@@ -7703,8 +7703,8 @@ var $elm$core$Set$insert = F2(
 		return $elm$core$Set$Set_elm_builtin(
 			A3($elm$core$Dict$insert, key, _Utils_Tuple0, dict));
 	});
-var $author$project$Hangman$NewRandomNumber = function (a) {
-	return {$: 'NewRandomNumber', a: a};
+var $author$project$Hangman$NewRandomTextIndex = function (a) {
+	return {$: 'NewRandomTextIndex', a: a};
 };
 var $elm$random$Random$Generate = function (a) {
 	return {$: 'Generate', a: a};
@@ -7856,7 +7856,7 @@ var $elm$core$Array$length = function (_v0) {
 var $author$project$Hangman$randomTextIndex = function (text) {
 	return A2(
 		$elm$random$Random$generate,
-		$author$project$Hangman$NewRandomNumber,
+		$author$project$Hangman$NewRandomTextIndex,
 		A2(
 			$elm$random$Random$int,
 			0,
@@ -7896,22 +7896,20 @@ var $author$project$Hangman$update = F2(
 				return _Utils_Tuple2(
 					model,
 					$author$project$Hangman$randomTextIndex($author$project$Hangman$donQuixoteText));
-			case 'NewRandomNumber':
-				var randomNumber = message.a;
+			case 'NewRandomTextIndex':
+				var index = message.a;
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
 						{
-							hangmanPhrase: $author$project$Hangman$getRandomPhrase(randomNumber),
-							randomValue: randomNumber
+							hangmanPhrase: $author$project$Hangman$getRandomPhrase(index),
+							randomValue: index
 						}),
 					$elm$core$Platform$Cmd$none);
-			case 'Reset':
+			default:
 				return _Utils_Tuple2(
 					$author$project$Hangman$init(_Utils_Tuple0).a,
 					$elm$core$Platform$Cmd$none);
-			default:
-				return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
 		}
 	});
 var $author$project$Hangman$SaveHangmanPhrase = {$: 'SaveHangmanPhrase'};

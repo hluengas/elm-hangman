@@ -30,10 +30,9 @@ type Msg
     = SaveHangmanPhrase
     | SaveInputSoFar String
     | GuessButton String
-    | Reset
     | GenerateRandomTextIndex
     | NewRandomTextIndex Int
-    | NoOp
+    | Reset
 
 
 
@@ -106,9 +105,6 @@ update message model =
 
         Reset ->
             ( Tuple.first (init ()), Cmd.none )
-
-        NoOp ->
-            ( model, Cmd.none )
 
 
 
