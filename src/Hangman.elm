@@ -18,7 +18,6 @@ type alias Model =
     { hangmanPhrase : String
     , inputField : String
     , guessedChars : Set String
-    , randomValue : Int
     }
 
 
@@ -36,7 +35,7 @@ type Msg
 
 
 
--- init function
+-- init / model functions
 
 
 init : () -> ( Model, Cmd Msg )
@@ -44,10 +43,38 @@ init _ =
     ( { hangmanPhrase = " "
       , inputField = ""
       , guessedChars = Set.empty
-      , randomValue = 0
       }
     , Cmd.none
     )
+
+
+initWithHangmanPhrase : String -> ( Model, Cmd Msg )
+initWithHangmanPhrase phrase =
+    ( { hangmanPhrase = phrase
+      , inputField = ""
+      , guessedChars = Set.empty
+      }
+    , Cmd.none
+    )
+
+
+alterCharacterSet : Model -> String -> ( Model, Cmd Msg )
+alterCharacterSet model char =
+    ( { model | guessedChars = Set.insert char model.guessedChars }
+    , Cmd.none
+    )
+
+
+alterInputField : Model -> String -> ( Model, Cmd Msg )
+alterInputField model inputText =
+    ( { model | inputField = inputText }
+    , Cmd.none
+    )
+
+
+querryRandomTextIndex : Model -> ( Model, Cmd Msg )
+querryRandomTextIndex model =
+    ( model, randomTextIndex donQuixoteText )
 
 
 
@@ -76,35 +103,22 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update message model =
     case message of
         SaveInputSoFar inputText ->
-            ( { model | inputField = inputText }, Cmd.none )
+            alterInputField model inputText
 
         SaveHangmanPhrase ->
-            ( { model
-                | hangmanPhrase = model.inputField
-                , inputField = ""
-                , guessedChars = (Tuple.first (init ())).guessedChars
-              }
-            , Cmd.none
-            )
+            initWithHangmanPhrase model.inputField
 
         GuessButton char ->
-            ( { model | guessedChars = Set.insert char model.guessedChars }
-            , Cmd.none
-            )
+            alterCharacterSet model char
 
         GenerateRandomTextIndex ->
-            ( model, randomTextIndex donQuixoteText )
+            querryRandomTextIndex model
 
         NewRandomTextIndex index ->
-            ( { model
-                | randomValue = index
-                , hangmanPhrase = getRandomPhrase index
-              }
-            , Cmd.none
-            )
+            initWithHangmanPhrase (getRandomPhrase index)
 
         Reset ->
-            ( Tuple.first (init ()), Cmd.none )
+            init ()
 
 
 
@@ -202,10 +216,10 @@ hangmanArtView model =
 
         Just hangmanAscii ->
             if String.contains "_" (hiddenPhraseString model) then
-                div [] (winningHangmanHtml hangmanAscii)
+                div [] (livingHangmanHtml hangmanAscii)
 
             else
-                div [] (livingHangmanHtml hangmanAscii)
+                div [] (winningHangmanHtml hangmanAscii)
 
 
 winningHangmanHtml : String -> List (Html Msg)
@@ -473,30 +487,26 @@ listGuessedChars model =
     Set.toList model.guessedChars
 
 
+correctCharacterFilter : Model -> String -> Bool
+correctCharacterFilter model char =
+    String.contains char model.hangmanPhrase
+
+
+inCorrectCharacterFilter : Model -> String -> Bool
+inCorrectCharacterFilter model char =
+    not (String.contains char model.hangmanPhrase)
+
+
 listCorrectGuesses : Model -> List String
 listCorrectGuesses model =
     listGuessedChars model
-        |> List.filter
-            (\char ->
-                if String.contains char model.hangmanPhrase then
-                    True
-
-                else
-                    False
-            )
+        |> List.filter (correctCharacterFilter model)
 
 
 listIncorrectGuesses : Model -> List String
 listIncorrectGuesses model =
     listGuessedChars model
-        |> List.filter
-            (\char ->
-                if String.contains char model.hangmanPhrase then
-                    False
-
-                else
-                    True
-            )
+        |> List.filter (inCorrectCharacterFilter model)
 
 
 numIncorrectGuesses : Model -> Basics.Int
