@@ -218,8 +218,34 @@ hangmanArtView model =
             if String.contains "_" (hiddenPhraseString model) then
                 div [] (livingHangmanHtml hangmanAscii)
 
+            else if "\u{00A0}\u{00A0}\u{00A0}" == hiddenPhraseString model then
+                div [] (initialHangmanHtml hangmanAscii)
+
             else
                 div [] (winningHangmanHtml hangmanAscii)
+
+
+initialHangmanHtml : String -> List (Html Msg)
+initialHangmanHtml asciiArt =
+    [ Html.Styled.pre
+        [ css
+            [ textAlign center
+            , alignItems center
+            , fontSize (px 32)
+            , lineHeight (pct 50)
+            ]
+        ]
+        [ text asciiArt ]
+    , Html.Styled.pre
+        [ css
+            [ textAlign center
+            , alignItems center
+            , fontSize (px 32)
+            , lineHeight (pct 50)
+            ]
+        ]
+        [ text "Choose Phrase" ]
+    ]
 
 
 winningHangmanHtml : String -> List (Html Msg)

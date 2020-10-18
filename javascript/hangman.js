@@ -8795,6 +8795,49 @@ var $author$project$Hangman$hiddenPhraseString = function (model) {
 			$author$project$Hangman$hidePhraseCharacters(model),
 			A2($elm$core$String$split, '', model.hangmanPhrase)));
 };
+var $author$project$Hangman$initialHangmanHtml = function (asciiArt) {
+	return _List_fromArray(
+		[
+			A2(
+			$rtfeldman$elm_css$Html$Styled$pre,
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$Attributes$css(
+					_List_fromArray(
+						[
+							$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
+							$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center),
+							$rtfeldman$elm_css$Css$fontSize(
+							$rtfeldman$elm_css$Css$px(32)),
+							$rtfeldman$elm_css$Css$lineHeight(
+							$rtfeldman$elm_css$Css$pct(50))
+						]))
+				]),
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$text(asciiArt)
+				])),
+			A2(
+			$rtfeldman$elm_css$Html$Styled$pre,
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$Attributes$css(
+					_List_fromArray(
+						[
+							$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
+							$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center),
+							$rtfeldman$elm_css$Css$fontSize(
+							$rtfeldman$elm_css$Css$px(32)),
+							$rtfeldman$elm_css$Css$lineHeight(
+							$rtfeldman$elm_css$Css$pct(50))
+						]))
+				]),
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$text('Choose Phrase')
+				]))
+		]);
+};
 var $author$project$Hangman$livingHangmanHtml = function (asciiArt) {
 	return _List_fromArray(
 		[
@@ -8913,10 +8956,13 @@ var $author$project$Hangman$hangmanArtView = function (model) {
 			$author$project$Hangman$hiddenPhraseString(model)) ? A2(
 			$rtfeldman$elm_css$Html$Styled$div,
 			_List_Nil,
-			$author$project$Hangman$livingHangmanHtml(hangmanAscii)) : A2(
+			$author$project$Hangman$livingHangmanHtml(hangmanAscii)) : (('\u00A0\u00A0\u00A0' === $author$project$Hangman$hiddenPhraseString(model)) ? A2(
 			$rtfeldman$elm_css$Html$Styled$div,
 			_List_Nil,
-			$author$project$Hangman$winningHangmanHtml(hangmanAscii));
+			$author$project$Hangman$initialHangmanHtml(hangmanAscii)) : A2(
+			$rtfeldman$elm_css$Html$Styled$div,
+			_List_Nil,
+			$author$project$Hangman$winningHangmanHtml(hangmanAscii)));
 	}
 };
 var $rtfeldman$elm_css$Html$Styled$span = $rtfeldman$elm_css$Html$Styled$node('span');
