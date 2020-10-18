@@ -78,7 +78,7 @@ alterInputField model inputText =
 
 querryRandomTextIndex : Model -> ( Model, Cmd Msg )
 querryRandomTextIndex model =
-    ( model, randomTextIndex donQuixoteText )
+    ( model, randomTextIndex sourceText )
 
 
 
@@ -576,7 +576,7 @@ alphabeticWordsFromText text =
 getRandomPhrase : Int -> String
 getRandomPhrase rndNum =
     [ case
-        Array.get rndNum (alphabeticWordsFromText donQuixoteText)
+        Array.get rndNum (alphabeticWordsFromText sourceText)
       of
         Nothing ->
             "default"
@@ -584,7 +584,7 @@ getRandomPhrase rndNum =
         Just string ->
             string
     , case
-        Array.get (rndNum + 1) (alphabeticWordsFromText donQuixoteText)
+        Array.get (rndNum + 1) (alphabeticWordsFromText sourceText)
       of
         Nothing ->
             "default"
@@ -592,7 +592,7 @@ getRandomPhrase rndNum =
         Just string ->
             string
     , case
-        Array.get (rndNum + 2) (alphabeticWordsFromText donQuixoteText)
+        Array.get (rndNum + 2) (alphabeticWordsFromText sourceText)
       of
         Nothing ->
             "default"
@@ -706,8 +706,8 @@ hangmanArtAlive =
 =========""" ]
 
 
-donQuixoteText : String
-donQuixoteText =
+sourceText : String
+sourceText =
     """
 In a village of La Mancha, the name of which I have no desire to call
 to mind, there lived not long since one of those gentlemen that keep a
