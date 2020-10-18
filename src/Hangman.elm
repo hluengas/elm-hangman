@@ -50,12 +50,16 @@ init _ =
 
 initWithHangmanPhrase : String -> ( Model, Cmd Msg )
 initWithHangmanPhrase phrase =
-    ( { hangmanPhrase = phrase
-      , inputField = ""
-      , guessedChars = Set.empty
-      }
-    , Cmd.none
-    )
+    if phrase == "" then
+        init ()
+
+    else
+        ( { hangmanPhrase = phrase
+          , inputField = ""
+          , guessedChars = Set.empty
+          }
+        , Cmd.none
+        )
 
 
 alterCharacterSet : Model -> String -> ( Model, Cmd Msg )

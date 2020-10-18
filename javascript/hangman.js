@@ -7722,7 +7722,7 @@ var $author$project$Hangman$getRandomPhrase = function (rndNum) {
 			]));
 };
 var $author$project$Hangman$initWithHangmanPhrase = function (phrase) {
-	return _Utils_Tuple2(
+	return (phrase === '') ? $author$project$Hangman$init(_Utils_Tuple0) : _Utils_Tuple2(
 		{guessedChars: $elm$core$Set$empty, hangmanPhrase: phrase, inputField: ''},
 		$elm$core$Platform$Cmd$none);
 };
