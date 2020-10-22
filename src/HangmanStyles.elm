@@ -89,7 +89,7 @@ styledGenerateButton =
 styledButtonUnguessed : List (Attribute msg) -> List (Html msg) -> Html msg
 styledButtonUnguessed =
     styled Html.Styled.button
-        [ width (pct 10)
+        [ width (pct 9)
         , backgroundColor (hex unGuessedColor)
         , color (hex textColor)
         , padding4 (pct 1) (px 0) (pct 1) (px 0)
@@ -106,7 +106,7 @@ styledButtonUnguessed =
 styledButtonGuessedCorrect : List (Attribute msg) -> List (Html msg) -> Html msg
 styledButtonGuessedCorrect =
     styled Html.Styled.button
-        [ width (pct 10)
+        [ width (pct 9)
         , backgroundColor (hex correctColor)
         , color (hex textColor)
         , padding4 (pct 1) (px 0) (pct 1) (px 0)
@@ -123,7 +123,7 @@ styledButtonGuessedCorrect =
 styledButtonGuessedWrong : List (Attribute msg) -> List (Html msg) -> Html msg
 styledButtonGuessedWrong =
     styled Html.Styled.button
-        [ width (pct 10)
+        [ width (pct 9)
         , backgroundColor (hex wrongColor)
         , color (hex textColor)
         , padding4 (pct 1) (px 0) (pct 1) (px 0)

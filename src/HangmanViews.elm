@@ -9,6 +9,9 @@ import HangmanTypes exposing (Model, Msg(..))
 import Html.Styled exposing (Html, div, h1, pre, text)
 import Html.Styled.Attributes exposing (css, id, type_, value)
 import Html.Styled.Events exposing (onClick, onInput)
+import HangmanSourceTexts exposing (firstKeyRow)
+import HangmanSourceTexts exposing (secondKeyRow)
+import HangmanSourceTexts exposing (thirdKeyRow)
 
 
 
@@ -104,23 +107,10 @@ phraseButtonsView =
         ]
 
 
-
--- gameButtonsView : Html Msg
--- gameButtonsView =
---     div
---         [ css
---             [ textAlign center
---             , alignItems center
---             , padding4 (px 2) (px 2) (px 2) (px 2)
---             ]
---         ]
---         [
---         ]
-
-
 characterButtonsView : Model -> Html Msg
 characterButtonsView model =
-    alphabet
+    div [] [
+        firstKeyRow
         |> List.map (coloredCharacterButton model)
         |> div
             [ css
@@ -128,6 +118,24 @@ characterButtonsView model =
                 , alignItems center
                 ]
             ]
+        , secondKeyRow
+        |> List.map (coloredCharacterButton model)
+        |> div
+            [ css
+                [ textAlign center
+                , alignItems center
+                ]
+            ]
+        , thirdKeyRow
+        |> List.map (coloredCharacterButton model)
+        |> div
+            [ css
+                [ textAlign center
+                , alignItems center
+                ]
+            ]
+    ]
+    
 
 
 hangmanPhraseView : Model -> Html Msg

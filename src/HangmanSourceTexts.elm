@@ -1,11 +1,26 @@
-module HangmanSourceTexts exposing (alphabet, hangmanArtAlive, hangmanArtDead, longWords, mediumWords, sourceText)
+module HangmanSourceTexts exposing (alphabet, hangmanArtAlive, hangmanArtDead, longWords, mediumWords, sourceText, firstKeyRow, secondKeyRow, thirdKeyRow)
 
 import Array exposing (Array)
 
 
 alphabet : List String
 alphabet =
-    String.split "" "QWERTYUIOPASDFGHJKLZXCVBNM"
+    String.split "" "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+
+firstKeyRow : List String
+firstKeyRow =
+    String.split "" "QWERTYUIOP"
+
+
+secondKeyRow : List String
+secondKeyRow =
+    String.split "" "ASDFGHJKL"
+
+
+thirdKeyRow : List String
+thirdKeyRow =
+    String.split "" "ZXCVBNM"
 
 
 hangmanArtDead : String
