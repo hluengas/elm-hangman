@@ -16,7 +16,11 @@ import Html.Styled.Events exposing (onSubmit)
 view : Model -> Html Msg
 view model =
     div
-        [ css [ color (hex textColor) ] ]
+        [ css
+            [ color (hex textColor)
+            , fontFamily sansSerif
+            ]
+        ]
         [ styledForm [ onSubmit SaveHangmanPhrase ]
             [ titleView
             , phraseInputView model

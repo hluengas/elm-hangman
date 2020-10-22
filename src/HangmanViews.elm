@@ -4,7 +4,7 @@ import Array
 import Css exposing (alignItems, center, fontSize, lineHeight, padding4, pct, px, textAlign)
 import HangmanHelpers exposing (addCharactersToSpan, coloredCharacterButton, hiddenPhraseString, hidePhraseCharacters, numIncorrectGuesses)
 import HangmanSourceTexts exposing (alphabet, hangmanArtAlive, hangmanArtDead, longWords, mediumWords, sourceText)
-import HangmanStyles exposing (styledButtonMain, styledInput)
+import HangmanStyles exposing (styledButtonMain, styledGenerateButton, styledInput)
 import HangmanTypes exposing (Model, Msg(..))
 import Html.Styled exposing (Html, div, h1, pre, text)
 import Html.Styled.Attributes exposing (css, id, type_, value)
@@ -20,7 +20,7 @@ titleView =
     div
         [ css
             [ textAlign center
-            , fontSize (px 32)
+            , fontSize (px 18)
             ]
         ]
         [ h1 [] [ text "Hangman Game" ] ]
@@ -81,26 +81,26 @@ phraseButtonsView =
             , padding4 (px 2) (px 2) (px 2) (px 2)
             ]
         ]
-        [ styledButtonMain
+        [ styledGenerateButton
             [ type_ "button"
             , onClick (GenerateRandomTextIndex sourceText 5)
             ]
-            [ text "Generate Easy" ]
-        , styledButtonMain
+            [ text "Randomly Generate Easy" ]
+        , styledGenerateButton
             [ type_ "button"
             , onClick (GenerateRandomTextIndex sourceText 3)
             ]
-            [ text "Generate Medium" ]
-        , styledButtonMain
+            [ text "Randomly Generate Medium" ]
+        , styledGenerateButton
             [ type_ "button"
             , onClick (GenerateRandomTextIndex longWords 1)
             ]
-            [ text "Generate Hard" ]
-        , styledButtonMain
+            [ text "Randomly Generate Hard" ]
+        , styledGenerateButton
             [ type_ "button"
             , onClick (GenerateRandomTextIndex mediumWords 1)
             ]
-            [ text "Generate Very Hard" ]
+            [ text "Randomly Generate Very Hard" ]
         ]
 
 

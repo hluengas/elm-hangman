@@ -1,4 +1,4 @@
-module HangmanStyles exposing (styledButtonGuessedCorrect, styledButtonGuessedWrong, styledButtonMain, styledButtonUnguessed, styledForm, styledInput)
+module HangmanStyles exposing (styledButtonGuessedCorrect, styledButtonGuessedWrong, styledButtonMain, styledButtonUnguessed, styledForm, styledGenerateButton, styledInput)
 
 import Css
     exposing
@@ -61,10 +61,24 @@ styledInput =
 styledButtonMain : List (Attribute msg) -> List (Html msg) -> Html msg
 styledButtonMain =
     styled Html.Styled.button
-        [ width (pct 24)
+        [ width (pct 30)
         , backgroundColor (hex buttonMainColor)
         , color (hex textColor)
-        , padding (px 15)
+        , padding4 (pct 1) (px 0) (pct 1) (px 0)
+        , border (px 0)
+        , margin4 (px 5) (px 5) (px 5) (px 5)
+        , borderRadius (px 20)
+        , fontSize (px 24)
+        ]
+
+
+styledGenerateButton : List (Attribute msg) -> List (Html msg) -> Html msg
+styledGenerateButton =
+    styled Html.Styled.button
+        [ width (pct 40)
+        , backgroundColor (hex buttonMainColor)
+        , color (hex textColor)
+        , padding4 (pct 1) (px 0) (pct 1) (px 0)
         , border (px 0)
         , margin4 (px 5) (px 5) (px 5) (px 5)
         , borderRadius (px 20)
@@ -78,7 +92,7 @@ styledButtonUnguessed =
         [ width (pct 10)
         , backgroundColor (hex unGuessedColor)
         , color (hex textColor)
-        , padding (px 15)
+        , padding4 (pct 1) (px 0) (pct 1) (px 0)
         , marginTop (px 5)
         , marginBottom (px 5)
         , marginLeft (px 5)
@@ -95,7 +109,7 @@ styledButtonGuessedCorrect =
         [ width (pct 10)
         , backgroundColor (hex correctColor)
         , color (hex textColor)
-        , padding (px 15)
+        , padding4 (pct 1) (px 0) (pct 1) (px 0)
         , marginTop (px 5)
         , marginBottom (px 5)
         , marginLeft (px 5)
@@ -112,7 +126,7 @@ styledButtonGuessedWrong =
         [ width (pct 10)
         , backgroundColor (hex wrongColor)
         , color (hex textColor)
-        , padding (px 15)
+        , padding4 (pct 1) (px 0) (pct 1) (px 0)
         , marginTop (px 5)
         , marginBottom (px 5)
         , marginLeft (px 5)
