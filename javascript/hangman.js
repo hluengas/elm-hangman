@@ -7887,11 +7887,12 @@ var $author$project$HangmanHelpers$randomTextIndex = function (text) {
 			$elm$core$Array$length(
 				$author$project$HangmanHelpers$alphabeticWordsFromText(text))));
 };
-var $author$project$HangmanModels$querryRandomTextIndex = function (model) {
-	return _Utils_Tuple2(
-		model,
-		$author$project$HangmanHelpers$randomTextIndex($author$project$HangmanSourceTexts$sourceText));
-};
+var $author$project$HangmanModels$querryRandomTextIndex = F2(
+	function (model, text) {
+		return _Utils_Tuple2(
+			model,
+			$author$project$HangmanHelpers$randomTextIndex(text));
+	});
 var $author$project$Hangman$update = F2(
 	function (message, model) {
 		switch (message.$) {
@@ -7904,7 +7905,8 @@ var $author$project$Hangman$update = F2(
 				var _char = message.a;
 				return A2($author$project$HangmanModels$alterCharacterSet, model, _char);
 			case 'GenerateRandomTextIndex':
-				return $author$project$HangmanModels$querryRandomTextIndex(model);
+				var text = message.a;
+				return A2($author$project$HangmanModels$querryRandomTextIndex, model, text);
 			case 'NewRandomTextIndex':
 				var index = message.a;
 				return $author$project$HangmanModels$initWithHangmanPhrase(
@@ -9006,7 +9008,9 @@ var $author$project$HangmanViews$hangmanPhraseView = function (model) {
 				$author$project$HangmanHelpers$hidePhraseCharacters(model),
 				A2($elm$core$String$split, '', model.hangmanPhrase))));
 };
-var $author$project$HangmanTypes$GenerateRandomTextIndex = {$: 'GenerateRandomTextIndex'};
+var $author$project$HangmanTypes$GenerateRandomTextIndex = function (a) {
+	return {$: 'GenerateRandomTextIndex', a: a};
+};
 var $author$project$HangmanTypes$Reset = {$: 'Reset'};
 var $rtfeldman$elm_css$Css$prop4 = F5(
 	function (key, argA, argB, argC, argD) {
@@ -9076,7 +9080,8 @@ var $author$project$HangmanViews$mainButtonsView = A2(
 			_List_fromArray(
 				[
 					$rtfeldman$elm_css$Html$Styled$Attributes$type_('button'),
-					$rtfeldman$elm_css$Html$Styled$Events$onClick($author$project$HangmanTypes$GenerateRandomTextIndex)
+					$rtfeldman$elm_css$Html$Styled$Events$onClick(
+					$author$project$HangmanTypes$GenerateRandomTextIndex($author$project$HangmanSourceTexts$sourceText))
 				]),
 			_List_fromArray(
 				[

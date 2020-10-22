@@ -2,9 +2,9 @@ module HangmanHelpers exposing (addCharactersToSpan, coloredCharacterButton, get
 
 import Array exposing (Array, get, length)
 import Css exposing (fontSize, padding, px)
-import HangmanTypes exposing (Model, Msg(..))
 import HangmanSourceTexts exposing (sourceText)
 import HangmanStyles exposing (styledButtonGuessedCorrect, styledButtonGuessedWrong, styledButtonUnguessed)
+import HangmanTypes exposing (Model, Msg(..))
 import Html.Styled exposing (Html, span, text)
 import Html.Styled.Attributes exposing (css, type_)
 import Html.Styled.Events exposing (onClick)

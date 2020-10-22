@@ -2,6 +2,8 @@ module HangmanTypes exposing (Model, Msg(..))
 
 import Set exposing (Set)
 
+
+
 -- Model type
 
 
@@ -20,6 +22,6 @@ type Msg
     = SaveHangmanPhrase
     | SaveInputSoFar String
     | GuessButton String
-    | GenerateRandomTextIndex
+    | GenerateRandomTextIndex String
     | NewRandomTextIndex Int
     | Reset

@@ -17,7 +17,7 @@ init _ =
     )
 
 
-initRecord : { hangmanPhrase : String, inputField : String, guessedChars : Set.Set a }
+initRecord : Model
 initRecord =
     { hangmanPhrase = " "
     , inputField = ""
@@ -50,6 +50,6 @@ alterInputField model inputText =
     )
 
 
-querryRandomTextIndex : Model -> ( Model, Cmd Msg )
-querryRandomTextIndex model =
-    ( model, randomTextIndex sourceText )
+querryRandomTextIndex : Model -> String -> ( Model, Cmd Msg )
+querryRandomTextIndex model text =
+    ( model, randomTextIndex text )

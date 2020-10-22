@@ -3,9 +3,9 @@ module HangmanViews exposing (characterButtonsView, hangmanArtView, hangmanPhras
 import Array
 import Css exposing (alignItems, center, fontSize, lineHeight, padding4, pct, px, textAlign)
 import HangmanHelpers exposing (addCharactersToSpan, coloredCharacterButton, hiddenPhraseString, hidePhraseCharacters, numIncorrectGuesses)
-import HangmanTypes exposing (Model, Msg(..))
-import HangmanSourceTexts exposing (alphabet, hangmanArtAlive, hangmanArtDead)
+import HangmanSourceTexts exposing (alphabet, hangmanArtAlive, hangmanArtDead, sourceText)
 import HangmanStyles exposing (styledButtonMain, styledInput)
+import HangmanTypes exposing (Model, Msg(..))
 import Html.Styled exposing (Html, div, h1, pre, text)
 import Html.Styled.Attributes exposing (css, id, type_, value)
 import Html.Styled.Events exposing (onClick, onInput)
@@ -56,7 +56,7 @@ mainButtonsView =
         ]
         [ styledButtonMain
             [ type_ "button"
-            , onClick GenerateRandomTextIndex
+            , onClick (GenerateRandomTextIndex sourceText)
             ]
             [ text "Random Phrase" ]
         , styledButtonMain

@@ -36,8 +36,8 @@ update message model =
         GuessButton char ->
             alterCharacterSet model char
 
-        GenerateRandomTextIndex ->
-            querryRandomTextIndex model
+        GenerateRandomTextIndex text ->
+            querryRandomTextIndex model text
 
         NewRandomTextIndex index ->
             initWithHangmanPhrase (getRandomPhrase index)
