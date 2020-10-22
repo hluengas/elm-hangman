@@ -1,7 +1,5 @@
 module HangmanStyles exposing (styledButtonGuessedCorrect, styledButtonGuessedWrong, styledButtonMain, styledButtonUnguessed, styledForm, styledInput)
 
--- import Css exposing (..)
-
 import Css
     exposing
         ( alignSelf
@@ -27,7 +25,7 @@ import Css
         , px
         , width
         )
-import HangmanColors exposing (buttonMainColor, correctColor, unGuessedColor, wallpaperColor, wrongColor)
+import HangmanColors exposing (buttonMainColor, correctColor, textColor, unGuessedColor, wallpaperColor, wrongColor)
 import Html.Styled exposing (Attribute, Html, styled)
 
 
@@ -55,6 +53,8 @@ styledInput =
         , margin2 (px 8) (px 0)
         , border (px 0)
         , borderRadius (px 10)
+        , color (hex textColor)
+        , backgroundColor (hex buttonMainColor)
         ]
 
 
@@ -63,7 +63,7 @@ styledButtonMain =
     styled Html.Styled.button
         [ width (pct 20)
         , backgroundColor (hex buttonMainColor)
-        , color (hex "#fff")
+        , color (hex textColor)
         , padding4 (px 20) (px 20) (px 20) (px 20)
         , border (px 0)
         , margin4 (px 20) (px 20) (px 20) (px 20)
@@ -77,7 +77,7 @@ styledButtonUnguessed =
     styled Html.Styled.button
         [ width (pct 10)
         , backgroundColor (hex unGuessedColor)
-        , color (hex "#fff")
+        , color (hex textColor)
         , padding (px 10)
         , marginTop (px 10)
         , marginBottom (px 10)
@@ -94,7 +94,7 @@ styledButtonGuessedCorrect =
     styled Html.Styled.button
         [ width (pct 10)
         , backgroundColor (hex correctColor)
-        , color (hex "#fff")
+        , color (hex textColor)
         , padding (px 10)
         , marginTop (px 10)
         , marginBottom (px 10)
@@ -111,7 +111,7 @@ styledButtonGuessedWrong =
     styled Html.Styled.button
         [ width (pct 10)
         , backgroundColor (hex wrongColor)
-        , color (hex "#fff")
+        , color (hex textColor)
         , padding (px 10)
         , marginTop (px 10)
         , marginBottom (px 10)

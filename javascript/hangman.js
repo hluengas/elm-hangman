@@ -8225,7 +8225,7 @@ var $rtfeldman$elm_css$Html$Styled$button = $rtfeldman$elm_css$Html$Styled$node(
 var $rtfeldman$elm_css$Css$color = function (c) {
 	return A2($rtfeldman$elm_css$Css$property, 'color', c.value);
 };
-var $author$project$HangmanColors$correctColor = '#78BC61';
+var $author$project$HangmanColors$correctColor = '#395c35';
 var $rtfeldman$elm_css$Css$fontSize = $rtfeldman$elm_css$Css$prop1('font-size');
 var $rtfeldman$elm_css$Css$withPrecedingHash = function (str) {
 	return A2($elm$core$String$startsWith, '#', str) ? str : A2(
@@ -8656,6 +8656,7 @@ var $rtfeldman$elm_css$Html$Styled$styled = F4(
 				attrs),
 			children);
 	});
+var $author$project$HangmanColors$textColor = '#d7d8da';
 var $rtfeldman$elm_css$Css$width = $rtfeldman$elm_css$Css$prop1('width');
 var $author$project$HangmanStyles$styledButtonGuessedCorrect = A2(
 	$rtfeldman$elm_css$Html$Styled$styled,
@@ -8667,7 +8668,7 @@ var $author$project$HangmanStyles$styledButtonGuessedCorrect = A2(
 			$rtfeldman$elm_css$Css$backgroundColor(
 			$rtfeldman$elm_css$Css$hex($author$project$HangmanColors$correctColor)),
 			$rtfeldman$elm_css$Css$color(
-			$rtfeldman$elm_css$Css$hex('#fff')),
+			$rtfeldman$elm_css$Css$hex($author$project$HangmanColors$textColor)),
 			$rtfeldman$elm_css$Css$padding(
 			$rtfeldman$elm_css$Css$px(10)),
 			$rtfeldman$elm_css$Css$marginTop(
@@ -8685,7 +8686,7 @@ var $author$project$HangmanStyles$styledButtonGuessedCorrect = A2(
 			$rtfeldman$elm_css$Css$fontSize(
 			$rtfeldman$elm_css$Css$px(24))
 		]));
-var $author$project$HangmanColors$wrongColor = '#875053';
+var $author$project$HangmanColors$wrongColor = '#b04f21';
 var $author$project$HangmanStyles$styledButtonGuessedWrong = A2(
 	$rtfeldman$elm_css$Html$Styled$styled,
 	$rtfeldman$elm_css$Html$Styled$button,
@@ -8696,7 +8697,7 @@ var $author$project$HangmanStyles$styledButtonGuessedWrong = A2(
 			$rtfeldman$elm_css$Css$backgroundColor(
 			$rtfeldman$elm_css$Css$hex($author$project$HangmanColors$wrongColor)),
 			$rtfeldman$elm_css$Css$color(
-			$rtfeldman$elm_css$Css$hex('#fff')),
+			$rtfeldman$elm_css$Css$hex($author$project$HangmanColors$textColor)),
 			$rtfeldman$elm_css$Css$padding(
 			$rtfeldman$elm_css$Css$px(10)),
 			$rtfeldman$elm_css$Css$marginTop(
@@ -8714,7 +8715,7 @@ var $author$project$HangmanStyles$styledButtonGuessedWrong = A2(
 			$rtfeldman$elm_css$Css$fontSize(
 			$rtfeldman$elm_css$Css$px(24))
 		]));
-var $author$project$HangmanColors$unGuessedColor = '#6E8894';
+var $author$project$HangmanColors$unGuessedColor = '#3b7277';
 var $author$project$HangmanStyles$styledButtonUnguessed = A2(
 	$rtfeldman$elm_css$Html$Styled$styled,
 	$rtfeldman$elm_css$Html$Styled$button,
@@ -8725,7 +8726,7 @@ var $author$project$HangmanStyles$styledButtonUnguessed = A2(
 			$rtfeldman$elm_css$Css$backgroundColor(
 			$rtfeldman$elm_css$Css$hex($author$project$HangmanColors$unGuessedColor)),
 			$rtfeldman$elm_css$Css$color(
-			$rtfeldman$elm_css$Css$hex('#fff')),
+			$rtfeldman$elm_css$Css$hex($author$project$HangmanColors$textColor)),
 			$rtfeldman$elm_css$Css$padding(
 			$rtfeldman$elm_css$Css$px(10)),
 			$rtfeldman$elm_css$Css$marginTop(
@@ -8853,7 +8854,7 @@ var $rtfeldman$elm_css$Css$prop4 = F5(
 					[argA.value, argB.value, argC.value, argD.value])));
 	});
 var $rtfeldman$elm_css$Css$padding4 = $rtfeldman$elm_css$Css$prop4('padding');
-var $author$project$HangmanColors$buttonMainColor = '#011627';
+var $author$project$HangmanColors$buttonMainColor = '#3b7277';
 var $rtfeldman$elm_css$Css$margin4 = $rtfeldman$elm_css$Css$prop4('margin');
 var $author$project$HangmanStyles$styledButtonMain = A2(
 	$rtfeldman$elm_css$Html$Styled$styled,
@@ -8865,7 +8866,7 @@ var $author$project$HangmanStyles$styledButtonMain = A2(
 			$rtfeldman$elm_css$Css$backgroundColor(
 			$rtfeldman$elm_css$Css$hex($author$project$HangmanColors$buttonMainColor)),
 			$rtfeldman$elm_css$Css$color(
-			$rtfeldman$elm_css$Css$hex('#fff')),
+			$rtfeldman$elm_css$Css$hex($author$project$HangmanColors$textColor)),
 			A4(
 			$rtfeldman$elm_css$Css$padding4,
 			$rtfeldman$elm_css$Css$px(20),
@@ -9397,7 +9398,11 @@ var $author$project$HangmanStyles$styledInput = A2(
 			$rtfeldman$elm_css$Css$border(
 			$rtfeldman$elm_css$Css$px(0)),
 			$rtfeldman$elm_css$Css$borderRadius(
-			$rtfeldman$elm_css$Css$px(10))
+			$rtfeldman$elm_css$Css$px(10)),
+			$rtfeldman$elm_css$Css$color(
+			$rtfeldman$elm_css$Css$hex($author$project$HangmanColors$textColor)),
+			$rtfeldman$elm_css$Css$backgroundColor(
+			$rtfeldman$elm_css$Css$hex($author$project$HangmanColors$buttonMainColor))
 		]));
 var $rtfeldman$elm_css$Html$Styled$Attributes$value = $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty('value');
 var $author$project$HangmanViews$phraseInputView = function (model) {
@@ -9451,7 +9456,7 @@ var $rtfeldman$elm_css$Css$alignSelf = function (fn) {
 var $rtfeldman$elm_css$Html$Styled$form = $rtfeldman$elm_css$Html$Styled$node('form');
 var $rtfeldman$elm_css$Css$height = $rtfeldman$elm_css$Css$prop1('height');
 var $rtfeldman$elm_css$Css$paddingBottom = $rtfeldman$elm_css$Css$prop1('padding-bottom');
-var $author$project$HangmanColors$wallpaperColor = '#C4FFF9';
+var $author$project$HangmanColors$wallpaperColor = '#05272d';
 var $author$project$HangmanStyles$styledForm = A2(
 	$rtfeldman$elm_css$Html$Styled$styled,
 	$rtfeldman$elm_css$Html$Styled$form,
@@ -9495,7 +9500,15 @@ var $author$project$HangmanViews$titleView = A2(
 var $author$project$Hangman$view = function (model) {
 	return A2(
 		$rtfeldman$elm_css$Html$Styled$div,
-		_List_Nil,
+		_List_fromArray(
+			[
+				$rtfeldman$elm_css$Html$Styled$Attributes$css(
+				_List_fromArray(
+					[
+						$rtfeldman$elm_css$Css$color(
+						$rtfeldman$elm_css$Css$hex($author$project$HangmanColors$textColor))
+					]))
+			]),
 		_List_fromArray(
 			[
 				A2(

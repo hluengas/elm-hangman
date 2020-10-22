@@ -1,18 +1,27 @@
 module Hangman exposing (main)
 
 import Browser exposing (element)
+import Css exposing (..)
+import HangmanColors exposing (textColor)
 import HangmanHelpers exposing (getRandomPhrase)
 import HangmanModels exposing (alterCharacterSet, alterInputField, init, initWithHangmanPhrase, querryRandomTextIndex, revealPhrase)
 import HangmanStyles exposing (styledForm)
 import HangmanTypes exposing (Model, Msg(..))
 import HangmanViews exposing (characterButtonsView, gameButtonsView, hangmanArtView, hangmanPhraseView, inputButtonView, phraseButtonsView, phraseInputView, titleView)
 import Html.Styled exposing (Html, div, toUnstyled)
+import Html.Styled.Attributes exposing (css)
 import Html.Styled.Events exposing (onSubmit)
 
 
 view : Model -> Html Msg
 view model =
-    div []
+    div
+        [ css
+            [ color (hex textColor)
+
+            -- , backgroundColor (hex textColor)
+            ]
+        ]
         [ styledForm [ onSubmit SaveHangmanPhrase ]
             [ titleView
             , phraseInputView model
