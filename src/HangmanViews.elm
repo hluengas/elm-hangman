@@ -1,9 +1,9 @@
-module HangmanViews exposing (characterButtonsView, hangmanArtView, hangmanPhraseView, mainButtonsView, phraseInputView, titleView)
+module HangmanViews exposing (characterButtonsView, gameButtonsView, hangmanArtView, hangmanPhraseView, inputButtonView, phraseButtonsView, phraseInputView, titleView)
 
 import Array
 import Css exposing (alignItems, center, fontSize, lineHeight, padding4, pct, px, textAlign)
 import HangmanHelpers exposing (addCharactersToSpan, coloredCharacterButton, hiddenPhraseString, hidePhraseCharacters, numIncorrectGuesses)
-import HangmanSourceTexts exposing (alphabet, hangmanArtAlive, hangmanArtDead, sourceText)
+import HangmanSourceTexts exposing (alphabet, hangmanArtAlive, hangmanArtDead, longWords, mediumWords, sourceText)
 import HangmanStyles exposing (styledButtonMain, styledInput)
 import HangmanTypes exposing (Model, Msg(..))
 import Html.Styled exposing (Html, div, h1, pre, text)
@@ -45,8 +45,8 @@ phraseInputView model =
         ]
 
 
-mainButtonsView : Html Msg
-mainButtonsView =
+inputButtonView : Html Msg
+inputButtonView =
     div
         [ css
             [ textAlign center
@@ -56,19 +56,63 @@ mainButtonsView =
         ]
         [ styledButtonMain
             [ type_ "button"
-            , onClick (GenerateRandomTextIndex sourceText)
-            ]
-            [ text "Random Phrase" ]
-        , styledButtonMain
-            [ type_ "button"
             , onClick SaveHangmanPhrase
             ]
             [ text "Submit Phrase" ]
+        ]
+
+
+phraseButtonsView : Html Msg
+phraseButtonsView =
+    div
+        [ css
+            [ textAlign center
+            , alignItems center
+            , padding4 (px 2) (px 2) (px 2) (px 2)
+            ]
+        ]
+        [ styledButtonMain
+            [ type_ "button"
+            , onClick (GenerateRandomTextIndex sourceText 5)
+            ]
+            [ text "Generate Easy" ]
         , styledButtonMain
+            [ type_ "button"
+            , onClick (GenerateRandomTextIndex sourceText 3)
+            ]
+            [ text "Generate Medium" ]
+        , styledButtonMain
+            [ type_ "button"
+            , onClick (GenerateRandomTextIndex longWords 1)
+            ]
+            [ text "Generate Hard" ]
+        , styledButtonMain
+            [ type_ "button"
+            , onClick (GenerateRandomTextIndex mediumWords 1)
+            ]
+            [ text "Generate Very Hard" ]
+        ]
+
+
+gameButtonsView : Html Msg
+gameButtonsView =
+    div
+        [ css
+            [ textAlign center
+            , alignItems center
+            , padding4 (px 2) (px 2) (px 2) (px 2)
+            ]
+        ]
+        [ styledButtonMain
             [ type_ "button"
             , onClick Reset
             ]
             [ text "Reset Game" ]
+        , styledButtonMain
+            [ type_ "button"
+            , onClick RevealPhrase
+            ]
+            [ text "Reveal Phrase" ]
         ]
 
 

@@ -61,7 +61,7 @@ styledInput =
 styledButtonMain : List (Attribute msg) -> List (Html msg) -> Html msg
 styledButtonMain =
     styled Html.Styled.button
-        [ width (pct 30)
+        [ width (pct 20)
         , backgroundColor (hex buttonMainColor)
         , color (hex "#fff")
         , padding4 (px 20) (px 20) (px 20) (px 20)

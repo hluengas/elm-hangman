@@ -2,10 +2,10 @@ module Hangman exposing (main)
 
 import Browser exposing (element)
 import HangmanHelpers exposing (getRandomPhrase)
-import HangmanModels exposing (alterCharacterSet, alterInputField, init, initWithHangmanPhrase, querryRandomTextIndex)
+import HangmanModels exposing (alterCharacterSet, alterInputField, init, initWithHangmanPhrase, querryRandomTextIndex, revealPhrase)
 import HangmanStyles exposing (styledForm)
 import HangmanTypes exposing (Model, Msg(..))
-import HangmanViews exposing (characterButtonsView, hangmanArtView, hangmanPhraseView, mainButtonsView, phraseInputView, titleView)
+import HangmanViews exposing (characterButtonsView, gameButtonsView, hangmanArtView, hangmanPhraseView, inputButtonView, phraseButtonsView, phraseInputView, titleView)
 import Html.Styled exposing (Html, div, toUnstyled)
 import Html.Styled.Events exposing (onSubmit)
 
@@ -16,7 +16,9 @@ view model =
         [ styledForm [ onSubmit SaveHangmanPhrase ]
             [ titleView
             , phraseInputView model
-            , mainButtonsView
+            , inputButtonView
+            , phraseButtonsView
+            , gameButtonsView
             , characterButtonsView model
             , hangmanPhraseView model
             , hangmanArtView model
@@ -36,11 +38,14 @@ update message model =
         GuessButton char ->
             alterCharacterSet model char
 
-        GenerateRandomTextIndex text ->
-            querryRandomTextIndex model text
+        GenerateRandomTextIndex text count ->
+            querryRandomTextIndex model text count
 
         NewRandomTextIndex index ->
-            initWithHangmanPhrase (getRandomPhrase index)
+            initWithHangmanPhrase (getRandomPhrase index model.selectedWordCount model.selectedSourceText)
+
+        RevealPhrase ->
+            revealPhrase model
 
         Reset ->
             init ()
