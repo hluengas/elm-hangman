@@ -7,7 +7,7 @@ import HangmanHelpers exposing (getRandomPhrase)
 import HangmanModels exposing (alterCharacterSet, alterInputField, init, initWithHangmanPhrase, querryRandomTextIndex, revealPhrase)
 import HangmanStyles exposing (styledForm)
 import HangmanTypes exposing (Model, Msg(..))
-import HangmanViews exposing (characterButtonsView, gameButtonsView, hangmanArtView, hangmanPhraseView, inputButtonView, phraseButtonsView, phraseInputView, titleView)
+import HangmanViews exposing (characterButtonsView, gameButtonsView, hangmanArtView, hangmanPhraseView, phraseButtonsView, phraseInputView, titleView)
 import Html.Styled exposing (Html, div, toUnstyled)
 import Html.Styled.Attributes exposing (css)
 import Html.Styled.Events exposing (onSubmit)
@@ -16,18 +16,12 @@ import Html.Styled.Events exposing (onSubmit)
 view : Model -> Html Msg
 view model =
     div
-        [ css
-            [ color (hex textColor)
-
-            -- , backgroundColor (hex textColor)
-            ]
-        ]
+        [ css [ color (hex textColor) ] ]
         [ styledForm [ onSubmit SaveHangmanPhrase ]
             [ titleView
             , phraseInputView model
-            , inputButtonView
-            , phraseButtonsView
             , gameButtonsView
+            , phraseButtonsView
             , characterButtonsView model
             , hangmanPhraseView model
             , hangmanArtView model

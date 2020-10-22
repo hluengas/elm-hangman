@@ -8670,15 +8670,15 @@ var $author$project$HangmanStyles$styledButtonGuessedCorrect = A2(
 			$rtfeldman$elm_css$Css$color(
 			$rtfeldman$elm_css$Css$hex($author$project$HangmanColors$textColor)),
 			$rtfeldman$elm_css$Css$padding(
-			$rtfeldman$elm_css$Css$px(10)),
+			$rtfeldman$elm_css$Css$px(15)),
 			$rtfeldman$elm_css$Css$marginTop(
-			$rtfeldman$elm_css$Css$px(10)),
+			$rtfeldman$elm_css$Css$px(5)),
 			$rtfeldman$elm_css$Css$marginBottom(
-			$rtfeldman$elm_css$Css$px(10)),
+			$rtfeldman$elm_css$Css$px(5)),
 			$rtfeldman$elm_css$Css$marginLeft(
-			$rtfeldman$elm_css$Css$px(1)),
+			$rtfeldman$elm_css$Css$px(5)),
 			$rtfeldman$elm_css$Css$marginRight(
-			$rtfeldman$elm_css$Css$px(1)),
+			$rtfeldman$elm_css$Css$px(5)),
 			$rtfeldman$elm_css$Css$border(
 			$rtfeldman$elm_css$Css$px(0)),
 			$rtfeldman$elm_css$Css$borderRadius(
@@ -8699,15 +8699,15 @@ var $author$project$HangmanStyles$styledButtonGuessedWrong = A2(
 			$rtfeldman$elm_css$Css$color(
 			$rtfeldman$elm_css$Css$hex($author$project$HangmanColors$textColor)),
 			$rtfeldman$elm_css$Css$padding(
-			$rtfeldman$elm_css$Css$px(10)),
+			$rtfeldman$elm_css$Css$px(15)),
 			$rtfeldman$elm_css$Css$marginTop(
-			$rtfeldman$elm_css$Css$px(10)),
+			$rtfeldman$elm_css$Css$px(5)),
 			$rtfeldman$elm_css$Css$marginBottom(
-			$rtfeldman$elm_css$Css$px(10)),
+			$rtfeldman$elm_css$Css$px(5)),
 			$rtfeldman$elm_css$Css$marginLeft(
-			$rtfeldman$elm_css$Css$px(1)),
+			$rtfeldman$elm_css$Css$px(5)),
 			$rtfeldman$elm_css$Css$marginRight(
-			$rtfeldman$elm_css$Css$px(1)),
+			$rtfeldman$elm_css$Css$px(5)),
 			$rtfeldman$elm_css$Css$border(
 			$rtfeldman$elm_css$Css$px(0)),
 			$rtfeldman$elm_css$Css$borderRadius(
@@ -8728,15 +8728,15 @@ var $author$project$HangmanStyles$styledButtonUnguessed = A2(
 			$rtfeldman$elm_css$Css$color(
 			$rtfeldman$elm_css$Css$hex($author$project$HangmanColors$textColor)),
 			$rtfeldman$elm_css$Css$padding(
-			$rtfeldman$elm_css$Css$px(10)),
+			$rtfeldman$elm_css$Css$px(15)),
 			$rtfeldman$elm_css$Css$marginTop(
-			$rtfeldman$elm_css$Css$px(10)),
+			$rtfeldman$elm_css$Css$px(5)),
 			$rtfeldman$elm_css$Css$marginBottom(
-			$rtfeldman$elm_css$Css$px(10)),
+			$rtfeldman$elm_css$Css$px(5)),
 			$rtfeldman$elm_css$Css$marginLeft(
-			$rtfeldman$elm_css$Css$px(1)),
+			$rtfeldman$elm_css$Css$px(5)),
 			$rtfeldman$elm_css$Css$marginRight(
-			$rtfeldman$elm_css$Css$px(1)),
+			$rtfeldman$elm_css$Css$px(5)),
 			$rtfeldman$elm_css$Css$border(
 			$rtfeldman$elm_css$Css$px(0)),
 			$rtfeldman$elm_css$Css$borderRadius(
@@ -8862,25 +8862,21 @@ var $author$project$HangmanStyles$styledButtonMain = A2(
 	_List_fromArray(
 		[
 			$rtfeldman$elm_css$Css$width(
-			$rtfeldman$elm_css$Css$pct(20)),
+			$rtfeldman$elm_css$Css$pct(24)),
 			$rtfeldman$elm_css$Css$backgroundColor(
 			$rtfeldman$elm_css$Css$hex($author$project$HangmanColors$buttonMainColor)),
 			$rtfeldman$elm_css$Css$color(
 			$rtfeldman$elm_css$Css$hex($author$project$HangmanColors$textColor)),
-			A4(
-			$rtfeldman$elm_css$Css$padding4,
-			$rtfeldman$elm_css$Css$px(5),
-			$rtfeldman$elm_css$Css$px(5),
-			$rtfeldman$elm_css$Css$px(5),
-			$rtfeldman$elm_css$Css$px(5)),
+			$rtfeldman$elm_css$Css$padding(
+			$rtfeldman$elm_css$Css$px(15)),
 			$rtfeldman$elm_css$Css$border(
 			$rtfeldman$elm_css$Css$px(0)),
 			A4(
 			$rtfeldman$elm_css$Css$margin4,
-			$rtfeldman$elm_css$Css$px(20),
-			$rtfeldman$elm_css$Css$px(20),
-			$rtfeldman$elm_css$Css$px(20),
-			$rtfeldman$elm_css$Css$px(20)),
+			$rtfeldman$elm_css$Css$px(5),
+			$rtfeldman$elm_css$Css$px(5),
+			$rtfeldman$elm_css$Css$px(5),
+			$rtfeldman$elm_css$Css$px(5)),
 			$rtfeldman$elm_css$Css$borderRadius(
 			$rtfeldman$elm_css$Css$px(20)),
 			$rtfeldman$elm_css$Css$fontSize(
@@ -8915,6 +8911,17 @@ var $author$project$HangmanViews$gameButtonsView = A2(
 			_List_fromArray(
 				[
 					$rtfeldman$elm_css$Html$Styled$text('Reset Game')
+				])),
+			A2(
+			$author$project$HangmanStyles$styledButtonMain,
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$Attributes$type_('button'),
+					$rtfeldman$elm_css$Html$Styled$Events$onClick($author$project$HangmanTypes$SaveHangmanPhrase)
+				]),
+			_List_fromArray(
+				[
+					$rtfeldman$elm_css$Html$Styled$text('Submit Phrase')
 				])),
 			A2(
 			$author$project$HangmanStyles$styledButtonMain,
@@ -9202,37 +9209,6 @@ var $author$project$HangmanViews$hangmanPhraseView = function (model) {
 				$author$project$HangmanHelpers$hidePhraseCharacters(model),
 				A2($elm$core$String$split, '', model.hangmanPhrase))));
 };
-var $author$project$HangmanViews$inputButtonView = A2(
-	$rtfeldman$elm_css$Html$Styled$div,
-	_List_fromArray(
-		[
-			$rtfeldman$elm_css$Html$Styled$Attributes$css(
-			_List_fromArray(
-				[
-					$rtfeldman$elm_css$Css$textAlign($rtfeldman$elm_css$Css$center),
-					$rtfeldman$elm_css$Css$alignItems($rtfeldman$elm_css$Css$center),
-					A4(
-					$rtfeldman$elm_css$Css$padding4,
-					$rtfeldman$elm_css$Css$px(2),
-					$rtfeldman$elm_css$Css$px(2),
-					$rtfeldman$elm_css$Css$px(2),
-					$rtfeldman$elm_css$Css$px(2))
-				]))
-		]),
-	_List_fromArray(
-		[
-			A2(
-			$author$project$HangmanStyles$styledButtonMain,
-			_List_fromArray(
-				[
-					$rtfeldman$elm_css$Html$Styled$Attributes$type_('button'),
-					$rtfeldman$elm_css$Html$Styled$Events$onClick($author$project$HangmanTypes$SaveHangmanPhrase)
-				]),
-			_List_fromArray(
-				[
-					$rtfeldman$elm_css$Html$Styled$text('Submit Phrase')
-				]))
-		]));
 var $rtfeldman$elm_css$Html$Styled$Events$alwaysPreventDefault = function (msg) {
 	return _Utils_Tuple2(msg, true);
 };
@@ -9521,9 +9497,8 @@ var $author$project$Hangman$view = function (model) {
 					[
 						$author$project$HangmanViews$titleView,
 						$author$project$HangmanViews$phraseInputView(model),
-						$author$project$HangmanViews$inputButtonView,
-						$author$project$HangmanViews$phraseButtonsView,
 						$author$project$HangmanViews$gameButtonsView,
+						$author$project$HangmanViews$phraseButtonsView,
 						$author$project$HangmanViews$characterButtonsView(model),
 						$author$project$HangmanViews$hangmanPhraseView(model),
 						$author$project$HangmanViews$hangmanArtView(model)

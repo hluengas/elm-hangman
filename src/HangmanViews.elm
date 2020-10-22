@@ -1,4 +1,4 @@
-module HangmanViews exposing (characterButtonsView, gameButtonsView, hangmanArtView, hangmanPhraseView, inputButtonView, phraseButtonsView, phraseInputView, titleView)
+module HangmanViews exposing (characterButtonsView, gameButtonsView, hangmanArtView, hangmanPhraseView, phraseButtonsView, phraseInputView, titleView)
 
 import Array
 import Css exposing (alignItems, center, fontSize, lineHeight, padding4, pct, px, textAlign)
@@ -45,8 +45,8 @@ phraseInputView model =
         ]
 
 
-inputButtonView : Html Msg
-inputButtonView =
+gameButtonsView : Html Msg
+gameButtonsView =
     div
         [ css
             [ textAlign center
@@ -56,9 +56,19 @@ inputButtonView =
         ]
         [ styledButtonMain
             [ type_ "button"
+            , onClick Reset
+            ]
+            [ text "Reset Game" ]
+        , styledButtonMain
+            [ type_ "button"
             , onClick SaveHangmanPhrase
             ]
             [ text "Submit Phrase" ]
+        , styledButtonMain
+            [ type_ "button"
+            , onClick RevealPhrase
+            ]
+            [ text "Reveal Phrase" ]
         ]
 
 
@@ -94,26 +104,18 @@ phraseButtonsView =
         ]
 
 
-gameButtonsView : Html Msg
-gameButtonsView =
-    div
-        [ css
-            [ textAlign center
-            , alignItems center
-            , padding4 (px 2) (px 2) (px 2) (px 2)
-            ]
-        ]
-        [ styledButtonMain
-            [ type_ "button"
-            , onClick Reset
-            ]
-            [ text "Reset Game" ]
-        , styledButtonMain
-            [ type_ "button"
-            , onClick RevealPhrase
-            ]
-            [ text "Reveal Phrase" ]
-        ]
+
+-- gameButtonsView : Html Msg
+-- gameButtonsView =
+--     div
+--         [ css
+--             [ textAlign center
+--             , alignItems center
+--             , padding4 (px 2) (px 2) (px 2) (px 2)
+--             ]
+--         ]
+--         [
+--         ]
 
 
 characterButtonsView : Model -> Html Msg
