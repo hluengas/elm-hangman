@@ -5,7 +5,7 @@ import Array exposing (Array)
 
 alphabet : List String
 alphabet =
-    String.split "" "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    String.split "" "QWERTYUIOPASDFGHJKLZXCVBNM"
 
 
 hangmanArtDead : String
