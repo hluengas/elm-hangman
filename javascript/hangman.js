@@ -8869,10 +8869,10 @@ var $author$project$HangmanStyles$styledButtonMain = A2(
 			$rtfeldman$elm_css$Css$hex($author$project$HangmanColors$textColor)),
 			A4(
 			$rtfeldman$elm_css$Css$padding4,
-			$rtfeldman$elm_css$Css$px(20),
-			$rtfeldman$elm_css$Css$px(20),
-			$rtfeldman$elm_css$Css$px(20),
-			$rtfeldman$elm_css$Css$px(20)),
+			$rtfeldman$elm_css$Css$px(5),
+			$rtfeldman$elm_css$Css$px(5),
+			$rtfeldman$elm_css$Css$px(5),
+			$rtfeldman$elm_css$Css$px(5)),
 			$rtfeldman$elm_css$Css$border(
 			$rtfeldman$elm_css$Css$px(0)),
 			A4(

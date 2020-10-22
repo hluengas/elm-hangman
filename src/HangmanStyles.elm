@@ -64,7 +64,7 @@ styledButtonMain =
         [ width (pct 20)
         , backgroundColor (hex buttonMainColor)
         , color (hex textColor)
-        , padding4 (px 20) (px 20) (px 20) (px 20)
+        , padding4 (px 5) (px 5) (px 5) (px 5)
         , border (px 0)
         , margin4 (px 20) (px 20) (px 20) (px 20)
         , borderRadius (px 20)
