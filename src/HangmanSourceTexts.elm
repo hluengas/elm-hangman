@@ -1,4 +1,4 @@
-module HangmanSourceTexts exposing (alphabet, hangmanArtAlive, hangmanArtDead, longWords, mediumWords, sourceText, firstKeyRow, secondKeyRow, thirdKeyRow)
+module HangmanSourceTexts exposing (alphabet, firstKeyRow, hangmanArtAlive, hangmanArtDead, longWords, mediumWords, secondKeyRow, sourceText, thirdKeyRow)
 
 import Array exposing (Array)
 
@@ -129,8 +129,6 @@ hangmanArtAlive =
 sourceText : String
 sourceText =
     """
-Chapter I
-The Cyclone
 
 
 Dorothy lived in the midst of the great Kansas prairies, with Uncle
@@ -250,8 +248,6 @@ Dorothy soon closed her eyes and fell fast asleep.
 
 
 
-Chapter II
-The Council with the Munchkins
 
 
 She was awakened by a shock, so sudden and severe that if Dorothy had
@@ -489,8 +485,6 @@ in just that way, and was not surprised in the least.
 
 
 
-Chapter III
-How Dorothy Saved the Scarecrow
 
 
 When Dorothy was left alone she began to feel hungry. So she went to
@@ -724,8 +718,6 @@ get tired. I’ll tell you a secret,” he continued, as he walked along.
 
 
 
-Chapter IV
-The Road Through the Forest
 
 
 After a few hours the road began to be rough, and the walking grew so
@@ -893,8 +885,6 @@ corner and waited patiently until morning came.
 
 
 
-Chapter V
-The Rescue of the Tin Woodman
 
 
 When Dorothy awoke the sun was shining through the trees and Toto had
@@ -1121,8 +1111,6 @@ of tin nor straw, and could not live unless she was fed.
 
 
 
-Chapter VI
-The Cowardly Lion
 
 
 All this time Dorothy and her companions had been walking through the
@@ -1307,8 +1295,6 @@ careful. When Oz gives me a heart of course I needn’t mind so much.”
 
 
 
-Chapter VII
-The Journey to the Great Oz
 
 
 They were obliged to camp out that night under a large tree in the
@@ -1506,8 +1492,6 @@ Wizard Oz, who would soon send her back to her own home again.
 
 
 
-Chapter VIII
-The Deadly Poppy Field
 
 
 Our little party of travelers awakened the next morning refreshed and
@@ -1733,8 +1717,6 @@ and waited for the fresh breeze to waken her.
 
 
 
-Chapter IX
-The Queen of the Field Mice
 
 
 “We cannot be far from the road of yellow brick, now,” remarked the
@@ -1902,8 +1884,6 @@ ate for her dinner.
 
 
 
-Chapter X
-The Guardian of the Gate
 
 
 It was some time before the Cowardly Lion awakened, for he had lain
@@ -2132,8 +2112,6 @@ through the portal into the streets of the Emerald City.
 
 
 
-Chapter XI
-The Wonderful City of Oz
 
 
 Even with eyes protected by the green spectacles, Dorothy and her
@@ -2554,8 +2532,6 @@ green egg.
 
 
 
-Chapter XII
-The Search for the Wicked Witch
 
 
 The soldier with the green whiskers led them through the streets of the
@@ -2955,8 +2931,6 @@ land.
 
 
 
-Chapter XIII
-The Rescue
 
 
 The Cowardly Lion was much pleased to hear that the Wicked Witch had
@@ -3092,8 +3066,6 @@ carry with them.
 
 
 
-Chapter XIV
-The Winged Monkeys
 
 
 You will remember there was no road—not even a pathway—between the
@@ -3305,8 +3277,6 @@ lucky it was you brought away that wonderful Cap!”
 
 
 
-Chapter XV
-The Discovery of Oz, the Terrible
 
 
 The four travelers walked up to the great gate of Emerald City and rang
@@ -3645,8 +3615,6 @@ to Kansas, and if he did she was willing to forgive him everything.
 
 
 
-Chapter XVI
-The Magic Art of the Great Humbug
 
 
 Next morning the Scarecrow said to his friends:
@@ -3782,8 +3750,6 @@ how it can be done.”
 
 
 
-Chapter XVII
-How the Balloon Was Launched
 
 
 For three days Dorothy heard nothing from Oz. These were sad days for
@@ -3920,8 +3886,6 @@ Wizard, and would not be comforted.
 
 
 
-Chapter XVIII
-Away to the South
 
 
 Dorothy wept bitterly at the passing of her hope to get home to Kansas
@@ -4078,8 +4042,6 @@ all get ready, for it will be a long journey.”
 
 
 
-Chapter XIX
-Attacked by the Fighting Trees
 
 
 The next morning Dorothy kissed the pretty green girl good-bye, and
@@ -4200,8 +4162,6 @@ climb over the wall.”
 
 
 
-Chapter XX
-The Dainty China Country
 
 
 While the Woodman was making a ladder from wood which he found in the
@@ -4395,8 +4355,6 @@ than being a Scarecrow.”
 
 
 
-Chapter XXI
-The Lion Becomes the King of Beasts
 
 
 After climbing down from the china wall the travelers found themselves
@@ -4505,8 +4463,6 @@ way to Kansas.
 
 
 
-Chapter XXII
-The Country of the Quadlings
 
 
 The four travelers passed through the rest of the forest in safety, and
@@ -4626,8 +4582,6 @@ were to be admitted at once.
 
 
 
-Chapter XXIII
-Glinda The Good Witch Grants Dorothy’s Wish
 
 
 Before they went to see Glinda, however, they were taken to a room of
@@ -4788,8 +4742,6 @@ forever in the desert.
 
 
 
-Chapter XXIV
-Home Again
 
 
 Aunt Em had just come out of the house to water the cabbages when she
