@@ -9519,7 +9519,7 @@ var $rtfeldman$elm_css$Css$alignSelf = function (fn) {
 var $rtfeldman$elm_css$Html$Styled$form = $rtfeldman$elm_css$Html$Styled$node('form');
 var $rtfeldman$elm_css$Css$height = $rtfeldman$elm_css$Css$prop1('height');
 var $rtfeldman$elm_css$Css$paddingBottom = $rtfeldman$elm_css$Css$prop1('padding-bottom');
-var $author$project$HangmanColors$wallpaperColor = '#05272d';
+var $author$project$HangmanColors$wallpaperColor = '#232a32';
 var $author$project$HangmanStyles$styledForm = A2(
 	$rtfeldman$elm_css$Html$Styled$styled,
 	$rtfeldman$elm_css$Html$Styled$form,
