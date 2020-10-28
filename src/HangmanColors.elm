@@ -3,7 +3,7 @@ module HangmanColors exposing (buttonMainColor, correctColor, textColor, unGuess
 
 wallpaperColor : String
 wallpaperColor =
-    "#05272d"
+    "#232a32"
 
 
 buttonMainColor : String
