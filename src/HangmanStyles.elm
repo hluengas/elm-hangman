@@ -1,6 +1,4 @@
-module HangmanStyles exposing (styledButtonGuessedCorrect, styledButtonGuessedWrong, styledButtonMain, styledButtonUnguessed, styledForm, styledInput)
-
--- import Css exposing (..)
+module HangmanStyles exposing (styledButtonGuessedCorrect, styledButtonGuessedWrong, styledButtonMain, styledButtonUnguessed, styledForm, styledGenerateButton, styledInput)
 
 import Css
     exposing
@@ -27,7 +25,7 @@ import Css
         , px
         , width
         )
-import HangmanColors exposing (buttonMainColor, correctColor, unGuessedColor, wallpaperColor, wrongColor)
+import HangmanColors exposing (buttonMainColor, correctColor, textColor, unGuessedColor, wallpaperColor, wrongColor)
 import Html.Styled exposing (Attribute, Html, styled)
 
 
@@ -55,6 +53,8 @@ styledInput =
         , margin2 (px 8) (px 0)
         , border (px 0)
         , borderRadius (px 10)
+        , color (hex textColor)
+        , backgroundColor (hex buttonMainColor)
         ]
 
 
@@ -63,10 +63,24 @@ styledButtonMain =
     styled Html.Styled.button
         [ width (pct 30)
         , backgroundColor (hex buttonMainColor)
-        , color (hex "#fff")
-        , padding4 (px 20) (px 20) (px 20) (px 20)
+        , color (hex textColor)
+        , padding4 (pct 1) (px 0) (pct 1) (px 0)
         , border (px 0)
-        , margin4 (px 20) (px 20) (px 20) (px 20)
+        , margin4 (px 5) (px 5) (px 5) (px 5)
+        , borderRadius (px 20)
+        , fontSize (px 24)
+        ]
+
+
+styledGenerateButton : List (Attribute msg) -> List (Html msg) -> Html msg
+styledGenerateButton =
+    styled Html.Styled.button
+        [ width (pct 40)
+        , backgroundColor (hex buttonMainColor)
+        , color (hex textColor)
+        , padding4 (pct 1) (px 0) (pct 1) (px 0)
+        , border (px 0)
+        , margin4 (px 5) (px 5) (px 5) (px 5)
         , borderRadius (px 20)
         , fontSize (px 24)
         ]
@@ -75,14 +89,14 @@ styledButtonMain =
 styledButtonUnguessed : List (Attribute msg) -> List (Html msg) -> Html msg
 styledButtonUnguessed =
     styled Html.Styled.button
-        [ width (pct 10)
+        [ width (pct 8)
         , backgroundColor (hex unGuessedColor)
-        , color (hex "#fff")
-        , padding (px 10)
-        , marginTop (px 10)
-        , marginBottom (px 10)
-        , marginLeft (px 1)
-        , marginRight (px 1)
+        , color (hex textColor)
+        , padding4 (pct 1) (px 0) (pct 1) (px 0)
+        , marginTop (px 5)
+        , marginBottom (px 5)
+        , marginLeft (px 5)
+        , marginRight (px 5)
         , border (px 0)
         , borderRadius (px 20)
         , fontSize (px 24)
@@ -92,14 +106,14 @@ styledButtonUnguessed =
 styledButtonGuessedCorrect : List (Attribute msg) -> List (Html msg) -> Html msg
 styledButtonGuessedCorrect =
     styled Html.Styled.button
-        [ width (pct 10)
+        [ width (pct 8)
         , backgroundColor (hex correctColor)
-        , color (hex "#fff")
-        , padding (px 10)
-        , marginTop (px 10)
-        , marginBottom (px 10)
-        , marginLeft (px 1)
-        , marginRight (px 1)
+        , color (hex textColor)
+        , padding4 (pct 1) (px 0) (pct 1) (px 0)
+        , marginTop (px 5)
+        , marginBottom (px 5)
+        , marginLeft (px 5)
+        , marginRight (px 5)
         , border (px 0)
         , borderRadius (px 20)
         , fontSize (px 24)
@@ -109,14 +123,14 @@ styledButtonGuessedCorrect =
 styledButtonGuessedWrong : List (Attribute msg) -> List (Html msg) -> Html msg
 styledButtonGuessedWrong =
     styled Html.Styled.button
-        [ width (pct 10)
+        [ width (pct 8)
         , backgroundColor (hex wrongColor)
-        , color (hex "#fff")
-        , padding (px 10)
-        , marginTop (px 10)
-        , marginBottom (px 10)
-        , marginLeft (px 1)
-        , marginRight (px 1)
+        , color (hex textColor)
+        , padding4 (pct 1) (px 0) (pct 1) (px 0)
+        , marginTop (px 5)
+        , marginBottom (px 5)
+        , marginLeft (px 5)
+        , marginRight (px 5)
         , border (px 0)
         , borderRadius (px 20)
         , fontSize (px 24)

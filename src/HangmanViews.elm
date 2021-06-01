@@ -1,14 +1,17 @@
-module HangmanViews exposing (characterButtonsView, hangmanArtView, hangmanPhraseView, mainButtonsView, phraseInputView, titleView)
+module HangmanViews exposing (characterButtonsView, gameButtonsView, hangmanArtView, hangmanPhraseView, phraseButtonsView, phraseInputView, titleView)
 
 import Array
 import Css exposing (alignItems, center, fontSize, lineHeight, padding4, pct, px, textAlign)
 import HangmanHelpers exposing (addCharactersToSpan, coloredCharacterButton, hiddenPhraseString, hidePhraseCharacters, numIncorrectGuesses)
+import HangmanSourceTexts exposing (alphabet, hangmanArtAlive, hangmanArtDead, longWords, mediumWords, sourceText)
+import HangmanStyles exposing (styledButtonMain, styledGenerateButton, styledInput)
 import HangmanTypes exposing (Model, Msg(..))
-import HangmanSourceTexts exposing (alphabet, hangmanArtAlive, hangmanArtDead)
-import HangmanStyles exposing (styledButtonMain, styledInput)
 import Html.Styled exposing (Html, div, h1, pre, text)
 import Html.Styled.Attributes exposing (css, id, type_, value)
 import Html.Styled.Events exposing (onClick, onInput)
+import HangmanSourceTexts exposing (firstKeyRow)
+import HangmanSourceTexts exposing (secondKeyRow)
+import HangmanSourceTexts exposing (thirdKeyRow)
 
 
 
@@ -20,7 +23,7 @@ titleView =
     div
         [ css
             [ textAlign center
-            , fontSize (px 32)
+            , fontSize (px 18)
             ]
         ]
         [ h1 [] [ text "Hangman Game" ] ]
@@ -45,8 +48,8 @@ phraseInputView model =
         ]
 
 
-mainButtonsView : Html Msg
-mainButtonsView =
+gameButtonsView : Html Msg
+gameButtonsView =
     div
         [ css
             [ textAlign center
@@ -56,9 +59,9 @@ mainButtonsView =
         ]
         [ styledButtonMain
             [ type_ "button"
-            , onClick GenerateRandomTextIndex
+            , onClick Reset
             ]
-            [ text "Random Phrase" ]
+            [ text "Reset Game" ]
         , styledButtonMain
             [ type_ "button"
             , onClick SaveHangmanPhrase
@@ -66,15 +69,48 @@ mainButtonsView =
             [ text "Submit Phrase" ]
         , styledButtonMain
             [ type_ "button"
-            , onClick Reset
+            , onClick RevealPhrase
             ]
-            [ text "Reset Game" ]
+            [ text "Reveal Phrase" ]
+        ]
+
+
+phraseButtonsView : Html Msg
+phraseButtonsView =
+    div
+        [ css
+            [ textAlign center
+            , alignItems center
+            , padding4 (px 2) (px 2) (px 2) (px 2)
+            ]
+        ]
+        [ styledGenerateButton
+            [ type_ "button"
+            , onClick (GenerateRandomTextIndex sourceText 5)
+            ]
+            [ text "Randomly Generate Easy" ]
+        , styledGenerateButton
+            [ type_ "button"
+            , onClick (GenerateRandomTextIndex sourceText 3)
+            ]
+            [ text "Randomly Generate Medium" ]
+        , styledGenerateButton
+            [ type_ "button"
+            , onClick (GenerateRandomTextIndex longWords 1)
+            ]
+            [ text "Randomly Generate Hard" ]
+        , styledGenerateButton
+            [ type_ "button"
+            , onClick (GenerateRandomTextIndex mediumWords 1)
+            ]
+            [ text "Randomly Generate Very Hard" ]
         ]
 
 
 characterButtonsView : Model -> Html Msg
 characterButtonsView model =
-    alphabet
+    div [] [
+        firstKeyRow
         |> List.map (coloredCharacterButton model)
         |> div
             [ css
@@ -82,6 +118,24 @@ characterButtonsView model =
                 , alignItems center
                 ]
             ]
+        , secondKeyRow
+        |> List.map (coloredCharacterButton model)
+        |> div
+            [ css
+                [ textAlign center
+                , alignItems center
+                ]
+            ]
+        , thirdKeyRow
+        |> List.map (coloredCharacterButton model)
+        |> div
+            [ css
+                [ textAlign center
+                , alignItems center
+                ]
+            ]
+    ]
+    
 
 
 hangmanPhraseView : Model -> Html Msg

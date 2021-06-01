@@ -2,9 +2,9 @@ module HangmanHelpers exposing (addCharactersToSpan, coloredCharacterButton, get
 
 import Array exposing (Array, get, length)
 import Css exposing (fontSize, padding, px)
-import HangmanTypes exposing (Model, Msg(..))
 import HangmanSourceTexts exposing (sourceText)
 import HangmanStyles exposing (styledButtonGuessedCorrect, styledButtonGuessedWrong, styledButtonUnguessed)
+import HangmanTypes exposing (Model, Msg(..))
 import Html.Styled exposing (Html, span, text)
 import Html.Styled.Attributes exposing (css, type_)
 import Html.Styled.Events exposing (onClick)
@@ -111,10 +111,37 @@ alphabeticWordsFromText text =
         |> Array.fromList
 
 
-getRandomPhrase : Int -> String
-getRandomPhrase rndNum =
+getRandomPhrase : Int -> Int -> String -> String
+getRandomPhrase rndIndex count text =
+    if count == 1 then
+        getRandomWord rndIndex text
+
+    else if count == 3 then
+        getRandomPhrase3 rndIndex text
+
+    else if count == 5 then
+        getRandomPhrase5 rndIndex text
+
+    else
+        getRandomWord rndIndex text
+
+
+getRandomWord : Int -> String -> String
+getRandomWord rndIndex text =
+    case
+        Array.get rndIndex (alphabeticWordsFromText text)
+    of
+        Nothing ->
+            "default"
+
+        Just string ->
+            string
+
+
+getRandomPhrase3 : Int -> String -> String
+getRandomPhrase3 rndIndex text =
     [ case
-        Array.get rndNum (alphabeticWordsFromText sourceText)
+        Array.get rndIndex (alphabeticWordsFromText text)
       of
         Nothing ->
             "default"
@@ -122,7 +149,7 @@ getRandomPhrase rndNum =
         Just string ->
             string
     , case
-        Array.get (rndNum + 1) (alphabeticWordsFromText sourceText)
+        Array.get (rndIndex + 1) (alphabeticWordsFromText text)
       of
         Nothing ->
             "default"
@@ -130,7 +157,53 @@ getRandomPhrase rndNum =
         Just string ->
             string
     , case
-        Array.get (rndNum + 2) (alphabeticWordsFromText sourceText)
+        Array.get (rndIndex + 2) (alphabeticWordsFromText text)
+      of
+        Nothing ->
+            "default"
+
+        Just string ->
+            string
+    ]
+        |> String.join " "
+
+
+getRandomPhrase5 : Int -> String -> String
+getRandomPhrase5 rndIndex text =
+    [ case
+        Array.get rndIndex (alphabeticWordsFromText text)
+      of
+        Nothing ->
+            "default"
+
+        Just string ->
+            string
+    , case
+        Array.get (rndIndex + 1) (alphabeticWordsFromText text)
+      of
+        Nothing ->
+            "default"
+
+        Just string ->
+            string
+    , case
+        Array.get (rndIndex + 2) (alphabeticWordsFromText text)
+      of
+        Nothing ->
+            "default"
+
+        Just string ->
+            string
+    , case
+        Array.get (rndIndex + 3) (alphabeticWordsFromText text)
+      of
+        Nothing ->
+            "default"
+
+        Just string ->
+            string
+    , case
+        Array.get (rndIndex + 4) (alphabeticWordsFromText text)
       of
         Nothing ->
             "default"

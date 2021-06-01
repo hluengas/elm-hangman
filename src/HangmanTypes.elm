@@ -1,6 +1,9 @@
 module HangmanTypes exposing (Model, Msg(..))
 
+import HangmanSourceTexts exposing (sourceText)
 import Set exposing (Set)
+
+
 
 -- Model type
 
@@ -9,6 +12,8 @@ type alias Model =
     { hangmanPhrase : String
     , inputField : String
     , guessedChars : Set String
+    , selectedSourceText : String
+    , selectedWordCount : Int
     }
 
 
@@ -20,6 +25,7 @@ type Msg
     = SaveHangmanPhrase
     | SaveInputSoFar String
     | GuessButton String
-    | GenerateRandomTextIndex
+    | GenerateRandomTextIndex String Int
     | NewRandomTextIndex Int
+    | RevealPhrase
     | Reset

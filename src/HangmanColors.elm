@@ -1,26 +1,31 @@
-module HangmanColors exposing (buttonMainColor, correctColor, unGuessedColor, wallpaperColor, wrongColor)
+module HangmanColors exposing (buttonMainColor, correctColor, textColor, unGuessedColor, wallpaperColor, wrongColor)
 
 
 wallpaperColor : String
 wallpaperColor =
-    "#C4FFF9"
+    "#232a32"
 
 
 buttonMainColor : String
 buttonMainColor =
-    "#011627"
+    "#3b7277"
 
 
 unGuessedColor : String
 unGuessedColor =
-    "#6E8894"
+    "#3b7277"
 
 
 correctColor : String
 correctColor =
-    "#78BC61"
+    "#395c35"
 
 
 wrongColor : String
 wrongColor =
-    "#875053"
+    "#b04f21"
+
+
+textColor : String
+textColor =
+    "#d7d8da"

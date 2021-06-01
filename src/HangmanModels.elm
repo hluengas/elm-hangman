@@ -1,7 +1,7 @@
-module HangmanModels exposing (alterCharacterSet, alterInputField, init, initWithHangmanPhrase, querryRandomTextIndex)
+module HangmanModels exposing (alterCharacterSet, alterInputField, init, initWithHangmanPhrase, querryRandomTextIndex, revealPhrase)
 
 import HangmanHelpers exposing (randomTextIndex)
-import HangmanSourceTexts exposing (sourceText)
+import HangmanSourceTexts exposing (alphabet, sourceText)
 import HangmanTypes exposing (Model, Msg(..))
 import Set exposing (insert)
 
@@ -17,11 +17,13 @@ init _ =
     )
 
 
-initRecord : { hangmanPhrase : String, inputField : String, guessedChars : Set.Set a }
+initRecord : Model
 initRecord =
     { hangmanPhrase = " "
     , inputField = ""
     , guessedChars = Set.empty
+    , selectedSourceText = sourceText
+    , selectedWordCount = 1
     }
 
 
@@ -50,6 +52,23 @@ alterInputField model inputText =
     )
 
 
-querryRandomTextIndex : Model -> ( Model, Cmd Msg )
-querryRandomTextIndex model =
-    ( model, randomTextIndex sourceText )
+querryRandomTextIndex : Model -> String -> Int -> ( Model, Cmd Msg )
+querryRandomTextIndex model text count =
+    ( { model
+        | selectedSourceText = text
+        , selectedWordCount = count
+      }
+    , randomTextIndex text
+    )
+
+
+revealPhrase : Model -> ( Model, Cmd Msg )
+revealPhrase model =
+    ( { model
+        | guessedChars =
+            alphabet
+                |> List.map String.toLower
+                |> Set.fromList
+      }
+    , Cmd.none
+    )
